@@ -2,9 +2,9 @@
 
 # Video Ad Director
 
-**AI production discipline for HyperFrames video ads, launch promos, and motion-led marketing films**
+**面向 HyperFrames 视频广告的 AI 制片导演工作流**
 
-<img src="assets/banner.jpg" alt="Video Ad Director banner showing creative brief, storyboard, motion map, review pack, and HyperFrames platform label" width="100%">
+<img src="assets/banner.jpg" alt="Video Ad Director 信息图：创意简报、分镜、运动图、审查包和 HyperFrames 平台标签" width="100%">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Skill](https://img.shields.io/badge/Agent%20Skill-HyperFrames-c96442.svg)](./SKILL.md)
@@ -14,57 +14,56 @@
 
 ---
 
-## What This Is
+## 这是什么
 
-Video Ad Director is an agent skill for producing polished marketing videos with HyperFrames. It turns vague video ad requests into a reviewable production chain: creative brief, design system, script, storyboard, beat map, motion map, validation, snapshots, renders, and review reports.
+Video Ad Director 是一个用于制作 HyperFrames 视频广告的 agent skill。它把模糊的视频广告需求，转成可审查、可验证、可交付的生产链路：创意简报、设计系统、脚本、分镜、节拍图、运动图、验证、快照、渲染和审查报告。
 
 ```text
-Input:  "Make a premium product launch ad with kinetic typography"
-Output: A structured HyperFrames production workflow with artifacts, composition guidance, validation gates, and review-ready handoff
+输入："给 AI 编程助手 Forge 做一个高级感产品发布广告，使用动效大字和 CTA"
+输出：一套 HyperFrames 视频广告生产工作流，包括制片文档、分镜、运动编排、验证门和审查交付
 ```
 
-The skill is designed for short-form ads, product launch films, website-to-video explainers, YouTube promos, caption-led product videos, and music-synced motion graphics.
+它适用于短视频广告、产品发布片、官网转视频、YouTube 宣传片、字幕驱动产品视频、动效字体广告和音乐节拍同步的 motion graphics。
 
 ---
 
-## Core Capabilities
+## 核心能力
 
-<img src="assets/features.jpg" alt="Core capabilities: brief, design, script, storyboard, motion, and review" width="100%">
+<img src="assets/features.jpg" alt="核心能力：简报、设计、脚本、分镜、运动和审查" width="100%">
 
-It emphasizes layout before animation, sparse screen copy, deterministic GSAP timing, and strong review artifacts instead of ad hoc animation code.
-
----
-
-## Production Workflow
-
-<img src="assets/workflow.jpg" alt="Production workflow: intake, brief, build, validate, and render" width="100%">
-
-The workflow starts from the final viewing experience and works backward through proof points, hero frames, timing, transitions, and validation.
+这个 skill 强调先做静态关键帧，再做动画；先建立生产文档，再写代码；先验证可读性、时间线和渲染稳定性，再交付成片。
 
 ---
 
-## Installation
+## 工作流程
 
-Copy this repository into your local agent skills folder, or install it through your agent runtime's skill installation workflow.
+<img src="assets/workflow.jpg" alt="工作流程：需求采集、简报、构建、验证和渲染" width="100%">
+
+工作方式是从最终观看体验倒推：观众要记住什么，哪个画面证明方向成立，哪个节拍承载 hook、揭示、证明和 CTA，哪些验证能证明渲染是确定性的。
+
+---
+
+## 安装
+
+推荐通过 `skills` CLI 安装：
 
 ```bash
-mkdir -p ~/.agents/skills
-cp -R /path/to/video-ad-director ~/.agents/skills/video-ad-director
+npx skills add https://github.com/geekjourneyx/video-ad-director
 ```
 
-No package install is required to read and use the skill. The helper scripts use Node.js and are intended to run from the project root.
+使用 skill 本身不需要安装依赖。仓库中的辅助脚本使用 Node.js，建议使用 Node.js 18 或更高版本。
 
 ---
 
-## Quick Start
+## 快速开始
 
-Use the skill when creating a new HyperFrames ad project:
+创建一个新的 HyperFrames 视频广告项目：
 
 ```bash
 node scripts/create_project.mjs ./my-product-ad
 ```
 
-Then fill the generated production artifacts in order:
+然后按顺序填写生成的生产文档：
 
 ```text
 CREATIVE_BRIEF.md
@@ -75,7 +74,7 @@ BEAT_MAP.json
 MOTION_MAP.json
 ```
 
-Run local structure and artifact checks when preparing a skill release:
+发布 skill 或检查项目结构时运行：
 
 ```bash
 node scripts/check-structure.mjs
@@ -83,7 +82,7 @@ node scripts/check_assets.mjs <project-dir>
 node scripts/score_artifacts.mjs <project-dir>
 ```
 
-For implemented HyperFrames compositions, use the strongest available HyperFrames checks:
+如果已经实现 HyperFrames composition，继续运行当前项目支持的最强验证命令：
 
 ```bash
 npx hyperframes doctor
@@ -95,47 +94,52 @@ npx hyperframes snapshot <composition> --at <times>
 
 ---
 
-## Repository Layout
+## 仓库结构
 
 ```text
-SKILL.md                         Skill instructions and operating rules
-templates/                       Production artifact templates
-references/                      Workflow, motion, typography, review, and stability guidance
-scripts/create_project.mjs       New ad project scaffold generator
-scripts/check-structure.mjs      Skill release structure check
-scripts/check_assets.mjs         Project asset validation helper
-scripts/score_artifacts.mjs      Artifact completeness scoring
-evals/                           Trigger prompts and evaluation cases
-assets/                          Compressed README visual assets
+SKILL.md                         skill 主指令和质量门
+templates/                       创意简报、设计、脚本、分镜、节拍图、运动图等模板
+references/                      工作流、字体排版、运动语言、音频同步、稳定性和审查指南
+scripts/create_project.mjs       新建视频广告项目脚手架
+scripts/check-structure.mjs      skill 发布前结构检查
+scripts/check_assets.mjs         项目资源检查
+scripts/score_artifacts.mjs      生产文档完整度评分
+evals/                           触发词和评测用例
+assets/                          README 使用的压缩信息图
 ```
 
 ---
 
-## GitHub Metadata
+## GitHub 元信息建议
 
-Suggested repository description:
+推荐星级：**5/5**。理由：Description 覆盖平台实体 `HyperFrames`、任务域 `video ads`、关键产物 `briefs/scripts/storyboards`、技术关键词 `GSAP motion maps` 和交付结果 `renders/review packs`，适合 GitHub SEO、Google SEO 和 LLM/GEO 检索引用。
+
+仓库 Description（133 字符，建议直接填写）：
 
 ```text
-AI agent skill for producing HyperFrames video ads from vague prompts into briefs, scripts, storyboards, GSAP motion maps, validation gates, renders, and review packs
+AI agent skill for HyperFrames video ads: briefs, scripts, storyboards, GSAP motion maps, validation gates, renders, and review packs
 ```
 
-Suggested topics:
+Topics（10 个，建议直接填写）：
 
 ```text
-agent-skill video-ad-director ai-video-ads hyperframes gsap motion-design
-video-production advertising kinetic-typography website-to-video youtube-promo
+agent-skill video-ad-director ai-video-ads hyperframes gsap
+motion-design video-production kinetic-typography website-to-video youtube-promo
 ```
 
 ---
 
-## License
+## 许可证
 
-[MIT](./LICENSE) — free to use, modify, and distribute.
+[MIT](./LICENSE) — 可自由使用、修改和分发。
 
 ---
 
-## About The Author
+## 关于作者
 
 | | |
 |:---|:---|
+| 个人主页 | [geekjourney.dev](https://geekjourney.dev) |
 | GitHub | [geekjourneyx](https://github.com/geekjourneyx) |
+| Twitter | [@seekjourney](https://x.com/seekjourney) |
+| 公众号 | 微信搜「极客杰尼」 |
