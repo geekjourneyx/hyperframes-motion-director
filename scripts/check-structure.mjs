@@ -41,8 +41,30 @@ const missing = requiredFiles.filter((file) => !existsSync(join(root, file)));
 const skillPath = join(root, "SKILL.md");
 const skillText = existsSync(skillPath) ? readFileSync(skillPath, "utf8") : "";
 const missingTerms = requiredSkillTerms.filter((term) => !skillText.includes(term));
+const frontmatterMatch = skillText.match(/^---\n([\s\S]*?)\n---/);
+const frontmatterErrors = [];
 
-if (missing.length > 0 || missingTerms.length > 0) {
+if (!frontmatterMatch) {
+  frontmatterErrors.push("Missing YAML frontmatter block.");
+} else {
+  const lines = frontmatterMatch[1].split("\n");
+  for (const [index, line] of lines.entries()) {
+    if (line.trim() === "") continue;
+    const match = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
+    if (!match) {
+      frontmatterErrors.push(`Line ${index + 2} is not a simple key/value YAML field.`);
+      continue;
+    }
+
+    const [, key, value] = match;
+    const quoted = /^".*"$/.test(value) || /^'.*'$/.test(value);
+    if (!quoted && /:\s/.test(value)) {
+      frontmatterErrors.push(`Line ${index + 2} (${key}) contains an unquoted ': ' sequence.`);
+    }
+  }
+}
+
+if (missing.length > 0 || missingTerms.length > 0 || frontmatterErrors.length > 0) {
   if (missing.length > 0) {
     console.error("Missing files:");
     for (const file of missing) console.error(`- ${file}`);
@@ -51,6 +73,11 @@ if (missing.length > 0 || missingTerms.length > 0) {
   if (missingTerms.length > 0) {
     console.error("Missing required SKILL.md terms:");
     for (const term of missingTerms) console.error(`- ${term}`);
+  }
+
+  if (frontmatterErrors.length > 0) {
+    console.error("Invalid SKILL.md frontmatter:");
+    for (const error of frontmatterErrors) console.error(`- ${error}`);
   }
 
   process.exit(1);

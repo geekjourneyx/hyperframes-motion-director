@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-06-02
+
+### Fixed
+
+- Quoted `SKILL.md` frontmatter `description` to prevent YAML parsing errors from the `workflow: first...` colon sequence.
+- Added a frontmatter guard to `scripts/check-structure.mjs` so unquoted `: ` sequences are caught before release.
+
 ## [1.0.1] - 2026-06-02
 
 ### Changed
