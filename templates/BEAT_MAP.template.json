@@ -1,0 +1,51 @@
+{
+  "fps": 30,
+  "duration_seconds": 10,
+  "audio_source": "none",
+  "analysis_method": "manual",
+  "beats": [
+    {
+      "time": 0,
+      "label": "start",
+      "energy": "low"
+    }
+  ],
+  "hits": [
+    {
+      "time": 0.4,
+      "type": "title-impact",
+      "visual_event": "primary title lands",
+      "notes": "Align to first meaningful music hit or directed rhythm point."
+    },
+    {
+      "time": 2.4,
+      "type": "transition",
+      "visual_event": "hook transitions into reveal",
+      "notes": "Transition should not cut to an empty frame."
+    },
+    {
+      "time": 5.8,
+      "type": "proof-reveal",
+      "visual_event": "proof/stat lands",
+      "notes": "Must hold long enough to read."
+    },
+    {
+      "time": 8.6,
+      "type": "cta-lockup",
+      "visual_event": "brand and CTA lock up",
+      "notes": "CTA should hold through final frame."
+    }
+  ],
+  "scene_ranges": [
+    {
+      "scene": "hook",
+      "start": 0,
+      "end": 2.4,
+      "hero_frame": 1.2
+    }
+  ],
+  "snapshot_times": [0, 1.2, 2.4, 5.8, 8.6, 10],
+  "assumptions": [
+    "Manual timing used until a real audio file or transcript is supplied."
+  ]
+}

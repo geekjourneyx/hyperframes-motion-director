@@ -1,0 +1,65 @@
+{
+  "composition_id": "root",
+  "timeline_policy": {
+    "library": "gsap",
+    "paused": true,
+    "registered_to": "window.__timelines",
+    "uses_absolute_positions": true,
+    "deterministic": true
+  },
+  "selectors": {
+    "title": ".title",
+    "product": ".product-frame",
+    "proof": ".proof",
+    "cta": ".cta-lockup"
+  },
+  "beats": [
+    {
+      "label": "hook-title-in",
+      "at": 0.2,
+      "selector": ".title",
+      "method": "from",
+      "properties": {
+        "opacity": 0,
+        "y": 64,
+        "duration": 0.8,
+        "ease": "expo.out"
+      },
+      "purpose": "Land the main hook with premium restraint."
+    },
+    {
+      "label": "hook-to-reveal-transition",
+      "at": 2.2,
+      "selector": ".scene-hook",
+      "method": "to",
+      "properties": {
+        "scale": 1.06,
+        "opacity": 0,
+        "duration": 0.45,
+        "ease": "power3.inOut"
+      },
+      "purpose": "Carry momentum into product reveal without an empty fade."
+    }
+  ],
+  "holds": [
+    {
+      "selector": ".title",
+      "start": 1.0,
+      "end": 2.0,
+      "reason": "Readable title hold."
+    }
+  ],
+  "transitions": [
+    {
+      "from_scene": "hook",
+      "to_scene": "reveal",
+      "start": 2.2,
+      "end": 2.7,
+      "mechanism": "scale-through / mask wipe / directed cut",
+      "risk": "Do not transition through an empty black frame."
+    }
+  ],
+  "stability_notes": [
+    "No Date.now(), unseeded Math.random(), setTimeout, setInterval, requestAnimationFrame as timeline truth, or runtime network asset fetches."
+  ]
+}

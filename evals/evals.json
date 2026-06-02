@@ -1,0 +1,61 @@
+{
+  "skill_name": "directing-hyperframes-ads",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use HyperFrames to make a 10 second Apple keynote style product launch ad for an AI coding assistant called Forge. Black background, huge restrained typography, one product screenshot placeholder, music-synced hits, and a final CTA. I care more about it looking premium than having lots of effects.",
+      "expected_output": "A complete HyperFrames ad production plan or project output with creative brief, design system, script, storyboard, deterministic GSAP guidance, validation plan, snapshots plan, and review report. The output should emphasize layout before animation and premium restraint.",
+      "files": [],
+      "assertions": [
+        "Output includes a creative brief or equivalent intake artifact.",
+        "Output includes a design system with typography, color, layout, and motion direction.",
+        "Output includes a beat-by-beat storyboard with timing and hero frame timestamps.",
+        "Output explicitly uses layout before animation or static hero frame review before GSAP.",
+        "Output includes HyperFrames validation/snapshot/render checks.",
+        "Output includes deterministic GSAP or render-stability guidance."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Turn this SaaS homepage idea into a 15 second YouTube promo: 'Atlas turns messy support tickets into clean product insights.' Make it feel sharp and technical, with kinetic typography, a proof beat, and a CTA. Use HyperFrames and GSAP.",
+      "expected_output": "A structured production workflow for a 15 second HyperFrames promo with concise copy, beat-by-beat storyboard, technical visual language, motion vocabulary, transition plan, and validation checklist.",
+      "files": [],
+      "assertions": [
+        "Output includes a concise ad structure with hook, reveal, proof, and CTA.",
+        "Output includes a technical visual direction rather than generic visual adjectives.",
+        "Output includes beat timing for a 15 second video.",
+        "Output includes GSAP motion choreography with explicit timing or easing guidance.",
+        "Output includes a transition plan.",
+        "Output includes validation and snapshot review steps."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I already have a HyperFrames ad project. The client says the title feels cheap and the proof beat is too fast. Explain exactly what you would inspect and change without rewriting the whole composition.",
+      "expected_output": "A targeted edit protocol that reads existing files first, maps feedback to DESIGN/SCRIPT/STORYBOARD/timeline changes, preserves unrelated timing, and reruns relevant validation and snapshots.",
+      "files": [],
+      "assertions": [
+        "Output says to inspect existing project files before changing anything.",
+        "Output maps the cheap title feedback to typography/design/layout changes.",
+        "Output maps the fast proof beat feedback to script/storyboard/beat map/timeline changes.",
+        "Output explicitly avoids rewriting unrelated composition sections.",
+        "Output includes validation and snapshots after the targeted edit.",
+        "Output reports what changed and what stayed unchanged."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Start an actual HyperFrames ad project scaffold in ./forge-launch for a 10 second premium kinetic typography launch film. I do not need a finished render yet, but I want the real production files, artifact templates, folders for assets/compositions/snapshots/renders, beat map, motion map, and a review pack plan.",
+      "expected_output": "A real project scaffold with production artifacts and folders, not just prose. It should include CREATIVE_BRIEF.md, DESIGN.md, SCRIPT.md, STORYBOARD.md, BEAT_MAP.json, MOTION_MAP.json, REVIEW_REPORT.md, asset/composition/snapshot/render folders, and instructions for next validation steps.",
+      "files": [],
+      "assertions": [
+        "Output creates or instructs creation of a real project scaffold rather than only a written plan.",
+        "Output includes BEAT_MAP.json and MOTION_MAP.json.",
+        "Output includes assets, compositions, snapshots, renders, and review folders.",
+        "Output includes review pack or review handoff plan.",
+        "Output includes local deterministic checks such as asset check or artifact score.",
+        "Output states that final render is deferred until composition/assets/HyperFrames CLI are available."
+      ]
+    }
+  ]
+}

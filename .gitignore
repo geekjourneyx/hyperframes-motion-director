@@ -1,0 +1,38 @@
+# Local/editor state
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Agent/session metadata
+.agents/
+.codex/
+
+# Dependencies and package-manager noise
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# Build, render, and generated review output
+dist/
+build/
+coverage/
+tmp/
+temp/
+renders/
+snapshots/
+review-pack/
+*.mp4
+*.mov
+*.webm
+
+# README infographic scratch files
+*.html
+
+# OS/runtime caches
+.cache/
+.env
+.env.*
