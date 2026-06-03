@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository is an agent skill for directing HyperFrames video advertising work.
+This repository is an agent skill for directing HyperFrames cinematic motion-video production work.
 
 - `SKILL.md` contains the primary agent instructions and quality gates.
 - `templates/` holds production artifact templates such as `BRIEF_DESIGN_PROPOSAL.template.md`, `DESIGN.template.md`, `STORYBOARD.template.md`, `REVIEW_REPORT.template.md`, and optional `BEAT_MAP` / `MOTION_MAP` templates.
@@ -21,10 +21,10 @@ node scripts/check-structure.mjs
 Verifies the skill has all required files and key `SKILL.md` terms.
 
 ```bash
-node scripts/create_project.mjs ./my-product-ad
+node scripts/create_project.mjs ./my-motion-film
 ```
 
-Creates a HyperFrames ad production scaffold with the four core artifacts, asset folders, review folders, and placeholders. Use `--with-timing` for `BEAT_MAP.json` and `--with-motion` for `MOTION_MAP.json`.
+Creates a HyperFrames motion production scaffold with the four core artifacts, asset folders, review folders, and placeholders. Use `--with-timing` for `BEAT_MAP.json` and `--with-motion` for `MOTION_MAP.json`.
 
 ```bash
 node scripts/check_assets.mjs <project-dir>
@@ -47,7 +47,7 @@ There is no formal test framework yet. Treat `node scripts/check-structure.mjs` 
 
 ## Commit & Pull Request Guidelines
 
-The current history uses Conventional Commit style, for example `docs: initialize video ad director skill`. Keep commits terse and scoped: `docs:`, `fix:`, `feat:`, or `chore:`. Pull requests should describe what changed, why it changed, which validation commands ran, and include screenshots only when README visuals or rendered review assets changed.
+The current history uses Conventional Commit style, for example `docs: initialize motion director skill`. Keep commits terse and scoped: `docs:`, `fix:`, `feat:`, or `chore:`. Pull requests should describe what changed, why it changed, which validation commands ran, and include screenshots only when README visuals or rendered review assets changed.
 
 ## Agent-Specific Instructions
 

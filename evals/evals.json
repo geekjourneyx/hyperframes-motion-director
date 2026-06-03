@@ -3,8 +3,8 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Turn this article theme into a 12 second HyperFrames promo: 'AI is not replacing workers all at once; it is quietly erasing the parts of their work that made them visible.' Use the strict black cinematic metaphor style. Do not make a literal robot office scene.",
-      "expected_output": "A complete HyperFrames ad production plan or project output that first extracts the core viewpoint, conflict, emotion, amplified keyword, and visual metaphor, then builds a black-background cinematic promo with sparse typography, generated-image planning, storyboard, motion map, validation plan, snapshots, and review report.",
+      "prompt": "Turn this article theme into a 12 second HyperFrames motion video: 'AI is not replacing workers all at once; it is quietly erasing the parts of their work that made them visible.' Use the strict black cinematic metaphor style. Do not make a literal robot office scene.",
+      "expected_output": "A complete HyperFrames motion-video production plan or project output that first extracts the core viewpoint, conflict, emotion, amplified keyword, and visual metaphor, then builds a black-background cinematic short with sparse typography, generated-image planning, storyboard, motion map, validation plan, snapshots, and review report.",
       "files": [],
       "assertions": [
         "Output includes a BRIEF_DESIGN_PROPOSAL or equivalent approval artifact.",
@@ -21,11 +21,11 @@
     },
     {
       "id": 2,
-      "prompt": "Turn this SaaS homepage idea into a 15 second YouTube promo: 'Atlas turns messy support tickets into clean product insights.' Make it cinematic and metaphor-led, not a dashboard montage. Use HyperFrames and GSAP.",
-      "expected_output": "A structured production workflow for a 15 second HyperFrames promo with essence extraction, concise copy, beat-by-beat storyboard, strict cinematic visual language, motion vocabulary, transition plan, generated asset plan, and validation checklist.",
+      "prompt": "Turn this SaaS homepage idea into a 15 second YouTube motion video: 'Atlas turns messy support tickets into clean product insights.' Make it cinematic and metaphor-led, not a dashboard montage. Use HyperFrames and GSAP.",
+      "expected_output": "A structured production workflow for a 15 second HyperFrames motion video with essence extraction, concise copy, beat-by-beat storyboard, strict cinematic visual language, motion vocabulary, transition plan, generated asset plan, and validation checklist.",
       "files": [],
       "assertions": [
-        "Output includes a concise ad structure with hook, reveal, proof, and CTA.",
+        "Output includes a concise motion-video structure with hook, reveal, proof, and CTA.",
         "Output includes a metaphor-led visual direction rather than generic technical dashboard imagery.",
         "Output forbids noisy icon piles, ecommerce banner composition, neon tech clutter, or multicolor palettes.",
         "Output includes beat timing for a 15 second video.",
@@ -36,7 +36,7 @@
     },
     {
       "id": 3,
-      "prompt": "I already have a HyperFrames ad project. The client says the title feels cheap and the proof beat is too fast. Explain exactly what you would inspect and change without rewriting the whole composition.",
+      "prompt": "I already have a HyperFrames motion project. The client says the title feels cheap and the proof beat is too fast. Explain exactly what you would inspect and change without rewriting the whole composition.",
       "expected_output": "A targeted edit protocol that reads existing files first, maps feedback to DESIGN/SCRIPT/STORYBOARD/timeline changes, preserves unrelated timing, and reruns relevant validation and snapshots.",
       "files": [],
       "assertions": [
@@ -50,7 +50,7 @@
     },
     {
       "id": 4,
-      "prompt": "Start an actual HyperFrames ad project scaffold in ./forge-launch for a 10 second black-background cinematic metaphor launch film. I do not need a finished render yet, but I want the real production files, artifact templates, folders for generated images/assets/compositions/snapshots/renders, beat map, motion map, and a review pack plan.",
+      "prompt": "Start an actual HyperFrames motion project scaffold in ./forge-launch for a 10 second black-background cinematic metaphor launch film. I do not need a finished render yet, but I want the real production files, artifact templates, folders for generated images/assets/compositions/snapshots/renders, beat map, motion map, and a review pack plan.",
       "expected_output": "A real project scaffold with production artifacts and folders, not just prose. It should include BRIEF_DESIGN_PROPOSAL.md, DESIGN.md, STORYBOARD.md, REVIEW_REPORT.md, asset/composition/snapshot/render folders, and instructions for next validation steps. BEAT_MAP.json and MOTION_MAP.json should be optional rather than default.",
       "files": [],
       "assertions": [

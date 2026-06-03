@@ -52,9 +52,9 @@ for (const [template, outFile] of Object.entries(templateMap)) {
 
 const readmePath = join(target, "README.md");
 if (!existsSync(readmePath) || force) {
-  writeFileSync(readmePath, `# HyperFrames Ad Production
+  writeFileSync(readmePath, `# HyperFrames Motion Production
 
-This project was scaffolded by the video-ad-director skill.
+This project was scaffolded by the HyperFrames Motion Director skill.
 
 ## Artifact Flow
 
@@ -91,7 +91,7 @@ for (const dir of gitkeepDirs) {
   writeFileSync(join(target, dir, ".gitkeep"), "");
 }
 
-console.log(`Created HyperFrames ad production scaffold at ${target}`);
+console.log(`Created HyperFrames motion production scaffold at ${target}`);
 console.log("Next: fill BRIEF_DESIGN_PROPOSAL.md and get confirmation before generating images or implementing composition source.");
 if (!withTiming) console.log("Optional: rerun with --with-timing if music, voiceover, or exact beat hits matter.");
 if (!withMotion) console.log("Optional: rerun with --with-motion if GSAP choreography needs a separate motion map.");

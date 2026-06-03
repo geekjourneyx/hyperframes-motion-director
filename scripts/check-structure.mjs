@@ -28,6 +28,7 @@ const requiredFiles = [
 
 const requiredSkillTerms = [
   "name: video-ad-director",
+  "# HyperFrames Motion Director",
   "description:",
   "Layout Before Animation",
   "Two-Phase Rule",
@@ -38,6 +39,29 @@ const requiredSkillTerms = [
   "scripts/create_project.mjs",
 ];
 
+const positioningChecks = [
+  {
+    file: "README.md",
+    required: ["# HyperFrames Motion Director", "面向 HyperFrames 的电影感动效视频制作工作流"],
+    forbidden: ["# Video Ad Director", "面向 HyperFrames 视频广告", "Video Ad Director 是一个用于制作"],
+  },
+  {
+    file: "SKILL.md",
+    required: ["# HyperFrames Motion Director", "HyperFrames motion video"],
+    forbidden: ["# Video Ad Director", "AI video ad or promo", "HyperFrames advertising work"],
+  },
+  {
+    file: "AGENTS.md",
+    required: ["HyperFrames cinematic motion-video production work"],
+    forbidden: ["HyperFrames video advertising work", "HyperFrames ad production scaffold"],
+  },
+  {
+    file: "scripts/create_project.mjs",
+    required: ["HyperFrames Motion Production", "HyperFrames Motion Director"],
+    forbidden: ["HyperFrames Ad Production"],
+  },
+];
+
 const missing = requiredFiles.filter((file) => !existsSync(join(root, file)));
 
 const skillPath = join(root, "SKILL.md");
@@ -45,6 +69,18 @@ const skillText = existsSync(skillPath) ? readFileSync(skillPath, "utf8") : "";
 const missingTerms = requiredSkillTerms.filter((term) => !skillText.includes(term));
 const frontmatterMatch = skillText.match(/^---\n([\s\S]*?)\n---/);
 const frontmatterErrors = [];
+const positioningErrors = [];
+
+for (const check of positioningChecks) {
+  const path = join(root, check.file);
+  const text = existsSync(path) ? readFileSync(path, "utf8") : "";
+  for (const term of check.required) {
+    if (!text.includes(term)) positioningErrors.push(`${check.file} missing required positioning term: ${term}`);
+  }
+  for (const term of check.forbidden) {
+    if (text.includes(term)) positioningErrors.push(`${check.file} contains deprecated positioning term: ${term}`);
+  }
+}
 
 if (!frontmatterMatch) {
   frontmatterErrors.push("Missing YAML frontmatter block.");
@@ -66,7 +102,7 @@ if (!frontmatterMatch) {
   }
 }
 
-if (missing.length > 0 || missingTerms.length > 0 || frontmatterErrors.length > 0) {
+if (missing.length > 0 || missingTerms.length > 0 || frontmatterErrors.length > 0 || positioningErrors.length > 0) {
   if (missing.length > 0) {
     console.error("Missing files:");
     for (const file of missing) console.error(`- ${file}`);
@@ -80,6 +116,11 @@ if (missing.length > 0 || missingTerms.length > 0 || frontmatterErrors.length > 
   if (frontmatterErrors.length > 0) {
     console.error("Invalid SKILL.md frontmatter:");
     for (const error of frontmatterErrors) console.error(`- ${error}`);
+  }
+
+  if (positioningErrors.length > 0) {
+    console.error("Invalid public positioning:");
+    for (const error of positioningErrors) console.error(`- ${error}`);
   }
 
   process.exit(1);

@@ -4,7 +4,7 @@ Use this when planning generated images, text-over-image layouts, GSAP choreogra
 
 ## Why Videos Look Cheap
 
-Most weak promo videos fail for the same reasons:
+Most weak motion videos fail for the same reasons:
 
 - Text floats on a flat or generic background.
 - The background is wallpaper, not a stage for the idea.
@@ -28,8 +28,8 @@ Do not generate images in Phase 1. Plan them. After confirmation, use Codex Imag
 
 | Video Type | Image Set |
 | --- | --- |
-| 6-10s kinetic ad | 1 background stage, optional texture |
-| 10-15s promo | 1 background stage, 1 symbol/detail, optional anchor |
+| 6-10s kinetic motion video | 1 background stage, optional texture |
+| 10-15s cinematic short | 1 background stage, 1 symbol/detail, optional anchor |
 | 15-30s launch film | 2-4 scene backgrounds, 1 hero symbol, optional anchor |
 | Product video | Official product/UI assets first; generate only atmosphere or metaphor plates |
 

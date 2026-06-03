@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-06-04
+
+### Changed
+
+- Repositioned the public project name from `Video Ad Director` to `HyperFrames Motion Director` while keeping the internal `video-ad-director` slug for compatibility.
+- Calibrated README, skill description, agent guidance, scaffold wording, workflow references, and evaluation prompts around HyperFrames cinematic motion-video production instead of video advertising.
+- Added structure-check guards to prevent public documentation from drifting back to the deprecated `Video Ad Director` / video-ad-only framing.
+
 ## [1.1.0] - 2026-06-03
 
 ### Added

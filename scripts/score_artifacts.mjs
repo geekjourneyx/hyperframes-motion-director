@@ -80,7 +80,7 @@ const placeholderPatterns = [
   /What should the viewer/i,
   /Who is watching/i,
   /Target platform/i,
-  /What is being promoted/i,
+  /Product or offer/i,
   /Core viewpoint:\s*$/m,
   /Largest conflict:\s*$/m,
   /Emotional center:\s*$/m,

@@ -1,8 +1,8 @@
 <div align="center">
 
-# Video Ad Director
+# HyperFrames Motion Director
 
-**面向 HyperFrames 视频广告的 AI 制片导演工作流**
+**面向 HyperFrames 的电影感动效视频制作工作流**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Skill](https://img.shields.io/badge/Agent%20Skill-HyperFrames-c96442.svg)](./SKILL.md)
@@ -14,14 +14,14 @@
 
 ## 这是什么
 
-Video Ad Director 是一个用于制作 HyperFrames 宣传片和视频广告的 agent skill。它把文章、主题、产品或落地页需求，先转成可确认的 brief/design 方案；用户确认后，才进入背景图/主视觉生成、HyperFrames 制作、验证、快照、渲染和审查报告。
+HyperFrames Motion Director 是一个用于制作 HyperFrames 动效视频和电影感短片的 agent skill。它把文章、主题、产品、官网或发布信息，先转成可确认的 brief/design 方案；用户确认后，才进入背景图/主视觉生成、HyperFrames 制作、验证、快照、渲染和审查报告。
 
 ```text
 输入："把这篇关于 AI 替代焦虑的文章做成 12 秒宣传片，不要画机器人办公室，要画本质隐喻"
 输出：先给一份可确认的黑底极简电影风 brief/design 方案；确认后再生成设计规范、分镜、必要图片、HyperFrames composition 和审查报告
 ```
 
-它适用于短视频广告、产品发布片、官网转视频、YouTube 宣传片、字幕驱动产品视频、动效字体广告和音乐节拍同步的 motion graphics。
+它适用于产品发布片、官网转视频、文章转视频、观点短片、字幕驱动产品视频、动效字体短片、音乐节拍同步 motion graphics，以及需要清晰 CTA 的宣传视频。
 
 默认风格是严格的黑底电影隐喻风：`#050505` 极深黑背景，白/灰/暖金三色，高对比，大留白，电影打光，纸张颗粒，浅景深，体积雾，细窄轮廓光，局部金属质感。它不做普通插画、电商 Banner、图标堆、廉价科技感、多色渐变或解释性信息图。
 
@@ -63,7 +63,7 @@ npx skills add heygen-com/hyperframes
 
 ---
 
-## 安装 Video Ad Director
+## 安装 HyperFrames Motion Director
 
 推荐通过 `skills` CLI 安装本 skill：
 
@@ -94,10 +94,10 @@ npx hyperframes render
 
 ### 使用本仓库脚手架补齐生产文档
 
-Video Ad Director 负责把“要做什么视频”拆成可审查的制片文档和验证链路。创建一个生产项目：
+HyperFrames Motion Director 负责把“要做什么视频”拆成可审查的制片文档和验证链路。创建一个生产项目：
 
 ```bash
-node scripts/create_project.mjs ./my-product-ad
+node scripts/create_project.mjs ./my-motion-film
 ```
 
 然后按顺序填写生成的文档：
@@ -138,7 +138,7 @@ npx hyperframes snapshot <composition> --at <times>
 SKILL.md                         skill 主指令、确认门和质量门
 templates/                       确认方案、设计、分镜、审查报告和可选节拍/运动图模板
 references/                      工作流、统一视觉标准、音频同步和稳定性指南
-scripts/create_project.mjs       新建视频广告项目脚手架
+scripts/create_project.mjs       新建 HyperFrames 动效视频项目脚手架
 scripts/check-structure.mjs      skill 发布前结构检查
 scripts/check_assets.mjs         项目资源检查
 scripts/score_artifacts.mjs      本质隐喻、风格门和生产文档评分

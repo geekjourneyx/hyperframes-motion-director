@@ -42,7 +42,7 @@ The metaphor must be legible without labels. If the viewer needs icon captions t
 - Reserve a quiet text zone in the image crop. Type should not sit on high-frequency texture, bright edges, faces, product seams, or accidental tangents.
 - Use vignette, mask, blur, shadow plate, darkening, or desaturation locally behind text before considering a card.
 - Generated images must not include baked-in text, fake UI, fake logos, labels, explanatory icons, watermarks, or random decoration unless specifically required.
-- More images are not better. Use one strong image stage for short ads; use 2-4 only when the story truly changes visual worlds.
+- More images are not better. Use one strong image stage for short motion videos; use 2-4 only when the story truly changes visual worlds.
 
 ## Motion
 

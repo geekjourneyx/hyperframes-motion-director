@@ -1,11 +1,11 @@
 ---
 name: video-ad-director
-description: "Direct and produce polished cinematic marketing videos, article-to-video promos, product launch ads, YouTube promos, keynote reveal films, kinetic typography sequences, and music-synced motion graphics using HyperFrames. Use this skill whenever the user wants a high-quality AI video ad or promo, especially requests involving HyperFrames, HTML/CSS/GSAP video, big animated typography, article/theme-to-video work, product promos, launch films, music beat sync, transitions, short-form ads, or turning a landing page/product story into a rendered video. This skill enforces a strict two-phase workflow: first a brief/design proposal for user confirmation, then a black-background cinematic metaphor production with design spec, storyboard, optional image generation, optional timing/motion maps, validation, snapshots, review report, and deterministic renders."
+description: "Direct and produce polished cinematic motion videos, article-to-video films, product launch films, website-to-video pieces, keynote reveals, kinetic typography sequences, and music-synced motion graphics using HyperFrames. Use this skill whenever the user wants a high-quality HyperFrames motion video, especially requests involving HTML/CSS/GSAP video, big animated typography, article/theme-to-video work, product reveals, launch films, music beat sync, transitions, short-form cinematic videos, or turning a landing page/product story into a rendered video. This skill enforces a strict two-phase workflow: first a brief/design proposal for user confirmation, then a cinematic metaphor production with design spec, storyboard, optional image generation, optional timing/motion maps, validation, snapshots, review report, and deterministic renders."
 ---
 
-# Video Ad Director
+# HyperFrames Motion Director
 
-Use this skill to behave as an AI video director, motion designer, and production QA lead for HyperFrames advertising work. The goal is to first produce a concise brief/design proposal for approval, then produce the video only after the user confirms the direction.
+Use this skill to behave as an AI motion director, cinematic designer, and production QA lead for HyperFrames video work. The goal is to first produce a concise brief/design proposal for approval, then produce the video only after the user confirms the direction.
 
 HyperFrames handles HTML/CSS/JS rendering. This skill handles the production discipline around it.
 
@@ -83,13 +83,13 @@ After confirmation, create or update the production artifacts, generate needed i
 Use this skill for:
 
 - HyperFrames video compositions.
-- Product launch videos, YouTube ads, social ads, or website-to-video projects.
-- Kinetic typography, large animated text, typewriter sequences, restrained logo lockups, and transition-heavy promo videos.
+- Product launch videos, website-to-video projects, article-to-video pieces, keynote reveals, social motion videos, or YouTube-ready motion pieces.
+- Kinetic typography, large animated text, typewriter sequences, restrained logo lockups, and transition-heavy motion videos.
 - HTML/CSS/GSAP/Lottie/Three.js motion graphics intended to render as MP4.
-- Requests like "cinematic metaphor promo", "article-to-video", "cool product ad", "make this landing page into a video", "music synced", "big text animation", or "YouTube promo".
-- Editing an existing HyperFrames ad where the user wants targeted changes without breaking the rest of the video.
+- Requests like "cinematic metaphor video", "article-to-video", "product reveal", "make this landing page into a video", "music synced", "big text animation", or "launch film".
+- Editing an existing HyperFrames motion video where the user wants targeted changes without breaking the rest of the video.
 
-Do not use this skill for simple video copywriting without production, ordinary landing pages, static posters, or editing raw MP4 footage without code.
+Do not use this skill for simple video copywriting without production, ordinary landing pages, static posters, generic ad copy, or editing raw MP4 footage without code.
 
 ## Operating Modes
 
@@ -156,7 +156,7 @@ Before design, extract:
 - Largest conflict.
 - Emotional center.
 - The keyword that deserves visual amplification.
-- One visual metaphor that can carry the whole promo.
+- One visual metaphor that can carry the whole video.
 
 Translate the abstract idea into a restrained symbol. Examples: AI replacement becomes an erased human silhouette; anxiety becomes a thread about to snap; time becomes a countdown in darkness; growth becomes light inside a crack; information overload becomes data fragments pulled into a black hole; long-termism becomes the only distant lamp; platform migration becomes a black obelisk or data tower; automation becomes documents entering a silent machine.
 
@@ -179,13 +179,13 @@ Read `references/motion-background-system.md` before deciding image count, backg
 
 Create `STORYBOARD.md` from `templates/STORYBOARD.template.md`.
 
-Default ad arc:
+Default short motion arc:
 
 ```text
 Hook -> Tension -> Metaphor Reveal -> Proof -> CTA
 ```
 
-For a 10 second no-voiceover kinetic typography ad, keep text sparse. One idea per beat is usually enough.
+For a 10 second no-voiceover kinetic typography video, keep text sparse. One idea per beat is usually enough.
 
 Choose the structure from the material:
 

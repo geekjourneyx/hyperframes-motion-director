@@ -1,6 +1,6 @@
 # Production Workflow
 
-This workflow turns a vague ad request into a reviewable HyperFrames production. Follow it in order for new videos. For edits, change only the affected stage.
+This workflow turns a vague motion-video request into a reviewable HyperFrames production. Follow it in order for new videos. For edits, change only the affected stage.
 
 The default creative direction is a black-background cinematic metaphor film. Do not draw the surface topic. Extract the essence of the article, theme, product, or argument, then build a restrained symbol that carries the point.
 
@@ -17,7 +17,7 @@ Capture the minimum viable production brief:
 - Audience: who is this for?
 - Platform: YouTube, Shorts, LinkedIn, landing page hero, paid ad, internal demo.
 - Aspect ratio and resolution: default to 16:9 1920x1080 unless the platform implies otherwise.
-- Duration: default to 10-15 seconds for promo/kinetic typography.
+- Duration: default to 10-15 seconds for cinematic motion video or kinetic typography.
 - Product or offer: what is being promoted?
 - Proof: what can be truthfully claimed?
 - Style: default to black cinematic metaphor unless the user explicitly overrides it.
@@ -34,7 +34,7 @@ Before design, extract:
 - Largest conflict.
 - Emotional center.
 - The keyword that deserves visual amplification.
-- A visual metaphor that can carry the promo.
+- A visual metaphor that can carry the video.
 
 Translate abstract meaning into one restrained visual symbol:
 
@@ -85,9 +85,9 @@ If the user's product already has a brand system, respect it only where it does 
 
 ## 4. Storyboard And Copy
 
-For ads, script is compression. Put copy directly in the storyboard so text, timing, layout, and motion stay together.
+For short motion videos, script is compression. Put copy directly in the storyboard so text, timing, layout, and motion stay together.
 
-Default short ad structures:
+Default short motion structures:
 
 ```text
 10s: Hook -> Tension -> Metaphor Reveal -> CTA
