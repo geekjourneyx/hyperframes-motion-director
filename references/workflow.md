@@ -4,6 +4,8 @@ This workflow turns a vague ad request into a reviewable HyperFrames production.
 
 The default creative direction is a black-background cinematic metaphor film. Do not draw the surface topic. Extract the essence of the article, theme, product, or argument, then build a restrained symbol that carries the point.
 
+New videos need a background stage by default. It can be generated, supplied, or pure code, but any exception must be written in the brief. The background is not decoration; it creates space, carries metaphor, protects text readability, or grounds the product.
+
 New video work is two-phase: first produce a brief/design proposal and wait for user confirmation; only then produce images, HyperFrames source, snapshots, renders, and review artifacts.
 
 ## 1. Intake
@@ -54,7 +56,7 @@ Before any implementation, produce `BRIEF_DESIGN_PROPOSAL.md` or the equivalent 
 - Essence and metaphor.
 - Structure choice.
 - Platform, aspect ratio, pixel size, duration, FPS, safe margins.
-- Image generation decision.
+- Image generation decision, including default background image role or the explicit reason it is not needed.
 - Typography, layout, overflow handling, and mobile crop handling.
 - Motion plan and risk gates.
 
@@ -71,8 +73,10 @@ Define:
 - Display and body typography.
 - Safe margins.
 - Layout grid or placement logic.
+- Background image system: role, crop, focal subject, quiet text zone, contrast treatment, and local asset path plan.
+- Text-over-image rules: where type may sit, how the image will be darkened/blurred/desaturated behind text, and what crop is forbidden.
 - Component patterns such as title card, product frame, proof stat, and CTA.
-- Motion personality.
+- Motion personality and motion budget.
 - Do and don't rules.
 - The central metaphor symbol and how it is lit.
 - Any generated image assets needed before HyperFrames composition.
@@ -120,15 +124,28 @@ The hero frame is the timestamp where the scene best communicates its idea. If t
 
 ## 6. Visual Asset Planning
 
-If the metaphor needs generated bitmap source material, plan images before implementation:
+If the metaphor needs generated bitmap source material, plan images before implementation. For new video work, default to one background stage unless a pure-code or supplied-asset exception is written in the brief.
 
+- Background stage: atmosphere, depth, light, metaphor, or product context.
 - Center symbol.
 - Background texture or atmosphere.
 - Optional person/object anchor.
 - Any vertical key visual for 9:16 work.
 - Any horizontal key visual for 16:9 work.
 
-Generated images should be sparse. Avoid baked-in text unless exact text is required. Compose final titles, captions, and timing in HyperFrames.
+Generated images should be sparse. Avoid baked-in text unless exact text is required. Compose final titles, captions, masks, crops, parallax, focus pulls, and timing in HyperFrames.
+
+Each planned/generated image must specify:
+
+- Role: stage, symbol, texture, anchor, or transition plate.
+- Source: supplied, official, generated, or fallback pure-code.
+- Aspect ratio and target size.
+- Focal subject location.
+- Quiet text zone.
+- Local output path.
+- Forbidden content: no text, fake logos, icons, labels, diagrams, decorative clutter, or watermark unless required.
+
+Use Codex Image Gen by default after user confirmation when a generated bitmap is needed. Do not reference project-bound generated images until they have been moved into the project asset folders.
 
 ## 7. Optional Beat Map
 
@@ -152,6 +169,9 @@ Check:
 
 - Copy is legible.
 - Visual hierarchy is obvious.
+- Background image has one clear role and is not generic wallpaper.
+- Text is placed on a planned quiet zone, not over high-frequency details.
+- Local contrast treatment is present where text crosses imagery.
 - Safe margins hold.
 - Text has max width, max lines, explicit overflow behavior, and stable breakpoints.
 - Long words, mixed Chinese/English copy, CTA labels, and subtitles do not escape their containers.
@@ -173,6 +193,15 @@ Motion should:
 - Reinforce audio hits.
 - Transition between ideas.
 - Avoid decorative noise.
+
+Motion budget:
+
+- One primary motion idea per scene.
+- One optional secondary motion for atmosphere or focus.
+- Background motion should be slow push, parallax, focus pull, or light sweep only.
+- Main text should settle before it needs to be read.
+- Important reveals need a still hold, not continuous drift.
+- Scene transitions should overlap or share an anchor; do not cut through empty black unless the black frame is the point.
 
 ## 10. Validate
 

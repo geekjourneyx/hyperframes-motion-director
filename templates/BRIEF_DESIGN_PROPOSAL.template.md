@@ -31,10 +31,22 @@
 
 ## Image Generation Decision
 - Generate images: yes / no
+- Default background stage: generated / supplied / pure-code exception
+- Background role: stage / symbol / texture / anchor / transition plate
+- Background source:
+- Focal subject position:
+- Quiet text zone:
+- Crop / overlay risk:
+- Codex Image Gen after confirmation: yes / no
 - Image 1:
+- Image 1 role:
+- Image 1 required size / aspect:
 - Image 2:
+- Image 2 role:
+- Image 2 required size / aspect:
 - What stays in HyperFrames:
 - No baked-in text unless required:
+- Forbidden image content:
 
 ## Typography And Layout
 - Title scale:
@@ -47,14 +59,18 @@
 - Max text width:
 - Overflow handling:
 - Mobile crop handling:
+- Text-over-image contrast treatment:
 
 ## Motion Plan
 - Opening reveal:
+- Background motion:
+- Main attention target:
 - Transition style:
 - Hold times:
 - Easing:
 - Audio hit plan:
 - What must stay still:
+- Motion budget:
 
 ## Risk Gates
 - Cheapness risk:

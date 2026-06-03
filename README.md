@@ -14,7 +14,7 @@
 
 ## 这是什么
 
-Video Ad Director 是一个用于制作 HyperFrames 宣传片和视频广告的 agent skill。它把文章、主题、产品或落地页需求，先转成可确认的 brief/design 方案；用户确认后，才进入图片生成、HyperFrames 制作、验证、快照、渲染和审查报告。
+Video Ad Director 是一个用于制作 HyperFrames 宣传片和视频广告的 agent skill。它把文章、主题、产品或落地页需求，先转成可确认的 brief/design 方案；用户确认后，才进入背景图/主视觉生成、HyperFrames 制作、验证、快照、渲染和审查报告。
 
 ```text
 输入："把这篇关于 AI 替代焦虑的文章做成 12 秒宣传片，不要画机器人办公室，要画本质隐喻"
@@ -29,7 +29,7 @@ Video Ad Director 是一个用于制作 HyperFrames 宣传片和视频广告的 
 
 ## 核心能力
 
-这个 skill 强调先确认方向，再制作视频；先做静态关键帧，再做动画；先验证排版、安全边界、时间线和渲染稳定性，再交付成片。
+这个 skill 强调先确认方向，再制作视频；默认先规划背景图舞台，再做静态关键帧，再做动画；先验证排版、安全边界、时间线和渲染稳定性，再交付成片。
 
 核心能力：
 
@@ -37,12 +37,15 @@ Video Ad Director 是一个用于制作 HyperFrames 宣传片和视频广告的 
 - 将抽象观点转译为克制符号，例如被擦除的人影、即将断裂的细线、黑暗倒计时、裂缝里的微光、被吸入黑洞的数据碎片。
 - 自动选择中心符号、超大标题、人物锚点或巨大数字作为主结构。
 - 判断是否需要生成图片；需要时先生成视觉素材，再用 HyperFrames 负责字体、构图、动效、节奏和最终渲染。
+- 把背景图、文字和动画绑定在一起：背景图负责舞台和隐喻，文字负责清晰信息，动画负责引导视线。
 
 ---
 
 ## 工作流程
 
 工作方式是从最终观看体验倒推：观众要记住什么，文章的本质隐喻是什么，视频尺寸和文字布局是否成立，哪些图片需要生成，哪些元素必须留给 HyperFrames 排版和动画，哪些验证能证明画面不溢出、不跑版、可确定渲染。
+
+当前核心规则：新视频默认要有背景舞台；背景图负责空间和隐喻，文字负责清晰信息，动画负责引导视线。
 
 ---
 
@@ -113,6 +116,7 @@ REVIEW_REPORT.md
 ```bash
 node scripts/check-structure.mjs
 node scripts/check_assets.mjs <project-dir>
+node scripts/check_assets.mjs <project-dir> --strict
 node scripts/score_artifacts.mjs <project-dir>
 ```
 
@@ -138,6 +142,8 @@ scripts/create_project.mjs       新建视频广告项目脚手架
 scripts/check-structure.mjs      skill 发布前结构检查
 scripts/check_assets.mjs         项目资源检查
 scripts/score_artifacts.mjs      本质隐喻、风格门和生产文档评分
+scripts/build_review_pack.mjs    汇总产物、快照、渲染和审查报告
+references/motion-background-system.md  背景图、图文关系和动效预算规则
 evals/                           触发词和评测用例
 ```
 

@@ -7,12 +7,30 @@
     "uses_absolute_positions": true,
     "deterministic": true
   },
+  "motion_budget": {
+    "primary_motion_per_scene": 1,
+    "support_motion_per_scene": 1,
+    "background_motion_policy": "slow push / parallax / focus pull / light sweep / none",
+    "text_stillness_required": true,
+    "signature_motion_moment": ""
+  },
   "selectors": {
+    "background": ".background-stage",
     "title": ".title",
     "symbol": ".center-symbol",
     "proof": ".proof",
     "cta": ".cta-lockup"
   },
+  "background_layers": [
+    {
+      "selector": ".background-stage",
+      "role": "stage",
+      "asset": "assets/images/",
+      "crop": "quiet text zone preserved",
+      "motion": "slow push",
+      "readability_treatment": "vignette / desaturate / blur / shadow plate"
+    }
+  ],
   "beats": [
     {
       "label": "metaphor-rim-light-reveal",
@@ -27,6 +45,18 @@
         "ease": "sine.inOut"
       },
       "purpose": "Reveal the central metaphor with cinematic restraint."
+    },
+    {
+      "label": "background-camera-drift",
+      "at": 0,
+      "selector": ".background-stage",
+      "method": "to",
+      "properties": {
+        "scale": 1.035,
+        "duration": 10,
+        "ease": "none"
+      },
+      "purpose": "Give the stage depth without stealing attention from text."
     },
     {
       "label": "title-lockup",

@@ -34,6 +34,27 @@
 - Density: sparse; every visible element must earn its place.
 - Hero frame rules: must work as a poster without replay; no explanatory icon clusters.
 
+## Background Image System
+- Default background stage: generated / supplied / pure-code exception
+- Background role:
+- Background source:
+- Local asset path:
+- Crop rules:
+- Focal subject:
+- Quiet text zone:
+- Contrast treatment behind text:
+- Forbidden content:
+
+## Text Over Image
+- Title placement:
+- Support placement:
+- CTA placement:
+- Maximum line counts:
+- Overflow fallback:
+- Mixed Chinese / English fallback:
+- Minimum contrast rule:
+- When to regenerate or recrop the image:
+
 ## Components
 - Center symbol:
 - Title card:
@@ -48,12 +69,21 @@
 - Camera behavior: slow push, parallax, or controlled reveal; no restless motion.
 - Transition energy: hide scene replacement and land on a readable hero frame.
 - Audio hit behavior: structural hits only for title, symbol reveal, proof, and CTA.
+- Motion budget: one primary motion idea per scene and one optional support motion.
+- Background motion: slow push / parallax / focus pull / light sweep / none.
+- Text stillness: major copy must settle before it needs to be read.
+- Signature motion moment:
+- Repeated animation pattern to avoid:
 
 ## Image Generation Plan
 - Key visual 1:
+- Key visual 1 role / size / quiet zone:
 - Key visual 2:
+- Key visual 2 role / size / quiet zone:
 - Texture / atmosphere:
+- Texture role / size:
 - Prompt constraints:
+- Codex Image Gen output path after confirmation:
 - Do not include text in generated images unless exact text is required.
 
 ## Do

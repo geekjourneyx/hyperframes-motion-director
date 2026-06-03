@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2026-06-03
+
+### Added
+
+- Added the default background-stage production rule for new video work, including generated, supplied, and pure-code exceptions.
+- Added `references/motion-background-system.md` to define background image roles, image count guidance, text-over-image rules, motion budget, and visual review gates.
+- Added background-stage, text-safe-zone, attention-target, stillness, and motion-purpose fields across the brief, design, storyboard, motion map, and review templates.
+- Added stricter artifact scoring for background source, quiet text zones, motion budget, still holds, transition midpoint snapshots, and review verdicts.
+- Added strict asset-check mode and composition file scanning to catch remote or missing render assets before final delivery.
+
+### Changed
+
+- Calibrated the core skill flow around three coordinated layers: background as stage, typography as message, and motion as attention direction.
+- Updated the production workflow, visual standard, README, and scaffold README guidance to reflect the new background and motion gates.
+- Tightened scaffold check commands so generated projects point back to this skill's helper scripts.
+
+### Validation
+
+- Ran `node scripts/check-structure.mjs`.
+- Ran syntax checks for the changed helper scripts.
+- Generated a temporary project scaffold with timing and motion templates.
+- Ran strict asset checks against the temporary scaffold.
+- Confirmed blank templates score `0/100` as expected until production fields are filled.
+
 ## [1.0.2] - 2026-06-02
 
 ### Fixed

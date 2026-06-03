@@ -75,8 +75,9 @@ Optional:
 ## Suggested Checks
 
 \`\`\`bash
-node scripts/check_assets.mjs .
-node scripts/score_artifacts.mjs .
+node ${skillRoot}/scripts/check_assets.mjs .
+node ${skillRoot}/scripts/check_assets.mjs . --strict
+node ${skillRoot}/scripts/score_artifacts.mjs .
 npx hyperframes lint
 npx hyperframes validate
 npx hyperframes inspect

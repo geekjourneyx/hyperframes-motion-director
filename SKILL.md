@@ -15,10 +15,11 @@ Work from the final viewing experience backward:
 
 1. What should the viewer remember?
 2. What is the underlying metaphor, not the surface content?
-3. Which frame proves the visual direction is strong?
-4. Which beat carries the hook, reveal, proof, and CTA?
-5. Which motion choices support those beats?
-6. Which validation proves the video will render deterministically?
+3. Which background image or visual stage gives the frame depth and meaning?
+4. Which frame proves the visual direction is strong?
+5. Which beat carries the hook, reveal, proof, and CTA?
+6. Which motion choices guide attention through those beats?
+7. Which validation proves the video will render deterministically?
 
 Do not begin by writing animation code. First make the intended still frames and timing legible.
 
@@ -32,11 +33,24 @@ Default to one strict style unless the user explicitly overrides it:
 - Premium magazine-cover composition: one dominant symbol or phrase, not a cluster of explanatory graphics.
 - Subtle paper grain, shallow depth of field, volume haze, thin rim light, local metallic highlights.
 - Text, image, composition, and color must express one point together.
+- Default to a generated or supplied background image stage for new videos. It must create depth, metaphor, or product context; it must not be decorative wallpaper.
 
 Forbidden by default:
 
 - Ordinary illustration, ecommerce banner composition, icon piles, generic tech dashboards, neon cyberpunk, multicolor palettes, gradient clutter, decorative particles, explain-the-concept diagrams, and busy collage.
 - Drawing the article surface. Always draw the essence metaphor.
+
+## Background And Motion Rule
+
+For new video work, plan background imagery by default. Do not generate it during Phase 1. After confirmation, use Codex Image Gen for needed project-bound bitmap assets unless the user supplied strong assets or the confirmed direction is intentionally pure kinetic typography.
+
+Treat each frame as three coordinated layers:
+
+1. Background image as stage: atmosphere, depth, light, metaphor, or product context.
+2. Typography as message: readable hierarchy, fixed safe zones, controlled line counts, no accidental overlap with busy image regions.
+3. Motion as attention direction: one primary motion idea per scene, one optional support motion, and enough stillness after each important reveal.
+
+Use `references/motion-background-system.md` for image counts, text-over-image layout, motion grammar, and review gates.
 
 ## Two-Phase Rule
 
@@ -52,9 +66,10 @@ The proposal must include:
 - Structure: center symbol / huge title / person anchor / huge number.
 - Format: platform, aspect ratio, pixel size, duration, FPS, safe margins.
 - Image decision: whether generated bitmap images are needed, what each image should be, and what must stay in HyperFrames.
+- Background plan: image role, subject position, quiet text zone, crop risks, and whether Codex Image Gen will be used after confirmation.
 - Typography: title/support/CTA scale, line-height, letter-spacing, maximum lines, overflow handling.
 - Layout: dominant visual mass, grid/alignment, crop-safe zones, mobile overlay risks.
-- Motion: main reveal, transition style, hold times, easing, audio hit plan.
+- Motion: main reveal, background motion, transition style, hold times, easing, audio hit plan, and what must remain still.
 - Risk gates: what could make it look cheap, unreadable, noisy, or off-style.
 
 End Phase 1 with a clear confirmation request. Production starts only after the user confirms, revises, or explicitly says to proceed.
@@ -88,12 +103,12 @@ After user confirmation, create or update:
 
 1. `DESIGN.md`
 2. `STORYBOARD.md`
-3. Image assets when the confirmed metaphor needs bitmap source material.
+3. Background, symbol, texture, product, or anchor image assets when the confirmed direction needs bitmap source material.
 4. HyperFrames composition files.
 5. `REVIEW_REPORT.md`
 6. `REVIEW_PACK.md` for handoff.
 
-Use `BEAT_MAP.json` only when music, voiceover, or exact timing matters. Use `MOTION_MAP.json` only when GSAP choreography is complex enough to need a separate map.
+Use `BEAT_MAP.json` only when music, voiceover, or exact timing matters. Use `MOTION_MAP.json` when GSAP choreography, background parallax, focus pulls, masks, or scene transitions are complex enough to need a separate map.
 
 Use the templates in `templates/`.
 
@@ -155,9 +170,10 @@ Keep it short and decisive. It is a production contract, not a brainstorm. Stop 
 
 Create `DESIGN.md` from `templates/DESIGN.template.md`.
 
-The design system must specify typography, color, spacing, density, metaphor symbol, generated-image plan, and motion personality. This prevents downstream steps from improvising a new visual language.
+The design system must specify typography, color, spacing, density, metaphor symbol, background-image system, generated-image plan, text-over-image rules, and motion personality. This prevents downstream steps from improvising a new visual language.
 
 Read `references/visual-standard.md` before judging visual quality, typography, layout, or motion.
+Read `references/motion-background-system.md` before deciding image count, background roles, animation grammar, or text-over-image treatment.
 
 ### 4. Storyboard And Copy
 
@@ -184,7 +200,9 @@ Every beat needs:
 - Screen text or visual action.
 - Hero frame timestamp.
 - Layout and visual hierarchy.
+- Background image state and text-safe zone.
 - Motion direction.
+- Attention target and stillness/hold requirement.
 - Transition out.
 - Audio or rhythm notes when relevant.
 - Quality note.
@@ -194,14 +212,16 @@ Read `references/audio-sync.md` when music, sound design, voiceover, beat hits, 
 
 ### 5. Visual Asset Plan
 
-If the confirmed proposal calls for bitmap assets, generate or source them before HyperFrames implementation:
+If the confirmed proposal calls for bitmap assets, generate or source them before HyperFrames implementation. For new videos, default to at least one background image stage unless the brief explicitly justifies a pure-code or supplied-asset approach:
 
-- Generate separate vertical or horizontal key visuals for the center symbol, texture, background, and optional person/object anchor.
+- Generate only the images needed for the background stage, center symbol, texture, or product/person/object anchor.
+- Give each image one role: stage, symbol, texture, anchor, or transition plate.
+- Specify quiet text zones, focal subject position, crop-safe regions, and forbidden content before generation.
 - Keep each generated image sparse enough to compose in HyperFrames.
 - Avoid baked-in explanatory text unless exact title text is required.
 - Save project-bound generated images into the project asset folders before referencing them.
 
-Use the system image generation capability for bitmap source images when appropriate, then use HyperFrames for typography, timing, compositing, and motion.
+Use Codex Image Gen by default for needed bitmap source images after confirmation. HyperFrames owns typography, timing, compositing, masks, parallax, focus pulls, and motion.
 
 ### 6. Layout Before Animation
 
@@ -210,12 +230,15 @@ Build static hero frames first. A frame should already work as a poster before m
 For each scene, verify:
 
 - Main message is readable at the target platform size.
+- Background image has a clear role and does not fight the text.
+- Text sits in a designed quiet zone, not on high-frequency detail.
 - Text does not overlap or leave safe margins.
 - Text containers have max width, max lines, and overflow behavior.
 - Long words, Chinese/English mixed text, and CTA labels cannot escape their boxes.
 - Font sizes are fixed per breakpoint; do not scale text with viewport width.
 - Hierarchy is clear.
 - The scene has one dominant idea.
+- The scene has one dominant visual mass and no unowned decoration.
 - CTA or brand lockup is not visually weak.
 - The metaphor is understandable without icon labels.
 - The frame obeys the house style: black, sparse, cinematic, white/gray/warm gold.
@@ -224,9 +247,17 @@ Only add GSAP or other motion after layout works.
 
 ### 7. Motion
 
-Read `references/visual-standard.md` before adding animation.
+Read `references/visual-standard.md` and `references/motion-background-system.md` before adding animation.
 
 Use motion to clarify sequence and emphasis. Avoid applying the same y-plus-opacity entrance to every element. Give major text enough hold time to be read.
+
+Before animating each scene, answer:
+
+- What is the attention target?
+- Which background, symbol, text, or product layer moves first?
+- Which elements must remain still so the viewer can read?
+- Where is the stillness after the reveal?
+- How does this motion change meaning rather than add noise?
 
 For GSAP in HyperFrames:
 
@@ -301,6 +332,9 @@ Before claiming the video is ready:
 - Text overflow, max lines, responsive layout, and crop-safe areas are explicitly handled.
 - At least one meaningful transition connects scenes in a multi-scene video.
 - Important copy has enough hold time to read.
+- Background imagery exists by default for new videos or the pure-code/supplied-asset exception is explained.
+- Each generated image has a role, quiet text zone, and local project path before it is referenced.
+- Motion uses a clear attention target, a limited motion budget, and at least one still hold after important reveals.
 - Typography avoids lazy defaults and documents type scale, line height, and hierarchy.
 - The essence extraction exists and every visual choice supports it.
 - The final visual language obeys the house style unless the user explicitly changed it.

@@ -16,12 +16,18 @@
 | inspect |  |  |
 | snapshot |  |  |
 | render |  |  |
+| first frame |  |  |
+| transition midpoints |  |  |
+| layout overflow |  |  |
+| console errors |  |  |
 
 ## Snapshot Notes
 
 | Timestamp | Purpose | Result | Metaphor / Style Verdict |
 | --- | --- | --- | --- |
 |  |  |  |  |
+
+Required snapshots: first frame, each hero frame, each transition midpoint, CTA frame, and any frame with dense text or product imagery.
 
 ## Watch Notes
 
@@ -47,10 +53,17 @@
 ## Style Gate
 - Essence metaphor is clear:
 - Surface-topic illustration avoided:
+- Background image or pure-code exception is verified:
+- Background role supports meaning rather than decoration:
+- Text sits in a safe quiet zone:
 - Black / white / gray / warm gold only:
 - One dominant symbol or title per frame:
+- Motion has a clear attention target:
+- Motion is not repeated template fade/slide:
+- Important text settles before it must be read:
 - No ecommerce banner, icon pile, neon tech, multicolor palette, or busy collage:
 - Generated images saved locally and composed in HyperFrames:
+- Poster-frame verdict passed for hero frames:
 
 ## Issues
 1. 
