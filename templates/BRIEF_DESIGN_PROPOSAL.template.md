@@ -34,6 +34,7 @@
 - Generate images: yes / no
 - Default background stage: generated / supplied / pure-code exception
 - Background role: stage / symbol / texture / anchor / transition plate
+- Layout strategy:
 - Background source:
 - Focal subject position:
 - Quiet text zone:
@@ -52,6 +53,7 @@
 ## Typography And Layout
 - Copy language: Simplified Chinese unless explicitly overridden
 - Title scale:
+- Title size tier:
 - Support text scale:
 - CTA / brand scale:
 - Max title lines:
@@ -59,10 +61,13 @@
 - Chinese line-break plan:
 - Line height:
 - Letter spacing:
+- Text spacing:
 - Max text width:
 - Overflow handling:
 - Vertical crop handling:
 - Text-over-image contrast treatment:
+- Mobile safe-zone handling:
+- Regenerate / recrop trigger:
 
 ## Motion Plan
 - Opening reveal:
@@ -74,6 +79,7 @@
 - Audio hit plan:
 - What must stay still:
 - Motion budget:
+- Motion bounds:
 
 ## Risk Gates
 - Cheapness risk:

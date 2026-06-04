@@ -79,7 +79,7 @@ Optional:
 \`\`\`bash
 node ${skillRoot}/scripts/check_assets.mjs .
 node ${skillRoot}/scripts/check_assets.mjs . --strict
-node ${skillRoot}/scripts/score_artifacts.mjs .
+node ${skillRoot}/scripts/validate_artifacts.mjs .
 npx hyperframes lint
 npx hyperframes validate
 npx hyperframes inspect

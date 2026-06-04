@@ -6,6 +6,8 @@ The default creative direction is a Chinese-first vertical promotional film with
 
 New videos need a background stage by default. It can be generated, supplied, or pure code, but any exception must be written in the brief. The background is not decoration; it creates space, carries metaphor, protects text readability, or grounds the product.
 
+For text over or near background imagery, use `references/text-over-background-layout.md`. Choose a candidate layout strategy before image generation, then lock the final per-beat layout contract after generated or supplied imagery is inspected. The final contract owns image ratio, text rectangle, subject rectangle, quiet text zone, title tier, mobile safe zones, and motion bounds.
+
 New video work is two-phase: first produce a brief/design proposal and wait for user confirmation; only then produce images, HyperFrames source, snapshots, renders, and review artifacts.
 
 ## 1. Intake
@@ -60,6 +62,7 @@ Before any implementation, produce `BRIEF_DESIGN_PROPOSAL.md` or the equivalent 
 - Image generation decision, including default background image role or the explicit reason it is not needed.
 - Typography, layout, overflow handling, and mobile crop handling.
 - Motion plan and risk gates.
+- Background text layout plan: candidate layout strategy, likely text/subject relationship, title tier, mobile safe-zone risks, and regenerate/recrop trigger.
 
 Stop here and ask for confirmation. Do not generate images or write composition code until the user confirms.
 
@@ -75,6 +78,7 @@ Define:
 - Safe margins.
 - Layout grid or placement logic.
 - Background image system: role, crop, focal subject, quiet text zone, contrast treatment, and local asset path plan.
+- Background text layout system: default layout strategies, allowed final contract variants, image ratios, text rectangles, subject rectangles, title tiers, mobile safe zones, motion bounds, and regenerate/recrop triggers.
 - Text-over-image rules: where type may sit, how the image will be darkened/blurred/desaturated behind text, and what crop is forbidden.
 - Component patterns such as title card, product frame, proof stat, and CTA.
 - Motion personality and motion budget.
@@ -116,6 +120,7 @@ Every beat should specify:
 - Hero frame timestamp.
 - Metaphor role.
 - Layout and hierarchy.
+- Layout contract, including textRect, subjectRect, safeBottomY, title tier, and motion bounds.
 - Motion.
 - Transition out.
 - Audio/rhythm note.
@@ -134,15 +139,18 @@ If the metaphor needs generated bitmap source material, plan images before imple
 - Default vertical key visual for 9:16 work.
 - Horizontal key visual only when the brief documents a 16:9 target.
 
-Generated images should be sparse. Avoid baked-in text unless exact text is required. Compose final titles, captions, masks, crops, parallax, focus pulls, and timing in HyperFrames.
+Generated images should be sparse. Avoid baked-in text unless exact text is required. Compose final titles, subtitles, proof notes, masks, crops, parallax, focus pulls, and timing in HyperFrames.
 
 Each planned/generated image must specify:
 
 - Role: stage, symbol, texture, anchor, or transition plate.
 - Source: supplied, official, generated, or fallback pure-code.
 - Aspect ratio and target size.
+- Layout contract and image ratio.
 - Focal subject location.
 - Quiet text zone.
+- Crop-safe subject zone, text rectangle, and subject rectangle.
+- Safe bottom/right/top platform boundaries for any overlaid text.
 - Local output path.
 - Forbidden content: no text, fake logos, icons, labels, diagrams, decorative clutter, or watermark unless required.
 
@@ -173,12 +181,19 @@ Check:
 - Visual hierarchy is obvious.
 - Background image has one clear role and is not generic wallpaper.
 - Text is placed on a planned quiet zone, not over high-frequency details.
+- The selected layout contract matches the message and image shape.
+- The image ratio is standard and matches the intended placement.
+- The text rectangle groups title, support, CTA, subtitles, and proof notes into a readable hierarchy.
+- The subject rectangle keeps faces, product edges, UI detail, and symbols out of unsafe crop areas.
+- Safe bottom/right/top boundaries keep CTA, subtitles, support lines, and proof notes clear of vertical platform overlays.
 - Local contrast treatment is present where text crosses imagery.
 - Safe margins hold.
 - Vertical platform overlay zones are respected, especially bottom UI / CTA collision risk.
 - Text has max width, max lines, explicit overflow behavior, and stable breakpoints.
 - Long words, mixed Chinese/English copy, CTA labels, and subtitles do not escape their containers.
 - The composition does not depend on motion to make sense.
+- Motion paths preserve the quiet zone and do not drag readable copy through unsafe mobile UI zones.
+- Transitions use the image subject, text axis, mask, light direction, or camera move as a bridge; they are not separate decorative effects.
 - Product or brand appears with enough weight.
 - The metaphor can be understood without explanatory icon labels.
 - The frame obeys the house style: black, sparse, cinematic, white/gray/warm gold.

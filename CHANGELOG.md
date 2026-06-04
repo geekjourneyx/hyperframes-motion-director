@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2026-06-04
+
+### Added
+
+- Added `references/text-over-background-layout.md` for motion-native text-over-background layout contracts, including `textRect`, `subjectRect`, `safeBottomY`, title tiers, motion bounds, readable holds, and transition integration.
+- Added layout-contract fields across the brief, design, storyboard, and review templates so background imagery, copy, mobile safe zones, and motion are planned as one system.
+
+### Changed
+
+- Reframed static poster language into readable hold-frame and transition-ready motion language for HyperFrames vertical video work.
+- Replaced `scripts/score_artifacts.mjs` with `scripts/validate_artifacts.mjs`, removing percent/points scoring in favor of artifact completeness validation.
+- Simplified `scripts/check-structure.mjs` so it checks package integrity and deprecated positioning drift instead of policing broad template wording.
+- Updated README, AGENTS, scaffold guidance, and review-pack generation around artifact validation rather than artifact scoring.
+- Changed the project license from MIT to GNU Affero General Public License v3.0.
+
+### Validation
+
+- Ran `node scripts/check-structure.mjs`.
+- Generated a temporary project scaffold with timing and motion templates.
+- Ran strict asset checks against the temporary scaffold.
+- Confirmed blank templates fail artifact completeness validation as expected until production fields are filled.
+- Ran `node scripts/build_review_pack.mjs` against the temporary scaffold.
+- Ran `git diff --check`.
+
 ## [2.1.0] - 2026-06-04
 
 ### Added
@@ -38,7 +62,7 @@ All notable changes to this project will be documented in this file.
 - Added the default background-stage production rule for new video work, including generated, supplied, and pure-code exceptions.
 - Added `references/motion-background-system.md` to define background image roles, image count guidance, text-over-image rules, motion budget, and visual review gates.
 - Added background-stage, text-safe-zone, attention-target, stillness, and motion-purpose fields across the brief, design, storyboard, motion map, and review templates.
-- Added stricter artifact scoring for background source, quiet text zones, motion budget, still holds, transition midpoint snapshots, and review verdicts.
+- Added artifact completeness checks for background source, quiet text zones, motion budget, still holds, transition midpoint snapshots, and review verdicts.
 - Added strict asset-check mode and composition file scanning to catch remote or missing render assets before final delivery.
 
 ### Changed
@@ -53,7 +77,7 @@ All notable changes to this project will be documented in this file.
 - Ran syntax checks for the changed helper scripts.
 - Generated a temporary project scaffold with timing and motion templates.
 - Ran strict asset checks against the temporary scaffold.
-- Confirmed blank templates score `0/100` as expected until production fields are filled.
+- Confirmed blank templates fail artifact completeness validation as expected until production fields are filled.
 
 ## [1.0.2] - 2026-06-02
 
@@ -71,7 +95,7 @@ All notable changes to this project will be documented in this file.
 - Made `BEAT_MAP.json` and `MOTION_MAP.json` optional artifacts generated only with `--with-timing` or `--with-motion`.
 - Replaced separate visual review references with one unified `references/visual-standard.md`.
 - Removed obsolete README image assets and duplicate legacy planning templates.
-- Updated scaffold, asset check, structure check, review pack, artifact scoring, README, AGENTS, and eval prompts to prevent drift back to the old artifact chain.
+- Updated scaffold, asset check, structure check, review pack, artifact validation, README, AGENTS, and eval prompts to prevent drift back to the old artifact chain.
 
 ## [1.0.0] - 2026-06-02
 
@@ -81,7 +105,7 @@ All notable changes to this project will be documented in this file.
 - Production workflow covering intake, planning, design, storyboard, timing, motion, validation, render, and review.
 - Initial template set for planning, design, storyboard, timing, motion, and review artifacts.
 - Reference guides for workflow, visual quality, audio sync, HyperFrames stability, and review handoff.
-- Node.js helper scripts for project scaffolding, structure checks, asset checks, artifact scoring, and review-pack assembly.
+- Node.js helper scripts for project scaffolding, structure checks, asset checks, artifact validation, and review-pack assembly.
 - README with installation, usage, and repository structure guidance.
 - Contributor guide in `AGENTS.md`.
 - MIT license.

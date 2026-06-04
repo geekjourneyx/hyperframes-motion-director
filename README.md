@@ -8,7 +8,7 @@
 
 <img src="assets/banner.png" alt="HyperFrames Motion Director cinematic motion workflow" width="100%">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](./LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-HyperFrames-c96442.svg)](./SKILL.md)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-141413.svg)](https://nodejs.org/)
 
@@ -106,12 +106,12 @@ MOTION_MAP.json           GSAP 编排、转场、视线引导
 node scripts/check-structure.mjs
 ```
 
-检查具体项目的资源和文档质量：
+检查具体项目的资源引用和 artifact 完整性：
 
 ```bash
 node scripts/check_assets.mjs <project-dir>
 node scripts/check_assets.mjs <project-dir> --strict
-node scripts/score_artifacts.mjs <project-dir>
+node scripts/validate_artifacts.mjs <project-dir>
 ```
 
 已经实现 HyperFrames composition 后，再运行当前项目支持的 HyperFrames 检查和快照命令。
@@ -122,14 +122,14 @@ node scripts/score_artifacts.mjs <project-dir>
 SKILL.md             主指令、确认门和质量门
 templates/           brief、design、storyboard、review 和可选 map 模板
 references/          工作流、视觉标准、背景图、音频同步和稳定性指南
-scripts/             脚手架、资源检查、结构检查和评分脚本
+scripts/             脚手架、资源检查、结构检查和 artifact 完整性校验
 evals/               触发词和评测用例
 assets/              README 视觉资产
 ```
 
 ## 许可证
 
-[MIT](./LICENSE)
+[GNU Affero General Public License v3.0](./LICENSE)
 
 ## 作者
 

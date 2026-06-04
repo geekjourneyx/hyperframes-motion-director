@@ -52,6 +52,22 @@ Treat each frame as three coordinated layers:
 
 Use `references/motion-background-system.md` for image counts, text-over-image layout, motion grammar, and review gates.
 
+## Text Over Background Layout Rule
+
+For every beat where text appears on or near a background image, choose the layout contract before generating images or writing animation code. The contract determines the image ratio, subject position, text axis, quiet text zone, crop-safe area, title size tier, motion bounds, and mobile safe boundaries.
+
+Use `references/text-over-background-layout.md` before planning generated images, text-over-image treatment, storyboard hero frames, or HyperFrames layout CSS.
+
+Every new video brief must name a candidate layout strategy. The design system must name default strategies and allowed variants. The storyboard must lock one final layout contract per text-over-background beat after generated or supplied imagery is inspected. A final contract must be specific enough to draw on a 1080x1920 canvas:
+
+```text
+Layout contract: cinematic side-title stage / 9:16 / left axis / textRect x=8% y=24% w=44% h=28% / subjectRect x=54% y=20% w=36% h=46% / quiet zone left 46% / safeBottomY<=85% / title tier main / motion stays inside textRect
+```
+
+The contract must include layout intent, image ratio, text axis, text rectangle, subject rectangle, quiet zone, safe bottom boundary, title size tier, and motion bounds. For non-Chinese or non-vertical work, adapt the contract deliberately and document the override.
+
+If the generated image puts detail, faces, product edges, UI text, or high contrast texture inside the quiet text zone, regenerate or recrop before motion. Motion cannot rescue a broken text-over-background composition.
+
 ## Default Language And Format
 
 Default new video work to a Chinese promotional film unless the user explicitly asks for another language or format. This default matters because Chinese copy, vertical framing, and social-video viewing habits change the whole layout:
@@ -79,11 +95,11 @@ The proposal must include:
 - Essence: core viewpoint, largest conflict, emotional center, amplified keyword, visual metaphor.
 - Structure: center symbol / huge title / person anchor / huge number.
 - Format: language, platform, aspect ratio, pixel size, duration, FPS, safe margins. Default to Simplified Chinese, vertical 9:16, and `1080x1920` unless overridden.
-- Image decision: whether generated bitmap images are needed, what each image should be, and what must stay in HyperFrames.
-- Background plan: image role, subject position, quiet text zone, crop risks, and whether Codex Image Gen will be used after confirmation.
-- Typography: title/support/CTA scale, line-height, letter-spacing, maximum lines, overflow handling.
-- Layout: dominant visual mass, grid/alignment, crop-safe zones, mobile overlay risks.
-- Motion: main reveal, background motion, transition style, hold times, easing, audio hit plan, and what must remain still.
+- Image decision: whether generated bitmap images are needed, what each image should be, image ratio, and what must stay in HyperFrames.
+- Background plan: image role, layout contract, subject position, quiet text zone, crop risks, and whether Codex Image Gen will be used after confirmation.
+- Typography: title/support/CTA scale, title size tier, line-height, letter-spacing, maximum lines, text spacing, overflow handling.
+- Layout: dominant visual mass, layout contract, grid/alignment, crop-safe zones, mobile overlay risks.
+- Motion: main reveal, background motion, transition style, hold times, easing, audio hit plan, motion bounds, and what must remain still.
 - Risk gates: what could make it look cheap, unreadable, noisy, or off-style.
 
 End Phase 1 with a clear confirmation request. Production starts only after the user confirms, revises, or explicitly says to proceed.
@@ -189,6 +205,7 @@ The design system must specify typography, color, spacing, density, metaphor sym
 
 Read `references/visual-standard.md` before judging visual quality, typography, layout, or motion.
 Read `references/motion-background-system.md` before deciding image count, background roles, animation grammar, or text-over-image treatment.
+Read `references/text-over-background-layout.md` before deciding layout contracts, image ratios, text rectangles, subject rectangles, title tiers, crop-safe zones, or bottom-safe boundaries.
 
 ### 4. Storyboard And Copy
 
@@ -216,6 +233,7 @@ Every beat needs:
 - Hero frame timestamp.
 - Layout and visual hierarchy.
 - Background image state and text-safe zone.
+- Layout contract, including textRect, subjectRect, title tier, safeBottomY, and motion bounds.
 - Motion direction.
 - Attention target and stillness/hold requirement.
 - Transition out.
@@ -240,13 +258,19 @@ Use Codex Image Gen by default for needed bitmap source images after confirmatio
 
 ### 6. Layout Before Animation
 
-Build static hero frames first. A frame should already work as a poster before motion is added.
+Build readable hold frames first. A frame should communicate clearly while paused before motion is added.
 
 For each scene, verify:
 
 - Main message is readable at the target platform size.
 - Background image has a clear role and does not fight the text.
 - Text sits in a designed quiet zone, not on high-frequency detail.
+- The selected layout contract matches the image and message shape.
+- Image ratio is standard and does not copy a random source-image ratio.
+- Text rectangle keeps title, support, CTA, and proof note in one readable group unless a split is intentional.
+- Subject rectangle keeps faces, product edges, UI text, and symbols out of unsafe crop areas.
+- Title size tier matches the actual character count, language, line count, and phone viewing distance.
+- Safe bottom and right/top platform zones keep CTA, subtitle, proof note, support line, and brand lockup clear.
 - Text does not overlap or leave safe margins.
 - Text containers have max width, max lines, and overflow behavior.
 - Long words, Chinese/English mixed text, and CTA labels cannot escape their boxes.
@@ -305,7 +329,7 @@ For local deterministic checks, use bundled scripts where helpful:
 
 ```bash
 node scripts/check_assets.mjs <project-dir>
-node scripts/score_artifacts.mjs <project-dir>
+node scripts/validate_artifacts.mjs <project-dir>
 ```
 
 ### 9. Render
@@ -345,6 +369,7 @@ Before claiming the video is ready:
 - If the task asked to build a video, a scaffold or composition source exists, not only prose.
 - Static hero frames are coherent before animation.
 - Text fits inside safe margins on the target aspect ratio.
+- Each text-over-background beat declares a layout contract with textRect, subjectRect, safeBottomY, title tier, and motion bounds.
 - Text overflow, max lines, responsive layout, and crop-safe areas are explicitly handled.
 - At least one meaningful transition connects scenes in a multi-scene video.
 - Important copy has enough hold time to read.
@@ -379,6 +404,7 @@ Use seeded randomness, fixed duration, fixed fps, fixed dimensions, local assets
 
 - Read `references/workflow.md` for the full production workflow.
 - Read `references/visual-standard.md` when judging style, typography, layout, and motion.
+- Read `references/text-over-background-layout.md` when planning layout contracts, text rectangles, subject rectangles, title tiers, crop-safe zones, and mobile safe boundaries.
 - Read `references/audio-sync.md` when timing to music, voiceover, or captions.
 - Read `references/hyperframes-stability.md` before implementing or debugging render behavior.
 
@@ -404,8 +430,8 @@ This skill includes deterministic utility scripts:
 node scripts/check-structure.mjs
 node scripts/create_project.mjs <target-dir>
 node scripts/check_assets.mjs <project-dir>
-node scripts/score_artifacts.mjs <project-dir>
+node scripts/validate_artifacts.mjs <project-dir>
 node scripts/build_review_pack.mjs <project-dir>
 ```
 
-`check-structure.mjs` checks the skill package. The other scripts help with project scaffolding, local asset checks, artifact scoring, and review pack generation.
+`check-structure.mjs` checks the skill package. The other scripts help with project scaffolding, local asset checks, artifact completeness validation, and optional review pack generation. These scripts do not prove visual quality; they only catch workflow, structure, and reproducibility problems.

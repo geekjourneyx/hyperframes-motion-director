@@ -15,97 +15,90 @@
 
 - Timing:
 - Screen text / visual:
+- Text role: title / support / proof / CTA / subtitle
 - Chinese line break:
 - Hero frame timestamp:
 - Metaphor role:
 - Background / main visual state:
 - Text-safe zone:
+- Layout contract:
+- Title size tier:
 - Attention target:
-- Layout:
-- Visual hierarchy:
-- Motion:
-- Motion purpose: reveal / transition / emphasis / hold
-- Must stay still:
-- Still hold duration:
-- Transition out:
+- Readable hold:
+- Choreography: entrance / hold / exit / transition bridge / audio hit
+- Motion bounds:
 - Transition midpoint snapshot:
-- Audio / rhythm:
 - Quality risk:
-- Poster-frame verdict:
+- Hold-frame verdict:
 
 ## Beat 2 - Reveal
 
 - Timing:
 - Screen text / visual:
+- Text role: title / support / proof / CTA / subtitle
 - Chinese line break:
 - Hero frame timestamp:
 - Metaphor role:
 - Background / main visual state:
 - Text-safe zone:
+- Layout contract:
+- Title size tier:
 - Attention target:
-- Layout:
-- Visual hierarchy:
-- Motion:
-- Motion purpose: reveal / transition / emphasis / hold
-- Must stay still:
-- Still hold duration:
-- Transition out:
+- Readable hold:
+- Choreography: entrance / hold / exit / transition bridge / audio hit
+- Motion bounds:
 - Transition midpoint snapshot:
-- Audio / rhythm:
 - Quality risk:
-- Poster-frame verdict:
+- Hold-frame verdict:
 
 ## Beat 3 - Proof
 
 - Timing:
 - Screen text / visual:
+- Text role: title / support / proof / CTA / subtitle
 - Chinese line break:
 - Hero frame timestamp:
 - Metaphor role:
 - Background / main visual state:
 - Text-safe zone:
+- Layout contract:
+- Title size tier:
 - Attention target:
-- Layout:
-- Visual hierarchy:
-- Motion:
-- Motion purpose: reveal / transition / emphasis / hold
-- Must stay still:
-- Still hold duration:
-- Transition out:
+- Readable hold:
+- Choreography: entrance / hold / exit / transition bridge / audio hit
+- Motion bounds:
 - Transition midpoint snapshot:
-- Audio / rhythm:
 - Quality risk:
-- Poster-frame verdict:
+- Hold-frame verdict:
 
 ## Beat 4 - CTA
 
 - Timing:
 - Screen text / visual:
+- Text role: title / support / proof / CTA / subtitle
 - Chinese line break:
 - Hero frame timestamp:
 - Metaphor role:
 - Background / main visual state:
 - Text-safe zone:
+- Layout contract:
+- Title size tier:
 - Attention target:
-- Layout:
-- Visual hierarchy:
-- Motion:
-- Motion purpose: reveal / transition / emphasis / hold
-- Must stay still:
-- Still hold duration:
-- Transition out:
+- Readable hold:
+- Choreography: entrance / hold / exit / transition bridge / audio hit
+- Motion bounds:
 - Transition midpoint snapshot:
-- Audio / rhythm:
 - Quality risk:
-- Poster-frame verdict:
+- Hold-frame verdict:
 
 ## Visual Asset Breakdown
 - Generated image 1:
-- Generated image 1 role / size / local path:
+- Generated image 1 role / size / layout contract / local path:
 - Generated image 2:
-- Generated image 2 role / size / local path:
+- Generated image 2 role / size / layout contract / local path:
 - Generated texture / atmosphere:
 - Background stage:
+- Layout contracts:
 - HyperFrames-only elements:
 - Exact local asset paths:
 
@@ -114,4 +107,4 @@
 | --- | --- | --- | --- | --- |
 |  |  |  |  |  |
 
-Capture hero frames and transition midpoints. Each snapshot must prove black-background cinematic style, readable hierarchy, background/text relationship, and metaphor clarity.
+Capture hero frames, readable holds, and transition midpoints. Each snapshot must prove black-background cinematic style, readable hierarchy, background/text relationship, motion continuity, and metaphor clarity.

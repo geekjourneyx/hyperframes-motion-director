@@ -21,7 +21,7 @@ const artifacts = [
   "BEAT_MAP.json",
   "MOTION_MAP.json",
   "REVIEW_REPORT.md",
-  "QUALITY_REPORT.json",
+  "ARTIFACT_VALIDATION.json",
 ].filter((file) => existsSync(join(root, file)));
 
 const renders = listFiles("renders");

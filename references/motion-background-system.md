@@ -10,9 +10,11 @@ Most weak motion videos fail for the same reasons:
 - The background is wallpaper, not a stage for the idea.
 - Motion adds activity but does not guide attention.
 - Too many elements compete for hero status.
-- Paused frames do not work as posters.
+- Paused hold frames do not communicate clearly.
 
 The fix: background creates the world, typography carries the message, motion directs the eye.
+
+Before generating a background or animating type over it, choose the layout contract from `references/text-over-background-layout.md`. The contract defines where the subject sits, where text can sit, which image ratio to generate, where mobile safe boundaries live, and where motion is allowed to travel.
 
 ## Default Image Rule
 
@@ -50,10 +52,12 @@ Reject images that are only decoration.
 ## Text Over Image
 
 - Reserve a quiet text zone before generating or cropping.
+- Declare the layout contract, including text rectangle, subject rectangle, image ratio, title tier, mobile safe zones, and motion bounds.
 - Keep the focal subject away from title and CTA zones.
 - Use local treatment behind text: vignette, shadow plate, gradient mask, blur, or desaturation.
 - Put small proof text only on calm image areas.
 - If the text needs a card to survive, regenerate, recrop, or simplify the image.
+- If the subject is outside its crop-safe zone or text would fall into the bottom platform overlay zone, regenerate or recrop before implementation.
 
 ## Motion Rules
 
@@ -68,7 +72,9 @@ Motion budget:
 - One primary motion idea per scene.
 - One optional support motion for atmosphere or transition.
 - Background motion stays slow: push, parallax, focus pull, or light sweep.
+- Background motion must preserve the quiet text zone through the full readable hold.
 - Text settles before it must be read.
+- Text motion must stay inside its declared motion bounds and avoid bottom/right/top mobile UI zones.
 - Important reveals need stillness after impact.
 - Multi-scene transitions should overlap or share an anchor; avoid empty black gaps.
 
@@ -81,8 +87,11 @@ Avoid repeated `y + opacity`, linear primary reveals, infinite loops, decorative
 Every generated-image plan should state:
 
 - Role and aspect ratio.
+- Layout contract and image ratio.
 - Focal subject position.
 - Quiet text zone.
+- Text rectangle and subject rectangle.
+- Safe bottom/right/top platform boundaries for overlaid text.
 - Lighting direction and contrast.
 - Palette and forbidden colors.
 - No baked-in text unless required.

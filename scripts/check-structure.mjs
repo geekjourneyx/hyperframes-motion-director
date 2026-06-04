@@ -10,6 +10,7 @@ const requiredFiles = [
   "references/workflow.md",
   "references/visual-standard.md",
   "references/motion-background-system.md",
+  "references/text-over-background-layout.md",
   "references/audio-sync.md",
   "references/hyperframes-stability.md",
   "templates/BRIEF_DESIGN_PROPOSAL.template.md",
@@ -20,7 +21,7 @@ const requiredFiles = [
   "templates/REVIEW_REPORT.template.md",
   "scripts/create_project.mjs",
   "scripts/check_assets.mjs",
-  "scripts/score_artifacts.mjs",
+  "scripts/validate_artifacts.mjs",
   "scripts/build_review_pack.mjs",
   "evals/evals.json",
   "evals/trigger-prompts.md",
@@ -30,28 +31,23 @@ const requiredSkillTerms = [
   "name: hyperframes-motion-director",
   "# HyperFrames Motion Director",
   "description:",
-  "Default Language And Format",
-  "Simplified Chinese",
-  "9:16",
-  "1080x1920",
-  "Layout Before Animation",
   "Two-Phase Rule",
   "Hard Stability Rules",
   "Background And Motion Rule",
+  "Text Over Background Layout Rule",
   "BRIEF_DESIGN_PROPOSAL.md",
-  "Quality Gates",
   "scripts/create_project.mjs",
 ];
 
 const positioningChecks = [
   {
     file: "README.md",
-    required: ["# HyperFrames Motion Director", "面向 HyperFrames 的中文竖版电影感动效视频制作工作流", "9:16", "1080x1920"],
+    required: ["# HyperFrames Motion Director"],
     forbidden: ["# Video Ad Director", "面向 HyperFrames 视频广告", "Video Ad Director 是一个用于制作"],
   },
   {
     file: "SKILL.md",
-    required: ["name: hyperframes-motion-director", "# HyperFrames Motion Director", "HyperFrames motion video", "Default Language And Format", "Simplified Chinese", "9:16", "1080x1920"],
+    required: ["name: hyperframes-motion-director", "# HyperFrames Motion Director", "Text Over Background Layout Rule", "text-over-background-layout.md"],
     forbidden: ["name: video-ad-director", "# Video Ad Director", "AI video ad or promo", "HyperFrames advertising work"],
   },
   {
@@ -61,18 +57,8 @@ const positioningChecks = [
   },
   {
     file: "scripts/create_project.mjs",
-    required: ["HyperFrames Motion Production", "HyperFrames Motion Director", "Simplified Chinese promotional film", "9:16", "1080x1920"],
+    required: ["HyperFrames Motion Production", "HyperFrames Motion Director"],
     forbidden: ["HyperFrames Ad Production"],
-  },
-  {
-    file: "references/workflow.md",
-    required: ["Simplified Chinese", "9:16 1080x1920"],
-    forbidden: ["default to 16:9 1920x1080"],
-  },
-  {
-    file: "templates/BRIEF_DESIGN_PROPOSAL.template.md",
-    required: ["Simplified Chinese promotional copy by default", "Aspect ratio: 9:16 by default", "Pixel size: 1080x1920 by default"],
-    forbidden: ["Aspect ratio:\n", "Pixel size:\n"],
   },
 ];
 

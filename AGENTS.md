@@ -28,10 +28,10 @@ Creates a HyperFrames motion production scaffold with the four core artifacts, a
 
 ```bash
 node scripts/check_assets.mjs <project-dir>
-node scripts/score_artifacts.mjs <project-dir>
+node scripts/validate_artifacts.mjs <project-dir>
 ```
 
-Checks a generated project for asset readiness and the slim four-artifact production chain.
+Checks a generated project for asset readiness and artifact completeness. These scripts do not prove visual or directing quality.
 
 For implemented HyperFrames compositions, also run the strongest available local CLI checks, for example `npx hyperframes validate` and `npx hyperframes snapshot <composition> --at <times>`.
 

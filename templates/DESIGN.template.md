@@ -1,7 +1,7 @@
 # Design System
 
 ## Overview
-3-4 sentences describing the essence metaphor, why it fits the brief, and how the frame will feel as a premium cinematic magazine cover.
+3-4 sentences describing the essence metaphor, why it fits the brief, and how the video will feel as a readable vertical cinematic sequence with strong hold frames and transition-ready motion.
 
 ## Metaphor System
 - Core viewpoint:
@@ -35,7 +35,17 @@
 - Safe margins: protect top/bottom platform UI zones; keep primary copy center-safe
 - Grid / alignment: one dominant symbol or title with large negative space.
 - Density: sparse; every visible element must earn its place.
-- Hero frame rules: must work as a poster without replay; no explanatory icon clusters.
+- Hero frame rules: readable while paused; no explanatory icon clusters.
+
+## Background Text Layout System
+- Default layout strategy:
+- Allowed layout contract variants:
+- Title size tier:
+- Text rectangle / subject rectangle:
+- Title / support / CTA spacing:
+- Mobile safe-zone handling:
+- Motion bounds:
+- Regenerate / recrop trigger:
 
 ## Background Image System
 - Default background stage: generated / supplied / pure-code exception
