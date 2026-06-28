@@ -10,6 +10,8 @@ For text over or near background imagery, use `references/text-over-background-l
 
 For motion craft, use `references/motion-craft.md`. Static hero frames are necessary, but they are not enough. The finished piece must define where attention starts, how text moves, how scenes bridge, and which CSS/SVG/GSAP devices make it feel like motion rather than slides.
 
+For text/icon transition references, use kinetic text relay as the default structure. This means the film is built from a keyword chain, small action objects, directional pushes/wipes/scans, readable holds, and transition midpoint snapshots. The key question is not "what does each card say?" but "how does one word physically hand attention to the next?"
+
 New video work is two-phase: first produce a brief/design proposal and wait for user confirmation; only then produce images, HyperFrames source, snapshots, renders, and review artifacts.
 
 ## 1. Intake
@@ -67,6 +69,7 @@ Before any implementation, produce `BRIEF_DESIGN_PROPOSAL.md` or the equivalent 
 - Background text layout plan: candidate layout strategy, likely text/subject relationship, title tier, mobile safe-zone risks, and regenerate/recrop trigger.
 - Attention map: first eye target, center-impact decision, and rationale for center/upper-center/side/lower-safe text.
 - Motion craft plan: camera behavior, kinetic typography, text transition style, SVG/CSS structure, GSAP timeline structure, signature motion moment, and anti-PPT risk.
+- Kinetic text relay plan when relevant: keyword chain, action-object chain, directional transition map, relay object, readable holds, transition midpoint snapshots, target kinetic relay score of 100, and no-delivery threshold below 90.
 
 Stop here and ask for confirmation. Do not generate images or write composition code until the user confirms.
 
@@ -88,6 +91,7 @@ Define:
 - Component patterns such as title card, product frame, proof stat, and CTA.
 - Motion personality and motion budget.
 - Motion craft system: camera movement, kinetic typography, text transitions, SVG/CSS layers, GSAP labels, and scene bridges.
+- Kinetic text relay system when relevant: keywords, action objects, direction vocabulary, transition handoffs, midpoint snapshots, and scorecard target.
 - Do and don't rules.
 - The central metaphor symbol and how it is lit.
 - Any generated image assets needed before HyperFrames composition.
@@ -107,6 +111,8 @@ Default short motion structures:
 ```
 
 For no-voiceover videos, script means screen text and timing. Every beat should have one job.
+
+For kinetic text relay videos, script is a chain of memory words. Keep the copy short enough that each word can receive a designed action. Prefer 4-8 beats such as `Hook word -> product action -> proof word -> outcome word -> CTA` over explanatory sentences.
 
 Choose structure by material:
 
@@ -130,6 +136,7 @@ Every beat should specify:
 - Layout contract, including textRect, subjectRect, safeBottomY, title tier, and motion bounds.
 - Motion.
 - Text transition: entry, readable lock, emphasis, exit, and bridge.
+- Kinetic relay details when relevant: old word exit, new word entry, action object, transition direction, relay handoff, and midpoint snapshot.
 - CSS/SVG/GSAP device used for motion structure.
 - Transition out.
 - Audio/rhythm note.
@@ -222,6 +229,8 @@ Motion should:
 - Avoid decorative noise.
 - Make the work impossible to reduce to static screenshots without losing meaning.
 
+For kinetic text relay promos, at least half of the scene changes should use directional or structural transitions: push left/right, push up/down, crop wipe, scan pass, split, compression, expansion, type-on handoff, or object-led cut. Fade may support a transition, but should not be the main transition language.
+
 Motion budget:
 
 - One primary motion idea per scene.
@@ -239,6 +248,7 @@ Motion craft requirements:
 - Let hook or amplified keyword text occupy center or upper-center impact when it is the main subject.
 - Reserve lower-safe placement for CTA, proof notes, or subject-dominant frames.
 - Include at least one signature motion moment that belongs to the metaphor.
+- Score text/icon transition promos with the kinetic relay scorecard from `references/motion-craft.md`; target 100, below 90 blocks final delivery, and below 70 requires revision before render.
 
 ## 10. Validate
 

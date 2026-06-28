@@ -1,6 +1,6 @@
 ---
 name: hyperframes-motion-director
-description: "Direct and produce polished Chinese-first cinematic promo films and motion videos using HyperFrames, defaulting to vertical 9:16 1080x1920 unless the user or platform clearly requires another format. Use this skill whenever the user wants a high-quality HyperFrames motion video, especially Chinese promotional films, article-to-video films, product launch films, website-to-video pieces, keynote reveals, kinetic typography sequences, music-synced motion graphics, HTML/CSS3/SVG/GSAP video, big animated typography, text transitions, product reveals, launch films, short-form vertical videos, or turning a landing page/product story into a rendered video. This skill is deliberately anti-PPT: it requires cinematic metaphor, readable hold frames, kinetic typography, meaningful transitions, CSS/SVG/GSAP motion craft, validation, snapshots, review reports, and deterministic renders through a strict two-phase workflow."
+description: "Direct and produce polished Chinese-first cinematic promo films and motion videos using HyperFrames, defaulting to vertical 9:16 1080x1920 unless the user or platform clearly requires another format. Use this skill whenever the user wants a high-quality HyperFrames motion video, especially Chinese promotional films, article-to-video films, product launch films, website-to-video pieces, keynote reveals, kinetic typography sequences, text/icon transition promos, push/wipe/scan/typing transitions, music-synced motion graphics, HTML/CSS3/SVG/GSAP video, big animated typography, product reveals, launch films, short-form vertical videos, or turning a landing page/product story into a rendered video. This skill is deliberately anti-PPT: it requires cinematic metaphor, readable hold frames, kinetic typography, meaningful text-object relay transitions, CSS/SVG/GSAP motion craft, validation, snapshots, review reports, and deterministic renders through a strict two-phase workflow."
 ---
 
 # HyperFrames Motion Director
@@ -104,6 +104,34 @@ Hard gates for short vertical promos:
 - At least one important text moment must use a real transition device: mask, scan, split, compression, assembly, path handoff, or equivalent. Plain opacity plus y-position is only a supporting move.
 - The review report must include an anti-PPT verdict. If the video loses almost no meaning when reduced to screenshots, it is not ready.
 
+## Kinetic Text Relay Rule
+
+When the user asks for text, icons, cool transitions, left/right push, up/down push, wipe, scan, typing, word-by-word motion, or a reference that behaves like kinetic typography, default to a kinetic text relay promo instead of a background-image-led cinematic short.
+
+The first principle is simple: a strong kinetic promo is not a sequence of title cards. It is a chain of visual events where words, icons, objects, and transition devices pass attention from one beat to the next.
+
+Before proposing or implementing this style, define the relay grammar:
+
+- Keyword chain: the 4-8 words or short phrases the viewer will remember.
+- Action object per keyword: icon, cursor, waveform, timeline, frame, brush, scan rail, stamp, product tile, code cursor, or another small object that turns an abstract capability into a visual event.
+- Direction per beat: left push, right push, upward lift, downward press, radial burst, crop reveal, scan pass, type-on, compression, expansion, wipe, dissolve, or deliberate hard cut.
+- Relay object: what carries the outgoing beat into the incoming beat. This must be visible or logically implied, not an empty fade.
+- Hero frame and transition midpoint: each beat needs one readable hold frame and each transition needs one inspectable midpoint.
+- Motion loss test: if removing motion leaves the story mostly unchanged, the beat is under-directed.
+
+Use restraint. One text relay language per video is enough. Do not attach an icon to every line. Do not add decorative sticker clusters. The object must either push, mask, scan, reveal, compress, split, type, or hand off the next word.
+
+For a 10-18 second kinetic promo, use this default scorecard before delivery:
+
+- 20 points: first-eye impact and largest word/object stop the viewer in the first 0-2 seconds.
+- 20 points: important text has a designed action, not only fade/translate.
+- 20 points: icons or small objects actively participate in transitions.
+- 20 points: adjacent beats have relay continuity through direction, object, mask, line, cursor, scan, or camera movement.
+- 10 points: rhythm alternates between motion hits and readable holds.
+- 10 points: the final brand/CTA lands cleanly and feels like the end of the chain.
+
+Target 100. Below 100 means the review report must name the missing points and the smallest next edit. Below 90 blocks final delivery. Below 70 means revise before render. Below 60 means rebuild the transition map. Below 50 means the piece is still PPT-like even if individual frames look polished.
+
 ## Text Over Background Layout Rule
 
 For every beat where text appears on or near a background image, choose the layout contract before generating images or writing animation code. The contract determines the image ratio, subject position, text axis, quiet text zone, crop-safe area, title size tier, motion bounds, and mobile safe boundaries.
@@ -156,6 +184,7 @@ The proposal must include:
 - Layout: dominant visual mass, layout contract, grid/alignment, crop-safe zones, mobile overlay risks.
 - Motion: main reveal, background motion, transition style, hold times, easing, audio hit plan, motion bounds, and what must remain still.
 - Motion craft: camera behavior, kinetic typography, text transition pattern, SVG/CSS3 layers, GSAP timeline structure, and signature motion moment.
+- Kinetic text relay plan when relevant: keyword chain, action object chain, push/wipe/scan direction map, relay object, transition midpoint snapshots, and 100-point anti-PPT score target.
 - Risk gates: what could make it look cheap, unreadable, noisy, or off-style.
 - Anti-PPT risk: what would make the piece feel like slides rather than a film, and how the direction avoids it.
 - Attention map: first eye target, center-impact decision, and why text is center, upper-center, side-title, or lower-safe.
@@ -202,6 +231,26 @@ Use `BEAT_MAP.json` only when music, voiceover, or exact timing matters. Use `MO
 For any multi-scene video longer than 8 seconds, default to a `MOTION_MAP.json` unless the storyboard is intentionally simple and documents why a separate map would add no clarity. If the user says the work feels like PPT, static, flat, template-like, or under-animated, a motion map is required.
 
 Use the templates in `templates/`.
+
+### Kinetic Text Relay Promo
+
+Use this mode when the desired result is mainly text, icons, and animated transitions rather than cinematic background imagery.
+
+Default structure:
+
+```text
+Memory word -> action object -> directional transition -> next word -> action object -> transition -> brand/CTA lock
+```
+
+Production requirements:
+
+- Keep the screen sparse and black, but do not let sparsity become static.
+- Compress the message into a keyword chain before writing full storyboard beats.
+- Give every major keyword one action object or visual behavior.
+- Make at least half of the scene changes directional: left/right push, up/down push, crop wipe, scan pass, split, compression, expansion, or type-on handoff.
+- Use fade only as support, never as the main transition language.
+- Capture snapshots for readable holds and transition midpoints.
+- Score the draft against the 100-point kinetic relay scorecard before calling it ready.
 
 ### Existing Video Edit
 
@@ -445,6 +494,7 @@ Before claiming the video is ready:
 - Text overflow, max lines, responsive layout, and crop-safe areas are explicitly handled.
 - At least one meaningful transition connects scenes in a multi-scene video.
 - A multi-scene video has a motion craft plan with kinetic typography, CSS/SVG structure, GSAP timeline labels, and a signature motion moment, or a documented reason for deliberate stillness.
+- Kinetic text relay requests include a keyword chain, action-object chain, direction map, relay continuity, transition midpoint snapshots, a target score of 100, and a no-delivery threshold below 90.
 - Text transitions define entry, readable lock, emphasis, exit, and bridge for important beats.
 - Important copy has enough hold time to read.
 - Background imagery exists by default for new videos or the pure-code/supplied-asset exception is explained.

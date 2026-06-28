@@ -82,6 +82,15 @@ Motion, background, type, and transition are one system. Background movement mus
 
 Text motion must have a transition idea: entry, readable lock, emphasis, exit, and bridge. The most important word should not merely appear; it should be revealed, assembled, scanned, split, compressed, expanded, or handed off in a way that matches the story.
 
+For text/icon transition promos, use a kinetic relay standard:
+
+- The viewer remembers a keyword chain, not paragraphs.
+- Each major word gets one action object or visual behavior.
+- Icons and objects must push, mask, scan, type, crop, reveal, compress, split, or hand off the next word.
+- Direction changes should be designed: left/right push, up/down push, scan, wipe, type-on, crop, or hard cut with a visible relay.
+- Empty black fades are allowed only for deliberate silence or final release.
+- Every transition needs a midpoint that can be inspected as a designed frame, not an accidental blur.
+
 Typical timing:
 
 - Premium reveal: 0.8-1.6s, `expo.out` or `sine.inOut`.
@@ -117,4 +126,5 @@ Reject the work if:
 - The metaphor is surface-level or needs labels.
 - All elements move at once, motion repeats the same entrance pattern, or important text never settles.
 - It feels like PPT: static cards, repeated fade-ups, lower-third explanations, empty black fades, and no text transition or scene bridge.
+- A text/icon transition promo has no keyword chain, no active action-object chain, no direction map, or no relay continuity between adjacent beats.
 - The video passes render checks but fails still-frame review.

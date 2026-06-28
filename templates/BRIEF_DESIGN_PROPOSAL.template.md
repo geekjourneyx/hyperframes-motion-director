@@ -64,6 +64,19 @@
 - Objects to avoid:
 - Icon / decoration restraint:
 
+## Kinetic Text Relay Plan
+- Use kinetic relay mode: yes / no
+- Keyword chain:
+- Action object chain:
+- Direction map:
+- Relay object / handoff logic:
+- Push / wipe / scan vocabulary:
+- Readable hold plan:
+- Transition midpoint snapshots:
+- Fade policy:
+- Target kinetic relay score:
+- What would make this still feel like PPT:
+
 ## Typography And Layout
 - Copy language: Simplified Chinese unless explicitly overridden
 - Title scale:

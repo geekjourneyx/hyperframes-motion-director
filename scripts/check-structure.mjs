@@ -36,6 +36,7 @@ const requiredSkillTerms = [
   "Hard Stability Rules",
   "Background And Motion Rule",
   "Text Over Background Layout Rule",
+  "Kinetic Text Relay Rule",
   "BRIEF_DESIGN_PROPOSAL.md",
   "scripts/create_project.mjs",
 ];

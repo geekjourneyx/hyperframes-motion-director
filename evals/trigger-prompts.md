@@ -22,6 +22,8 @@ Use these prompts later for trigger and non-trigger evaluation of the skill desc
 16. "Use image generation for the center symbol, then compose the final HyperFrames motion video with sparse typography, dark cinematic lighting, and snapshots."
 17. "这个 HyperFrames 成片太像 PPT 了，文字都在下半区，没有视觉冲击，帮我从导演角度重做文字排版、转场、CSS/SVG/GSAP 动效。"
 18. "The hook has no impact because all the text sits in the lower third. Rework the HyperFrames storyboard with center-impact typography and real text transitions."
+19. "我想要黑底大字、图标介入、左右推出、上下推出、扫描、打字、淡出的炫酷文字动效宣传片，先给 HyperFrames Phase 1 方案。"
+20. "Use this reference GIF as visual direction: sparse black field, huge typography, icons and small objects pushing words into the next beat. Build a HyperFrames kinetic text promo plan."
 
 ## Should Not Trigger
 
@@ -39,3 +41,5 @@ Use these prompts later for trigger and non-trigger evaluation of the skill desc
 12. "Write a GSAP timeline for a website hero animation that will never be rendered as video."
 13. "Make a project management checklist for a generic video shoot with cameras and actors."
 14. "帮我评价一份 PPT 演示稿的版式，不需要做 HyperFrames 视频。"
+15. "帮我做几个网页按钮 hover 动效，最好有左右滑动和淡出，但不是视频。"
+16. "给我写一段 Final Cut Pro 教程，讲讲怎么做文字转场，不需要生成 HyperFrames 项目。"

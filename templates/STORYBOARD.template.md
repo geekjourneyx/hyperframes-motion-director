@@ -35,6 +35,10 @@
 - Readable hold:
 - Text transition: entry / lock / emphasis / exit / bridge
 - Text transition device: mask / scan / split / compression / assembly / handoff / deliberate stillness
+- Kinetic relay: old word exit / new word entry / action object / direction / relay handoff
+- Directional transition: left push / right push / up push / down press / wipe / scan / type-on / compression / expansion / hard cut
+- Transition midpoint frame:
+- Kinetic relay score note:
 - What changes if this motion is removed:
 - Choreography: camera / background / symbol / text / SVG-CSS layer / transition bridge / audio hit
 - Motion bounds:
@@ -67,6 +71,10 @@
 - Readable hold:
 - Text transition: entry / lock / emphasis / exit / bridge
 - Text transition device: mask / scan / split / compression / assembly / handoff / deliberate stillness
+- Kinetic relay: old word exit / new word entry / action object / direction / relay handoff
+- Directional transition: left push / right push / up push / down press / wipe / scan / type-on / compression / expansion / hard cut
+- Transition midpoint frame:
+- Kinetic relay score note:
 - What changes if this motion is removed:
 - Choreography: camera / background / symbol / text / SVG-CSS layer / transition bridge / audio hit
 - Motion bounds:
@@ -99,6 +107,10 @@
 - Readable hold:
 - Text transition: entry / lock / emphasis / exit / bridge
 - Text transition device: mask / scan / split / compression / assembly / handoff / deliberate stillness
+- Kinetic relay: old word exit / new word entry / action object / direction / relay handoff
+- Directional transition: left push / right push / up push / down press / wipe / scan / type-on / compression / expansion / hard cut
+- Transition midpoint frame:
+- Kinetic relay score note:
 - What changes if this motion is removed:
 - Choreography: camera / background / symbol / text / SVG-CSS layer / transition bridge / audio hit
 - Motion bounds:
@@ -131,6 +143,10 @@
 - Readable hold:
 - Text transition: entry / lock / emphasis / exit / bridge
 - Text transition device: mask / scan / split / compression / assembly / handoff / deliberate stillness
+- Kinetic relay: old word exit / new word entry / action object / direction / relay handoff
+- Directional transition: left push / right push / up push / down press / wipe / scan / type-on / compression / expansion / hard cut
+- Transition midpoint frame:
+- Kinetic relay score note:
 - What changes if this motion is removed:
 - Choreography: camera / background / symbol / text / SVG-CSS layer / transition bridge / audio hit
 - Motion bounds:
@@ -148,6 +164,11 @@
 - Primary visual object system:
 - Functional mark types:
 - Object restraint rules:
+- Kinetic relay keyword chain:
+- Kinetic relay action object chain:
+- Direction map:
+- Relay continuity rules:
+- Kinetic relay score target:
 - Background stage:
 - Layout contracts:
 - HyperFrames-only elements:

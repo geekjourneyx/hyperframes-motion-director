@@ -85,6 +85,20 @@
 - Caption:
 - CTA / brand lockup:
 
+## Kinetic Text Relay System
+- Use kinetic relay mode:
+- Keyword chain:
+- Action object chain:
+- Direction vocabulary:
+- Relay / handoff rules:
+- Icon policy:
+- Push / wipe / scan policy:
+- Type-on / cursor policy:
+- Transition midpoint frame rules:
+- Fade policy:
+- Kinetic relay score target:
+- PPT failure trigger:
+
 ## Motion Personality
 - Default ease: `sine.inOut`, `expo.out`, or similarly controlled cinematic easing.
 - Default entrance duration: deliberate, usually 0.8-1.6s for premium reveals.

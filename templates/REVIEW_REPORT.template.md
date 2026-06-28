@@ -56,6 +56,24 @@ Required snapshots: first frame, each hero frame, each transition midpoint, CTA 
 | Editability / 3 |  |  |
 | Delivery readiness / 2 |  |  |
 
+## Kinetic Relay Score
+
+Use this section for text/icon transition promos.
+
+| Category | Score | Notes |
+| --- | ---: | --- |
+| First-eye impact / 20 |  |  |
+| Designed text action / 20 |  |  |
+| Active icons or objects / 20 |  |  |
+| Relay continuity / 20 |  |  |
+| Rhythm and readable holds / 10 |  |  |
+| Clean brand / CTA resolution / 10 |  |  |
+| Total / 100 |  |  |
+
+- Score verdict:
+- If below 100, what must improve:
+- If below 90, why final delivery is blocked:
+
 ## Style Gate
 - Default language is Simplified Chinese or override is documented:
 - Default 9:16 1080x1920 vertical format or override is documented:
@@ -80,6 +98,11 @@ Required snapshots: first frame, each hero frame, each transition midpoint, CTA 
 - Motion is not repeated template fade/translate:
 - Hook or amplified keyword owns the right attention zone:
 - Text transitions define entry, lock, emphasis, exit, and bridge:
+- Kinetic relay keyword chain is visible when relevant:
+- Action objects participate in transitions when relevant:
+- Direction map avoids repeated static card sequencing:
+- Transition midpoint frames are inspectable:
+- Fade is support only when kinetic relay mode is active:
 - CSS3 / SVG layers carry structure rather than decoration:
 - GSAP timeline uses labels and meaningful scene bridges:
 - Video would lose meaning if reduced to screenshots:
@@ -95,6 +118,9 @@ Required snapshots: first frame, each hero frame, each transition midpoint, CTA 
 - Fewer than three beats repeat the same textRect, same entry, and same rhythm:
 - Important text uses at least one real transition device beyond opacity + y:
 - Text transition has entry, lock, emphasis, exit, and bridge:
+- Kinetic relay promos target 100 before final delivery:
+- Kinetic relay promos below 90 are blocked from final delivery:
+- Adjacent kinetic beats have a visible or logical relay object:
 - Motion uses CSS3 / SVG / GSAP structure or documents a deliberate stillness exception:
 - Visual object system has one primary object and no more than three mark types:
 - Added objects are not generic decoration:

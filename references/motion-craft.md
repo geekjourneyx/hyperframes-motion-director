@@ -30,6 +30,33 @@ Reject or revise when:
 
 Use a small set of deliberate motion devices. Pick one signature device for the whole video, then vary it per beat.
 
+### Kinetic Text Relay
+
+Use this vocabulary when the film is driven by text, icons, and fast transitions. The goal is not to show more elements. The goal is to make every word feel acted upon.
+
+Define the chain before implementation:
+
+- Keyword: the word or short phrase that owns the beat.
+- Action object: the icon, cursor, waveform, timeline, frame, brush, scan rail, stamp, product tile, or line that gives the keyword a physical behavior.
+- Direction: left push, right push, upward lift, downward press, type-on, wipe, scan, split, compression, expansion, orbit, or hard cut.
+- Relay: the outgoing word must hand attention to the incoming word through the action object, direction, mask, line, camera move, or sound hit.
+- Hold: after the action lands, the word must become readable before the next hit.
+
+Strong examples:
+
+- A waveform grows through "Record" and pushes the word aside to reveal "Edit".
+- A timeline strip crosses the center line and becomes the mask that reveals the next title.
+- A cursor types the first letters, then the blinking caret becomes a vertical scan line.
+- A product tile slides upward, crops the old word, and locks as the frame for the next word.
+- A brush stroke reveals the word, then exits as a curved path that pulls in the next word.
+
+Weak examples:
+
+- Each word fades up in the same position.
+- Icons appear beside labels but do not move, mask, push, scan, or reveal anything.
+- A transition happens through empty black with no visual handoff.
+- Every beat uses the same direction, same center position, and same timing.
+
 ### Camera And Space
 
 - Slow push into the subject.
@@ -93,6 +120,14 @@ Bad: `title fades up`.
 
 Better: `title reveals through a left-to-right mask; README receives a gold scan highlight; the scan line exits as the next beat's divider`.
 
+For kinetic text relay promos, also define:
+
+- Old word exit direction.
+- New word entry direction.
+- Action object that bridges them.
+- Transition midpoint snapshot timestamp.
+- Whether fade is support or the main transition. If fade is the main transition, redesign unless deliberate stillness is the concept.
+
 ## Short Vertical Hard Gates
 
 For promos 20 seconds or shorter:
@@ -126,3 +161,22 @@ Score the video harshly:
 - 91-100: one clear cinematic idea, one memorable motion device, every transition earns its place.
 
 Before delivery, inspect still frames and moving frames. A good still frame is necessary, but not sufficient. If the video loses little when reduced to screenshots, it needs stronger motion craft.
+
+## Kinetic Relay Scorecard
+
+Use this 100-point score when the requested result is a text/icon transition promo:
+
+- 20: first 0-2 seconds have a clear largest word/object and a real scroll-stop motion event.
+- 20: important words are revealed, pushed, typed, scanned, compressed, split, or otherwise acted upon.
+- 20: icons or objects participate in transitions instead of sitting as decoration.
+- 20: adjacent beats have relay continuity through direction, object, mask, line, cursor, scan, or camera movement.
+- 10: rhythm alternates between motion hits and readable holds.
+- 10: brand/CTA resolves cleanly and feels like the end of the chain.
+
+Interpretation:
+
+- 100: target state; ready for polished render if snapshots and readability pass.
+- 90-99: usable draft only if the report names the missing points and the next edit; do not call it perfect.
+- 70-89: promising, but revise the weakest transition or rhythm beat.
+- 60-69: rebuild the transition map before render.
+- Below 60: still PPT-like; do not call it a motion promo.

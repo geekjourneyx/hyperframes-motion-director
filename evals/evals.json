@@ -95,8 +95,30 @@
         "Output includes text transition planning with entry, lock, emphasis, exit, and bridge.",
         "Output includes CSS3 or SVG devices such as clip-path, mask, path, scan line, frame, underline, or connector.",
         "Output includes GSAP choreography using a labeled or master timeline with explicit timing.",
+        "Output includes a keyword chain for the kinetic text sequence.",
+        "Output includes an action-object chain where icons or small objects actively push, scan, mask, type, crop, or hand off text.",
+        "Output includes a direction map with left/right/up/down push, wipe, scan, type-on, compression, expansion, or equivalent structural transitions.",
+        "Output requires transition midpoint snapshots, not only hero-frame snapshots.",
+        "Output includes a 100-point kinetic relay score or equivalent anti-PPT scoring rubric.",
         "Output includes an anti-PPT review gate based on whether the video loses meaning when reduced to screenshots.",
         "Output preserves readable hold time rather than making all text move continuously."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "我想做一个 15 秒产品宣传片，参考那种黑底大字、图标介入、左右推出、上下推出、扫描、打字、淡出都很炫酷的文字动效。产品叫 FlowForge，能力是生成脚本、剪辑片段、自动配音、放大画质、一键发布。请先给 Phase 1 方案，不要开始写代码。",
+      "expected_output": "A Phase 1 brief/design proposal for a kinetic text relay promo, not a static cinematic slide sequence. It should define keyword chain, action-object chain, directional transition map, relay handoffs, readable holds, midpoint snapshots, and a 100-point kinetic relay target before asking for confirmation.",
+      "files": [],
+      "assertions": [
+        "Output identifies this as a kinetic text relay promo or equivalent text/icon transition mode.",
+        "Output compresses the product story into a keyword chain.",
+        "Output maps each major capability to an action object such as cursor, timeline, waveform, scan line, frame, product tile, upload mark, or equivalent.",
+        "Output includes a direction map with push, wipe, scan, type-on, compression, expansion, or hard-cut handoffs.",
+        "Output explains how old words exit and new words enter through visible relay objects or directions.",
+        "Output treats fade as support rather than the main transition language unless deliberate stillness is justified.",
+        "Output includes readable holds and transition midpoint snapshot planning.",
+        "Output includes a kinetic relay score target of 100 and a no-final-delivery threshold below 90.",
+        "Output asks for confirmation before implementation."
       ]
     }
   ]

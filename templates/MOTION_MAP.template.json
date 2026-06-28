@@ -27,6 +27,34 @@
     "lower_safe_beats": [],
     "rationale": ""
   },
+  "kinetic_text_relay": {
+    "enabled": false,
+    "keyword_chain": [],
+    "action_object_chain": [],
+    "direction_vocabulary": [
+      "left push",
+      "right push",
+      "up push",
+      "down press",
+      "wipe",
+      "scan",
+      "type-on",
+      "compression",
+      "expansion",
+      "hard cut"
+    ],
+    "relay_rules": "Each outgoing keyword hands attention to the incoming keyword through an action object, mask, line, cursor, scan, crop, direction, or camera move.",
+    "fade_policy": "Fade is support only; if fade is the main transition, document why stillness is the concept.",
+    "score_target": 100,
+    "scorecard": {
+      "first_eye_impact": 20,
+      "designed_text_action": 20,
+      "active_icons_or_objects": 20,
+      "relay_continuity": 20,
+      "rhythm_and_holds": 10,
+      "clean_brand_cta_resolution": 10
+    }
+  },
   "selectors": {
     "background": ".background-stage",
     "title": ".title",
@@ -86,6 +114,15 @@
         "bridge": ""
       },
       "text_transition_device": "mask / scan / split / compression / assembly / handoff / deliberate stillness",
+      "kinetic_relay": {
+        "old_word_exit": "",
+        "new_word_entry": "",
+        "action_object": "",
+        "direction": "",
+        "relay_handoff": "",
+        "transition_midpoint_snapshot": "",
+        "score_note": ""
+      },
       "bridge_element": "scan line / SVG path / mask / camera move / text baseline / light sweep",
       "uses_css_svg_gsap": {
         "css3": false,
@@ -119,6 +156,15 @@
         "bridge": "camera movement maintains spatial continuity"
       },
       "text_transition_device": "deliberate stillness",
+      "kinetic_relay": {
+        "old_word_exit": "none",
+        "new_word_entry": "none",
+        "action_object": "background stage",
+        "direction": "slow push",
+        "relay_handoff": "camera movement maintains spatial continuity",
+        "transition_midpoint_snapshot": "",
+        "score_note": ""
+      },
       "bridge_element": "camera move",
       "uses_css_svg_gsap": {
         "css3": true,
@@ -150,6 +196,15 @@
         "bridge": "mask or scan becomes next beat connector"
       },
       "text_transition_device": "mask",
+      "kinetic_relay": {
+        "old_word_exit": "",
+        "new_word_entry": "masked reveal",
+        "action_object": "mask or scan line",
+        "direction": "left-to-right reveal",
+        "relay_handoff": "mask or scan becomes next beat connector",
+        "transition_midpoint_snapshot": "",
+        "score_note": ""
+      },
       "bridge_element": "mask / scan line",
       "uses_css_svg_gsap": {
         "css3": true,
@@ -182,6 +237,15 @@
         "bridge": "same bridge element introduces next beat"
       },
       "text_transition_device": "handoff",
+      "kinetic_relay": {
+        "old_word_exit": "clears through bridge",
+        "new_word_entry": "introduced by shared bridge",
+        "action_object": "scan line / SVG path / mask / light sweep",
+        "direction": "directed cut or wipe",
+        "relay_handoff": "same bridge element introduces next beat",
+        "transition_midpoint_snapshot": "",
+        "score_note": ""
+      },
       "bridge_element": "rim-light dissolve / mask wipe / directed cut",
       "uses_css_svg_gsap": {
         "css3": true,

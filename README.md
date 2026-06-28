@@ -135,4 +135,9 @@ assets/              README 视觉资产
 
 ## 作者
 
-[geekjourneyx](https://github.com/geekjourneyx) · [geekjourney.dev](https://geekjourney.dev) · [@seekjourney](https://x.com/seekjourney)
+| | |
+|:---|:---|
+| 个人主页 | [jieni.ai](https://jieni.ai) |
+| GitHub | [geekjourneyx](https://github.com/geekjourneyx) |
+| X | [@seekjourney](https://x.com/seekjourney) |
+| 公众号 | 搜索「极客杰尼」 |
