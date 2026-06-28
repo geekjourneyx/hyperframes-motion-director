@@ -2,11 +2,9 @@
 
 # HyperFrames Motion Director
 
-**把 README、文章、产品介绍，做成一条中文竖版宣传片。**
+**An Agent Skill for planning, producing, and reviewing HyperFrames motion videos.**
 
-先给你方向方案，确认后再生成画面、做动效、检查成片。适合开源项目、独立产品、工具发布、官网介绍和文章观点视频。
-
-<img src="assets/banner.png" alt="HyperFrames Motion Director cinematic motion workflow" width="100%">
+<img src="assets/banner.png" alt="HyperFrames Motion Director" width="100%">
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](./LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-HyperFrames-c96442.svg)](./SKILL.md)
@@ -14,101 +12,87 @@
 
 </div>
 
----
+## What It Is
 
-## 这是什么
+HyperFrames Motion Director is an Agent Skill for turning a product story, article, README, website, or launch message into a structured HyperFrames motion-video production.
 
-HyperFrames Motion Director 是一个用来制作宣传短片的 Codex skill。
+It defaults to Chinese-first vertical promo videos: `9:16`, `1080x1920`, concise screen copy, controlled visual assets, readable hold frames, and a review step before delivery.
 
-你可以把 README、文章、产品页或官网内容交给它。它会先整理成一版可确认的宣传片方向：讲什么、怎么拍、需要什么画面、每一屏放什么字。
+The skill keeps production in two phases:
 
-你确认后，它再继续生成图片、制作动效、截图检查，并记录最后交付结果。
+1. Create a brief/design proposal and wait for confirmation.
+2. Generate assets, build the composition, validate snapshots/renders, and write a review report.
 
-默认做中文竖版短片：9:16、1080x1920、大字清楚、画面克制，适合短视频平台传播。
+## Install
 
-## 为什么需要它
+```bash
+npx skills add geekjourneyx/hyperframes-motion-director
+```
 
-很多项目其实值得被看见，但 README、官网和产品介绍太容易被划走。
+## Use
 
-很多视频的问题出在开头：第一屏抓不住人，文字读不清，画面没有质感，最后也缺少检查。
+After installation, ask your Agent for a HyperFrames motion video, product launch film, article-to-video piece, or kinetic typography promo.
 
-这个 skill 先定宣传片方向，再做画面和动效，把项目讲清楚、拍出来、检查一遍。
-
-## 你会得到什么
-
-<img src="assets/features.png" alt="Background, typography, and motion layers working together" width="100%">
-
-- **先看方向**：先给一版宣传片方案，确认后再制作，避免一开始就做偏。
-- **中文竖版短片**：默认按 9:16、1080x1920、中文大字和短视频节奏来规划。
-- **电影感画面**：默认黑底、低亮度、高对比、大留白，白/灰/暖金三色，避开常见科技模板感。
-- **完整交付检查**：从画面、文案、截图到最终结果，都有检查记录。
-
-## 工作方式
+Example:
 
 ```text
-输入材料
-  -> 先给宣传片方向
-  -> 你确认
-  -> 生成图片和分镜
-  -> 制作动效短片
-  -> 截图检查和交付记录
+Turn this README into a 12-second Chinese vertical HyperFrames promo.
+Start with the brief/design proposal and wait for confirmation.
 ```
 
-核心原则：先让每一屏静下来也能看懂，再让动效去引导视线。
+## Local Development
 
-## 快速开始
-
-先安装 HyperFrames 官方 skill：
-
-```bash
-npx skills add heygen-com/hyperframes
-```
-
-再安装 HyperFrames Motion Director：
-
-```bash
-npx skills add https://github.com/geekjourneyx/hyperframes-motion-director
-```
-
-创建一个动效视频制作项目：
+Create a motion-video production scaffold from this repository:
 
 ```bash
 node scripts/create_project.mjs ./my-motion-film
 ```
 
-如果项目需要精确节拍或复杂动画编排：
+Create a project with timing and motion maps:
 
 ```bash
 node scripts/create_project.mjs ./my-motion-film --with-timing --with-motion
 ```
 
-## 产物结构
+## Outputs
 
-创建项目后，默认会生成四个核心文件：
-
-```text
-BRIEF_DESIGN_PROPOSAL.md  宣传片方向
-DESIGN.md                 画面风格
-STORYBOARD.md             分镜和文案
-REVIEW_REPORT.md          检查和交付记录
-```
-
-复杂项目还可以额外生成：
+The scaffold creates four core production files:
 
 ```text
-BEAT_MAP.json             节奏安排
-MOTION_MAP.json           动效安排
+BRIEF_DESIGN_PROPOSAL.md  Direction, format, visual plan, motion plan
+DESIGN.md                 Visual system, asset rules, layout contracts
+STORYBOARD.md             Beats, screen copy, timing, transitions
+REVIEW_REPORT.md          Checks, snapshots, issues, remaining risks
 ```
 
-## 质量检查
+Optional files:
 
-发布 skill 前检查结构：
+```text
+BEAT_MAP.json             Music, voiceover, or exact timing map
+MOTION_MAP.json           GSAP choreography and transition map
+```
+
+## What It Enforces
+
+<img src="assets/features.png" alt="Background, typography, and motion layers" width="100%">
+
+- A confirmed brief before implementation.
+- Chinese vertical-video defaults, with documented overrides for other platforms.
+- Image Gen assets with a clear role, quiet text zone, crop-safe area, and local path.
+- Text-over-background layout contracts before animation.
+- Motion that guides attention instead of repeating static slide patterns.
+- Validation, snapshots, and review notes before final delivery.
+- Compact artifact writing: no self-talk, generic pitch language, or unrelated commentary.
+
+## Validate This Skill
+
+Check the skill package:
 
 ```bash
 node scripts/check-structure.mjs
 ```
 
-检查具体项目的资源引用和 artifact 完整性：
+Check a generated project:
 
 ```bash
 node scripts/check_assets.mjs <project-dir>
@@ -116,28 +100,26 @@ node scripts/check_assets.mjs <project-dir> --strict
 node scripts/validate_artifacts.mjs <project-dir>
 ```
 
-已经实现 HyperFrames composition 后，再运行当前项目支持的 HyperFrames 检查和快照命令。
+For implemented HyperFrames compositions, also run the strongest checks supported by the local HyperFrames CLI, such as validate, inspect, snapshot, and render.
 
-## 仓库结构
+## Repository Structure
 
 ```text
-SKILL.md             主指令、确认门和质量门
-templates/           brief、design、storyboard、review 和可选 map 模板
-references/          工作流、视觉标准、背景图、音频同步和稳定性指南
-scripts/             脚手架、资源检查、结构检查和 artifact 完整性校验
-evals/               触发词和评测用例
-assets/              README 视觉资产
+SKILL.md             Main Agent Skill instructions
+templates/           Brief, design, storyboard, review, beat map, motion map
+references/          Workflow, visual standards, layout, audio sync, stability
+scripts/             Project scaffold and validation helpers
+evals/               Trigger prompts and evaluation cases
+assets/              README visual assets
 ```
 
-## 许可证
+## Author
+
+- Website: [jieni.ai](https://jieni.ai)
+- GitHub: [geekjourneyx](https://github.com/geekjourneyx)
+- X: [@seekjourney](https://x.com/seekjourney)
+- WeChat Official Account: 极客杰尼
+
+## License
 
 [GNU Affero General Public License v3.0](./LICENSE)
-
-## 作者
-
-| | |
-|:---|:---|
-| 个人主页 | [jieni.ai](https://jieni.ai) |
-| GitHub | [geekjourneyx](https://github.com/geekjourneyx) |
-| X | [@seekjourney](https://x.com/seekjourney) |
-| 公众号 | 搜索「极客杰尼」 |
