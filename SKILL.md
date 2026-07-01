@@ -173,6 +173,60 @@ The contract must include layout intent, image ratio, text axis, text rectangle,
 
 If the generated image puts detail, faces, product edges, UI text, or high contrast texture inside the quiet text zone, regenerate or recrop before motion. Motion cannot rescue a broken text-over-background composition.
 
+## Design Engineering Contract Rule
+
+Treat SVG, CSS, and GSAP research as production infrastructure, not as a larger bag of effects. The goal is a small Motion Design Compiler:
+
+```text
+brief -> scene schema -> vector templates -> motion primitives -> GSAP timeline -> browser snapshots -> render
+```
+
+For new production work, create or update these contracts before implementation:
+
+- `SCENE_SCHEMA.json`: structured scenes, content slots, layout contracts, timing, primitive chains, semantic selection reasons, readable holds, and snapshot tests.
+- `VECTOR_TEMPLATES.json`: approved SVG scene systems, such as `quote_card`, `data_point`, and `comparison`, with fixed slots, safe geometry, icon/decor rules, allowed primitives, and rejection tests.
+- `MOTION_PRIMITIVES.json`: approved motion vocabulary, such as `maskReveal`, `pathDraw`, `clipWipe`, `staggerText`, and `numberCount`, with semantic use cases, required selectors, GSAP properties, midpoint requirements, and rejection tests.
+
+The LLM may choose templates, fill slots, and select legal primitives. It must not freely invent SVG geometry, motion primitives, or timing grammar for production frames unless the brief explicitly calls for exploratory art and the risk is documented.
+
+Use `references/design-engineering.md` before deciding whether to add a new template, primitive, transition device, icon system, or batch generation mode.
+
+Hard rules:
+
+- Start with a small approved vocabulary before expanding style range.
+- Choose primitives by semantic role, not by visual novelty.
+- Mask, clipPath, path, SVG stroke, or CSS structure must carry at least one important reveal or transition in short promos.
+- Chinese text layout must be measured in browser snapshots before final delivery.
+- A transition midpoint must be inspectable. Blank midpoint frames are a quality failure.
+- If a project can pass with only natural-language artifacts and no structured contracts, it is still prompt-driven and not production-ready.
+
+## GSAP Choreography Contract Rule
+
+Use GSAP as the choreography engine for premium motion. Do not scatter independent tweens through the composition.
+
+Every implemented composition should use:
+
+- One paused master timeline registered for HyperFrames control.
+- Timeline labels such as `hook`, `reveal`, `proof`, and `cta`.
+- Position parameters instead of chained `delay` values.
+- Timeline defaults for shared duration and easing.
+- GSAP transform aliases such as `x`, `y`, `xPercent`, `yPercent`, `scale`, `rotation`, and `svgOrigin`.
+- `autoAlpha` instead of raw opacity when hiding/revealing elements.
+- `immediateRender: false` when stacking later `from()` / `fromTo()` tweens on the same target/property.
+- Plugin registration before use.
+
+Use premium GSAP plugins only when they serve the beat:
+
+- `SplitText` for large Chinese hook lines, keyword chains, and CTA lockups.
+- `DrawSVGPlugin` for logo strokes, proof connectors, scan rails, route lines, and inspection brackets.
+- `MorphSVGPlugin` when one idea visibly becomes another.
+- `MotionPathPlugin` when an object carries attention along a rail or path.
+- `CustomEase` for one named signature motion moment.
+
+All GSAP plugins come from the public `gsap` package. Do not add old private registry, Club GSAP, or auth-token instructions.
+
+Use `references/gsap-choreography.md` before implementing GSAP timelines, plugin usage, premium text reveals, SVG path drawing, morphing, motion paths, custom eases, or performance-sensitive motion.
+
 ## Default Language And Format
 
 Default new video work to a Chinese promotional film unless the user explicitly asks for another language or format. This default matters because Chinese copy, vertical framing, and social-video viewing habits change the whole layout:
@@ -302,6 +356,8 @@ Read `references/visual-standard.md` before judging visual quality, typography, 
 Read `references/motion-background-system.md` before deciding image count, background roles, animation grammar, or text-over-image treatment.
 Read `references/text-over-background-layout.md` before deciding layout contracts, image ratios, text rectangles, subject rectangles, title tiers, crop-safe zones, or bottom-safe boundaries.
 Read `references/motion-craft.md` before deciding kinetic typography, CSS/SVG layers, scene transitions, GSAP structure, or anti-PPT quality gates.
+Read `references/design-engineering.md` before deciding scene schemas, vector templates, motion primitives, template selection rules, render validation, or batch templates.
+Read `references/gsap-choreography.md` before implementing timelines, labels, position parameters, GSAP plugin usage, SplitText, DrawSVG, MorphSVG, MotionPath, CustomEase, or performance rules.
 
 ### 4. Storyboard And Copy
 
@@ -344,7 +400,34 @@ Every beat needs:
 
 Read `references/audio-sync.md` when music, sound design, voiceover, beat hits, or captions matter.
 
-### 5. Visual Asset Plan
+### 5. Design Engineering Contracts
+
+Create or update the production contracts from templates:
+
+- `SCENE_SCHEMA.json` from `templates/SCENE_SCHEMA.template.json`.
+- `VECTOR_TEMPLATES.json` from `templates/VECTOR_TEMPLATES.template.json`.
+- `MOTION_PRIMITIVES.json` from `templates/MOTION_PRIMITIVES.template.json`.
+
+The contracts must lock:
+
+- Approved scene templates and their slots.
+- Layout geometry, `textRect`, `subjectRect`, `safeBottomY`, title tier, and optical-centering tolerance.
+- Motion primitive chain per scene.
+- Semantic selection reason for every primitive.
+- GSAP labels, position parameters, transform aliases, plugin requirements, and `autoAlpha` policy.
+- Transition midpoint snapshot requirements.
+- Rejection tests for templates and primitives.
+- Whether content can be batch-replaced without changing layout, SVG geometry, or timing grammar.
+
+For new work, do not let the implementation invent SVG geometry or GSAP timing directly from prose. Convert the storyboard into the contracts first, then implement from the contracts.
+
+Run:
+
+```bash
+node scripts/validate_design_engineering.mjs <project-dir>
+```
+
+### 6. Visual Asset Plan
 
 If the confirmed proposal calls for bitmap assets, generate or source them before HyperFrames implementation. For new videos, default to at least one background image stage unless the brief explains a pure-code or supplied-asset approach.
 
@@ -363,7 +446,7 @@ After generation:
 - Recrop or regenerate before implementation when the image cannot hold readable text.
 - Save accepted assets into project asset folders before referencing them.
 
-### 6. Layout Before Animation
+### 7. Layout Before Animation
 
 Build readable hold frames first. A frame should communicate clearly while paused before motion is added.
 
@@ -391,7 +474,7 @@ For each scene, verify:
 
 Only add GSAP or other motion after layout works.
 
-### 7. Motion
+### 8. Motion
 
 Read `references/visual-standard.md` and `references/motion-background-system.md` before adding animation.
 
@@ -420,7 +503,7 @@ Read `references/motion-craft.md` before judging whether the movement is strong 
 
 Create optional `MOTION_MAP.json` from `templates/MOTION_MAP.template.json` only when selectors, labels, timing, easing, and transitions would otherwise become hard to review.
 
-### 8. Validation
+### 9. Validation
 
 Run the strongest available checks for the project. Prefer:
 
@@ -441,9 +524,10 @@ For local deterministic checks, use bundled scripts where helpful:
 ```bash
 node scripts/check_assets.mjs <project-dir>
 node scripts/validate_artifacts.mjs <project-dir>
+node scripts/validate_design_engineering.mjs <project-dir>
 ```
 
-### 9. Render
+### 10. Render
 
 Use a draft render for review and a higher-quality or Docker render for final delivery when available:
 
@@ -455,7 +539,7 @@ npx hyperframes render --docker --quality high --output renders/final.mp4
 
 Adjust flags to match the installed CLI.
 
-### 10. Review Report
+### 11. Review Report
 
 Create `REVIEW_REPORT.md` from `templates/REVIEW_REPORT.template.md`.
 
@@ -477,6 +561,12 @@ Before claiming the video is ready, verify:
 - Defaults or overrides are explicit: Simplified Chinese, 9:16, `1080x1920`, and vertical safe margins.
 - New-video production started only after `BRIEF_DESIGN_PROPOSAL.md` confirmation.
 - Required artifacts exist, or skipped artifacts are explained.
+- `SCENE_SCHEMA.json`, `VECTOR_TEMPLATES.json`, and `MOTION_PRIMITIVES.json` exist for new production work, or the exception is documented.
+- Scene schema references approved vector templates and approved motion primitives.
+- Motion primitives include semantic selection reasons and rejection tests.
+- GSAP timelines use labels, position parameters, defaults, transform aliases, and `autoAlpha` where appropriate.
+- GSAP plugin use is registered, documented, and chosen by semantic role.
+- The implementation does not freely invent production SVG geometry when an approved template exists.
 - A requested build produced scaffold/composition source, not prose alone.
 - Static hero frames work before animation.
 - Text fits safe margins, max lines, overflow rules, crop-safe areas, and platform overlay zones.
@@ -484,6 +574,7 @@ Before claiming the video is ready, verify:
 - Generated images have a role, target scene, quiet text zone, accepted local path, and usable crop before use.
 - Multi-scene work has meaningful scene bridges, readable holds, and a motion craft plan.
 - Kinetic relay work includes keyword chain, action-object chain, direction map, relay continuity, midpoint snapshots, and a score of 90 or higher.
+- Design engineering validation has run, including scene schema, vector template, and motion primitive checks.
 - Typography, visual objects, image stages, and motion all support the extracted essence.
 - The work avoids repeated fade-ups, identical centered layouts, empty black gaps, generic icon clutter, and interchangeable wallpaper.
 - Timing is deterministic; HyperFrames validation or the best available substitute has run.
@@ -509,6 +600,8 @@ Use seeded randomness, fixed duration, fixed fps, fixed dimensions, local assets
 - Read `references/visual-standard.md` when judging style, typography, layout, and motion.
 - Read `references/text-over-background-layout.md` when planning layout contracts, text rectangles, subject rectangles, title tiers, crop-safe zones, and mobile safe boundaries.
 - Read `references/motion-craft.md` when planning kinetic typography, CSS3/SVG structure, GSAP choreography, scene transitions, or anti-PPT improvements.
+- Read `references/design-engineering.md` when planning scene schemas, SVG template libraries, motion primitive catalogs, selection rules, browser validation, or batch template mode.
+- Read `references/gsap-choreography.md` when planning GSAP timelines, plugin registration, SplitText, DrawSVG, MorphSVG, MotionPath, CustomEase, position parameters, and performance.
 - Read `references/audio-sync.md` when timing to music, voiceover, or captions.
 - Read `references/hyperframes-stability.md` before implementing or debugging render behavior.
 
@@ -520,6 +613,9 @@ Use the templates in `templates/` for production artifacts:
 - `DESIGN.template.md`
 - `STORYBOARD.template.md`
 - `REVIEW_REPORT.template.md`
+- `SCENE_SCHEMA.template.json`
+- `VECTOR_TEMPLATES.template.json`
+- `MOTION_PRIMITIVES.template.json`
 
 Optional templates:
 
@@ -535,7 +631,8 @@ node scripts/check-structure.mjs
 node scripts/create_project.mjs <target-dir>
 node scripts/check_assets.mjs <project-dir>
 node scripts/validate_artifacts.mjs <project-dir>
+node scripts/validate_design_engineering.mjs <project-dir>
 node scripts/build_review_pack.mjs <project-dir>
 ```
 
-`check-structure.mjs` checks the skill package. The other scripts help with project scaffolding, local asset checks, artifact completeness validation, and optional review pack generation. These scripts do not prove visual quality; they only catch workflow, structure, and reproducibility problems.
+`check-structure.mjs` checks the skill package. The other scripts help with project scaffolding, local asset checks, artifact completeness validation, design engineering contract validation, and optional review pack generation. These scripts do not prove visual quality; they only catch workflow, structure, and reproducibility problems.

@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0] - 2026-07-01
+
+### Added
+
+- Added `references/design-engineering.md` to define the Motion Design Compiler production model: scene schema, vector templates, motion primitives, GSAP timeline, browser snapshots, and render.
+- Added `references/gsap-choreography.md` to turn GSAP Skills guidance into production rules for timeline labels, position parameters, transform aliases, `autoAlpha`, plugin registration, premium SVG/text plugins, and performance.
+- Added `SCENE_SCHEMA.template.json`, `VECTOR_TEMPLATES.template.json`, and `MOTION_PRIMITIVES.template.json` so new projects start with structured design-engineering contracts instead of prose-only direction.
+- Added `scripts/validate_design_engineering.mjs` to validate scene schemas, approved vector templates, approved motion primitives, semantic primitive selection reasons, GSAP choreography policy, plugin policy, and snapshot tests.
+
+### Changed
+
+- Updated `SKILL.md` with Design Engineering Contract and GSAP Choreography Contract rules.
+- Updated project scaffolding so generated productions include `SCENE_SCHEMA.json`, `VECTOR_TEMPLATES.json`, and `MOTION_PRIMITIVES.json` by default.
+- Expanded artifact validation, asset checks, review-pack assembly, README, and AGENTS guidance to include design-engineering contracts.
+- Upgraded the motion primitive contract with premium promo primitives: `splitTextReveal`, `drawSvgAccent`, `morphSymbol`, `motionPathHandoff`, and `customEaseSignature`.
+
+### Validation
+
+- Ran `node scripts/check-structure.mjs`.
+- Ran syntax checks for `scripts/validate_design_engineering.mjs`, `scripts/create_project.mjs`, and `scripts/validate_artifacts.mjs`.
+- Generated `/tmp/hfmd-gsap-smoke` with timing and motion templates.
+- Ran `node scripts/validate_design_engineering.mjs /tmp/hfmd-gsap-smoke`.
+- Ran `node scripts/check_assets.mjs /tmp/hfmd-gsap-smoke`.
+- Confirmed blank Markdown production templates still fail artifact completeness validation as expected, while scene schema, vector template, motion primitive, and GSAP choreography contract checks pass.
+
 ## [2.3.0] - 2026-06-05
 
 ### Added

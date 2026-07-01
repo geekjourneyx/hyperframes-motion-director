@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "style_lock": {
+    "background": "#050505",
+    "foreground": "#f5f2eb",
+    "muted": "#8c8c8c",
+    "accent": "#c8a45d",
+    "stroke_width_px": 2,
+    "corner_radius_px": 8,
+    "letter_spacing": 0
+  },
+  "templates": [
+    {
+      "id": "quote_card",
+      "purpose": "Huge claim, quote, or hook where text is the main image.",
+      "slots": {
+        "title": { "required": true, "max_lines": 2, "max_chinese_chars": 14 },
+        "support": { "required": false, "max_lines": 1, "max_chinese_chars": 20 },
+        "accent_path": { "required": true, "role": "underline / scan rail / transition bridge" },
+        "icon": { "required": false, "allowed_roles": ["seal", "cursor", "scan-mark"] }
+      },
+      "layout": {
+        "default_intent": "center impact type",
+        "text_axis": "center axis",
+        "textRect": { "x": 120, "y": 520, "w": 840, "h": 520 },
+        "subjectRect": "none",
+        "safeBottomY": 1632,
+        "title_tier": "hero",
+        "vertical_center_tolerance_px": 24
+      },
+      "svg_parts": [".accent-path", ".mask-window", ".scan-rail"],
+      "allowed_primitives": ["maskReveal", "pathDraw", "staggerText", "clipWipe"],
+      "rejection_tests": [
+        "title_more_than_two_lines",
+        "title_outside_textRect",
+        "accent_path_not_connected_to_keyword",
+        "all_motion_is_opacity_y"
+      ]
+    },
+    {
+      "id": "data_point",
+      "purpose": "One number, proof statement, or result that needs a crisp lock.",
+      "slots": {
+        "data": { "required": true, "max_chars": 8 },
+        "title": { "required": true, "max_lines": 1, "max_chinese_chars": 10 },
+        "support": { "required": false, "max_lines": 1, "max_chinese_chars": 18 },
+        "proof_label": { "required": false, "max_lines": 1, "max_chinese_chars": 8 }
+      },
+      "layout": {
+        "default_intent": "center symbol hold",
+        "text_axis": "center axis",
+        "textRect": { "x": 110, "y": 460, "w": 860, "h": 620 },
+        "subjectRect": { "x": 180, "y": 600, "w": 720, "h": 360 },
+        "safeBottomY": 1632,
+        "title_tier": "large",
+        "vertical_center_tolerance_px": 28
+      },
+      "svg_parts": [".number-frame", ".proof-tick", ".meter-path"],
+      "allowed_primitives": ["numberCount", "maskReveal", "pathDraw", "clipWipe"],
+      "rejection_tests": [
+        "data_not_largest_visual",
+        "number_count_without_proof_lock",
+        "proof_label_below_safeBottomY",
+        "mixed_ratio_evidence_panels"
+      ]
+    },
+    {
+      "id": "comparison",
+      "purpose": "Before/after, tension/resolution, old/new, or problem/answer scenes.",
+      "slots": {
+        "left_title": { "required": true, "max_lines": 2, "max_chinese_chars": 10 },
+        "right_title": { "required": true, "max_lines": 2, "max_chinese_chars": 10 },
+        "bridge_label": { "required": false, "max_lines": 1, "max_chinese_chars": 8 },
+        "accent_path": { "required": true, "role": "shared rail / divider / handoff" }
+      },
+      "layout": {
+        "default_intent": "split product / claim",
+        "text_axis": "split axis",
+        "leftTextRect": { "x": 96, "y": 520, "w": 390, "h": 520 },
+        "rightTextRect": { "x": 594, "y": 520, "w": 390, "h": 520 },
+        "subjectRect": "split halves",
+        "safeBottomY": 1632,
+        "title_tier": "main",
+        "vertical_center_tolerance_px": 30
+      },
+      "svg_parts": [".divider-path", ".left-mask", ".right-mask", ".handoff-rail"],
+      "allowed_primitives": ["clipWipe", "pathDraw", "maskReveal", "staggerText"],
+      "rejection_tests": [
+        "left_right_text_not_aligned",
+        "divider_path_is_decorative_only",
+        "transition_midpoint_blank",
+        "same_side_repeats_without_handoff"
+      ]
+    }
+  ],
+  "icon_and_decoration_rules": {
+    "max_functional_mark_types": 3,
+    "allowed_roles": ["scan-rail", "seal", "proof-tick", "cursor", "frame-corner", "route-node"],
+    "forbidden_roles": ["random sparkle", "generic rocket", "per-line icon", "decorative badge cluster"],
+    "removal_test": "Deleting the mark must reduce comprehension, attention direction, proof, or memory."
+  }
+}

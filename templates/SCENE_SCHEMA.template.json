@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "composition_id": "root",
+  "format": {
+    "language": "zh-CN",
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds": 12,
+    "safe_zones": {
+      "top_px": 192,
+      "bottom_px": 288,
+      "right_px": 130
+    }
+  },
+  "compiler_policy": {
+    "llm_may_choose_templates": true,
+    "llm_may_fill_slots": true,
+    "llm_may_invent_svg_geometry": false,
+    "llm_may_invent_motion_primitives": false,
+    "requires_browser_text_measurement": true,
+    "requires_snapshot_validation": true
+  },
+  "approved_contracts": {
+    "vector_templates_file": "VECTOR_TEMPLATES.json",
+    "motion_primitives_file": "MOTION_PRIMITIVES.json",
+    "motion_map_file": "MOTION_MAP.json"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "template_id": "quote_card",
+      "role": "hook",
+      "time": {
+        "start": 0,
+        "end": 3.2,
+        "readable_hold_start": 1.1,
+        "readable_hold_end": 2.5
+      },
+      "content_slots": {
+        "title": "",
+        "support": "",
+        "proof": "",
+        "data": "",
+        "icon": "none",
+        "cta": ""
+      },
+      "layout_contract": {
+        "intent": "center impact type",
+        "image_ratio": "9:16",
+        "text_axis": "center axis",
+        "textRect": { "x": 120, "y": 520, "w": 840, "h": 520 },
+        "subjectRect": "none",
+        "quiet_zone": "center 70% protected by black field or low-detail plate",
+        "safeBottomY": 1632,
+        "title_tier": "hero",
+        "motion_bounds": "title and accent path stay inside textRect during entry, hold, and exit",
+        "vertical_center_tolerance_px": 24
+      },
+      "primitive_chain": [
+        {
+          "primitive_id": "maskReveal",
+          "target": ".scene-hook .title",
+          "selection_reason": "The hook should feel disclosed, not faded in."
+        },
+        {
+          "primitive_id": "pathDraw",
+          "target": ".scene-hook .accent-path",
+          "selection_reason": "The accent path guides attention to the amplified keyword."
+        }
+      ],
+      "snapshot_tests": [
+        {
+          "id": "hook-hero",
+          "at": 1.4,
+          "assertions": ["title_inside_textRect", "optical_center_passes", "accent_path_visible"]
+        },
+        {
+          "id": "hook-transition-midpoint",
+          "at": 2.8,
+          "assertions": ["not_blank", "text_not_in_bottom_overlay"]
+        }
+      ]
+    }
+  ],
+  "batch_inputs": {
+    "content_family": "quote / data / comparison / launch",
+    "replaceable_fields": ["title", "support", "proof", "data", "cta"],
+    "non_replaceable_fields": ["template_id", "layout_contract", "primitive_chain"]
+  }
+}

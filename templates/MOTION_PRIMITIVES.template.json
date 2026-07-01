@@ -1,0 +1,147 @@
+{
+  "version": 1,
+  "timeline_policy": {
+    "library": "gsap",
+    "master_timeline_required": true,
+    "paused": true,
+    "absolute_positions_or_labels": true,
+    "labels_required": ["hook", "reveal", "proof", "cta"],
+    "position_parameters_required": true,
+    "delay_chains_forbidden": true,
+    "registered_to": "window.__timelines",
+    "forbidden_timing_sources": ["Date.now", "Math.random", "setTimeout", "setInterval", "requestAnimationFrame"]
+  },
+  "gsap_policy": {
+    "defaults_required": true,
+    "prefer_transform_aliases": ["x", "y", "xPercent", "yPercent", "scale", "rotation", "svgOrigin"],
+    "prefer_autoAlpha_over_opacity": true,
+    "forbid_layout_motion_properties": ["top", "left", "right", "bottom", "width", "height", "margin", "padding"],
+    "immediateRender_false_when_stacking_from_tweens": true,
+    "plugin_registration_required": true,
+    "plugins_from_public_gsap_package": true,
+    "reduced_motion_policy": "For interactive previews use gsap.matchMedia(); for fixed renders document why reduced motion does or does not apply."
+  },
+  "plugin_policy": {
+    "allowed_plugins": ["DrawSVGPlugin", "MorphSVGPlugin", "MotionPathPlugin", "SplitText", "CustomEase", "Flip"],
+    "default_video_plugins": ["DrawSVGPlugin", "MorphSVGPlugin", "MotionPathPlugin", "SplitText", "CustomEase"],
+    "private_registry_required": false,
+    "registration_pattern": "gsap.registerPlugin(DrawSVGPlugin, MorphSVGPlugin, MotionPathPlugin, SplitText, CustomEase)"
+  },
+  "primitives": [
+    {
+      "id": "maskReveal",
+      "semantic_use": ["disclosure", "reveal", "proof emergence", "CTA lock"],
+      "required_selectors": ["target", "mask"],
+      "required_timing": ["start", "duration", "readable_hold_start", "readable_hold_end"],
+      "gsap_properties": ["clipPath", "maskPosition", "opacity", "transform"],
+      "default_ease": "expo.out",
+      "midpoint_snapshot_required": true,
+      "rejection_tests": ["opacity_is_primary_reveal", "target_not_readable_after_lock", "mask_moves_text_outside_textRect"]
+    },
+    {
+      "id": "pathDraw",
+      "semantic_use": ["route", "process", "connector", "signature", "proof trace", "logo stroke"],
+      "required_selectors": ["path"],
+      "required_timing": ["start", "duration"],
+      "gsap_properties": ["strokeDasharray", "strokeDashoffset", "opacity"],
+      "default_ease": "sine.inOut",
+      "midpoint_snapshot_required": true,
+      "rejection_tests": ["path_has_no_semantic_target", "path_only_decorates_empty_space", "stroke_width_inconsistent"]
+    },
+    {
+      "id": "clipWipe",
+      "semantic_use": ["scene replacement", "comparison handoff", "crop discovery", "transition rail"],
+      "required_selectors": ["from_scene", "to_scene", "clip"],
+      "required_timing": ["start", "duration", "midpoint"],
+      "gsap_properties": ["clipPath", "transform", "opacity"],
+      "default_ease": "power2.inOut",
+      "midpoint_snapshot_required": true,
+      "rejection_tests": ["midpoint_blank", "old_and_new_scene_both_unreadable", "wipe_direction_unrelated_to_layout_axis"]
+    },
+    {
+      "id": "staggerText",
+      "semantic_use": ["keyword chain", "typed emphasis", "short capability list", "rhythmic hook"],
+      "required_selectors": ["words"],
+      "required_timing": ["start", "stagger", "duration", "readable_hold_start", "readable_hold_end"],
+      "gsap_properties": ["clipPath", "opacity", "y", "filter"],
+      "default_ease": "expo.out",
+      "midpoint_snapshot_required": false,
+      "rejection_tests": ["paragraph_staggered", "readable_hold_missing", "all_words_same_weight"]
+    },
+    {
+      "id": "numberCount",
+      "semantic_use": ["metric proof", "growth", "countdown", "data shock", "milestone"],
+      "required_selectors": ["number", "proof_label"],
+      "required_timing": ["start", "duration", "proof_lock_start", "proof_lock_end"],
+      "gsap_properties": ["textContent", "opacity", "transform"],
+      "default_ease": "power3.out",
+      "midpoint_snapshot_required": false,
+      "rejection_tests": ["number_not_largest_visual", "count_has_no_final_lock", "number_is_decorative"]
+    },
+    {
+      "id": "splitTextReveal",
+      "semantic_use": ["large Chinese hook", "keyword chain", "CTA lockup", "manifesto line"],
+      "required_plugins": ["SplitText"],
+      "required_selectors": ["text"],
+      "required_timing": ["start", "stagger", "duration", "readable_hold_start", "readable_hold_end"],
+      "gsap_properties": ["autoAlpha", "yPercent", "clipPath", "filter"],
+      "default_ease": "power3.out",
+      "midpoint_snapshot_required": true,
+      "rejection_tests": ["dense_paragraph_split", "readable_hold_missing", "split_structure_not_cleaned_up_when_required"]
+    },
+    {
+      "id": "drawSvgAccent",
+      "semantic_use": ["logo stroke", "scan rail", "proof connector", "route", "inspection bracket"],
+      "required_plugins": ["DrawSVGPlugin"],
+      "required_selectors": ["path"],
+      "required_timing": ["start", "duration", "midpoint"],
+      "gsap_properties": ["drawSVG", "autoAlpha"],
+      "default_ease": "sine.inOut",
+      "midpoint_snapshot_required": true,
+      "rejection_tests": ["path_has_no_semantic_target", "stroke_width_inconsistent", "midpoint_not_intentional"]
+    },
+    {
+      "id": "morphSymbol",
+      "semantic_use": ["problem_to_solution", "rough_to_clean", "fragment_to_mark", "old_workflow_to_new_workflow"],
+      "required_plugins": ["MorphSVGPlugin"],
+      "required_selectors": ["source_path", "target_path"],
+      "required_timing": ["start", "duration", "readable_hold_start", "readable_hold_end"],
+      "gsap_properties": ["morphSVG", "autoAlpha", "scale"],
+      "default_ease": "power2.inOut",
+      "midpoint_snapshot_required": true,
+      "rejection_tests": ["paths_too_complex", "morph_twists_without_shapeIndex_review", "morph_is_decorative_only"]
+    },
+    {
+      "id": "motionPathHandoff",
+      "semantic_use": ["cursor_handoff", "scan_dot_route", "proof_tick_connector", "tile_transition_rail"],
+      "required_plugins": ["MotionPathPlugin"],
+      "required_selectors": ["follower", "path"],
+      "required_timing": ["start", "duration", "handoff_time"],
+      "gsap_properties": ["motionPath", "autoAlpha", "scale"],
+      "default_ease": "power2.inOut",
+      "midpoint_snapshot_required": true,
+      "rejection_tests": ["path_does_not_handoff_attention", "autoRotate_confuses_direction", "follower_wanders_without_purpose"]
+    },
+    {
+      "id": "customEaseSignature",
+      "semantic_use": ["brand_reveal_snap", "scan_settle", "title_compression_release", "proof_lock"],
+      "required_plugins": ["CustomEase"],
+      "required_selectors": ["target"],
+      "required_timing": ["start", "duration"],
+      "gsap_properties": ["x", "y", "scale", "autoAlpha", "clipPath"],
+      "default_ease": "custom",
+      "midpoint_snapshot_required": false,
+      "rejection_tests": ["custom_ease_used_for_ordinary_motion", "more_than_one_signature_curve_without_reason", "ease_not_named_or_documented"]
+    }
+  ],
+  "selection_rules": [
+    "Choose primitives by semantic use, not by visual variety.",
+    "No scene may use more than two primary primitives.",
+    "At least one important transition in a short promo must use maskReveal, clipWipe, or pathDraw.",
+    "At least one premium promo moment should use SplitText, DrawSVG, MorphSVG, MotionPath, or CustomEase when the concept justifies it.",
+    "Use timeline labels and position parameters instead of delay chains.",
+    "Use transform aliases and autoAlpha for motion-critical properties.",
+    "If all important beats use opacity plus y-position, the motion map fails.",
+    "If a primitive has no snapshot or rejection-test evidence, it is not ready for final render."
+  ]
+}

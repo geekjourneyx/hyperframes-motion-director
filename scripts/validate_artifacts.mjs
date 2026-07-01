@@ -132,6 +132,26 @@ const checks = [
     validators: ["layoutContract", "titleTier"],
   },
   {
+    name: "Scene schema enforces layout, primitive, and snapshot contracts",
+    file: "SCENE_SCHEMA.json",
+    pattern: /"compiler_policy"[\s\S]*"llm_may_invent_svg_geometry": false[\s\S]*"requires_browser_text_measurement": true[\s\S]*"requires_snapshot_validation": true[\s\S]*"scenes"[\s\S]*"template_id"[\s\S]*"layout_contract"[\s\S]*"textRect"[\s\S]*"safeBottomY"[\s\S]*"primitive_chain"[\s\S]*"selection_reason"[\s\S]*"snapshot_tests"/,
+  },
+  {
+    name: "Vector template library defines approved SVG scene systems",
+    file: "VECTOR_TEMPLATES.json",
+    pattern: /"templates"[\s\S]*"quote_card"[\s\S]*"data_point"[\s\S]*"comparison"[\s\S]*"allowed_primitives"[\s\S]*"rejection_tests"[\s\S]*"icon_and_decoration_rules"/,
+  },
+  {
+    name: "Motion primitive library defines semantic GSAP/SVG vocabulary",
+    file: "MOTION_PRIMITIVES.json",
+    pattern: /"timeline_policy"[\s\S]*"master_timeline_required": true[\s\S]*"primitives"[\s\S]*"maskReveal"[\s\S]*"pathDraw"[\s\S]*"clipWipe"[\s\S]*"staggerText"[\s\S]*"numberCount"[\s\S]*"selection_rules"/,
+  },
+  {
+    name: "GSAP choreography policy defines labels, plugins, and performance rules",
+    file: "MOTION_PRIMITIVES.json",
+    pattern: /"labels_required"[\s\S]*"hook"[\s\S]*"reveal"[\s\S]*"proof"[\s\S]*"cta"[\s\S]*"gsap_policy"[\s\S]*"prefer_autoAlpha_over_opacity": true[\s\S]*"plugin_policy"[\s\S]*"DrawSVGPlugin"[\s\S]*"MorphSVGPlugin"[\s\S]*"MotionPathPlugin"[\s\S]*"SplitText"[\s\S]*"CustomEase"[\s\S]*"splitTextReveal"[\s\S]*"drawSvgAccent"[\s\S]*"morphSymbol"[\s\S]*"motionPathHandoff"[\s\S]*"customEaseSignature"/,
+  },
+  {
     name: "Review report records validation, style gate, and next edit",
     file: "REVIEW_REPORT.md",
     pattern: /## Writing Standard[\s\S]*Sentence style:[\s\S]*Avoid:[\s\S]*Keep:[\s\S]*## Output[\s\S]*## Validation[\s\S]*first eye target[\s\S]*transition midpoints[\s\S]*layout overflow[\s\S]*kinetic typography[\s\S]*SVG \/ CSS3 motion structure[\s\S]*anti-PPT verdict[\s\S]*## Kinetic Relay Score[\s\S]*First-eye impact \/ 20[\s\S]*Relay continuity \/ 20[\s\S]*Total \/ 100[\s\S]*## Style Gate[\s\S]*Background image or pure-code exception is verified:[\s\S]*Layout contract matches the image and message shape:[\s\S]*TextRect, subjectRect, and safeBottomY are verified:[\s\S]*Mobile safe zones are respected:[\s\S]*Motion bounds preserve readability:[\s\S]*Motion has a clear attention target:[\s\S]*Text transitions define entry, lock, emphasis, exit, and bridge:[\s\S]*Kinetic relay keyword chain is visible when relevant:[\s\S]*Action objects participate in transitions when relevant:[\s\S]*Video would lose meaning if reduced to screenshots:[\s\S]*Hold-frame verdict passed for hero frames:[\s\S]*## No-Go Gates[\s\S]*Kinetic relay promos target 100 before final delivery:[\s\S]*Kinetic relay promos below 90 are blocked from final delivery:[\s\S]*Anti-PPT verdict:[\s\S]*## Layout Contract Revisions[\s\S]*## Recommended Next Edit[\s\S]*## Remaining Risks/,

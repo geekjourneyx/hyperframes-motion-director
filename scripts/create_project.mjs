@@ -36,6 +36,9 @@ const templateMap = {
   "BRIEF_DESIGN_PROPOSAL.template.md": "BRIEF_DESIGN_PROPOSAL.md",
   "DESIGN.template.md": "DESIGN.md",
   "STORYBOARD.template.md": "STORYBOARD.md",
+  "SCENE_SCHEMA.template.json": "SCENE_SCHEMA.json",
+  "VECTOR_TEMPLATES.template.json": "VECTOR_TEMPLATES.json",
+  "MOTION_PRIMITIVES.template.json": "MOTION_PRIMITIVES.json",
   "REVIEW_REPORT.template.md": "REVIEW_REPORT.md",
 };
 
@@ -63,11 +66,14 @@ Default production assumption: Simplified Chinese promotional film, vertical 9:1
 1. BRIEF_DESIGN_PROPOSAL.md
 2. DESIGN.md
 3. STORYBOARD.md
-4. REVIEW_REPORT.md
-5. compositions/
-6. snapshots/
-7. renders/
-8. REVIEW_PACK.md (generated after review assets exist)
+4. SCENE_SCHEMA.json
+5. VECTOR_TEMPLATES.json
+6. MOTION_PRIMITIVES.json
+7. REVIEW_REPORT.md
+8. compositions/
+9. snapshots/
+10. renders/
+11. REVIEW_PACK.md (generated after review assets exist)
 
 Optional:
 
@@ -80,6 +86,7 @@ Optional:
 node ${skillRoot}/scripts/check_assets.mjs .
 node ${skillRoot}/scripts/check_assets.mjs . --strict
 node ${skillRoot}/scripts/validate_artifacts.mjs .
+node ${skillRoot}/scripts/validate_design_engineering.mjs .
 npx hyperframes lint
 npx hyperframes validate
 npx hyperframes inspect
@@ -95,5 +102,6 @@ for (const dir of gitkeepDirs) {
 
 console.log(`Created HyperFrames motion production scaffold at ${target}`);
 console.log("Next: fill BRIEF_DESIGN_PROPOSAL.md and get confirmation before generating images or implementing composition source.");
+console.log("Design engineering contracts included: SCENE_SCHEMA.json, VECTOR_TEMPLATES.json, MOTION_PRIMITIVES.json.");
 if (!withTiming) console.log("Optional: rerun with --with-timing if music, voiceover, or exact beat hits matter.");
 if (!withMotion) console.log("Optional: rerun with --with-motion if GSAP choreography needs a separate motion map.");

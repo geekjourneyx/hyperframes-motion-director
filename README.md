@@ -65,6 +65,14 @@ STORYBOARD.md             Beats, screen copy, timing, transitions
 REVIEW_REPORT.md          Checks, snapshots, issues, remaining risks
 ```
 
+It also creates three design-engineering contracts:
+
+```text
+SCENE_SCHEMA.json         Structured scenes, slots, layout contracts, timing, snapshots
+VECTOR_TEMPLATES.json     Approved SVG scene systems, icon/decor rules, rejection tests
+MOTION_PRIMITIVES.json    Approved GSAP/SVG/CSS motion vocabulary, plugin policy, selection rules
+```
+
 Optional files:
 
 ```text
@@ -80,6 +88,8 @@ MOTION_MAP.json           GSAP choreography and transition map
 - Chinese vertical-video defaults, with documented overrides for other platforms.
 - Image Gen assets with a clear role, quiet text zone, crop-safe area, and local path.
 - Text-over-background layout contracts before animation.
+- Scene schema, vector template, and motion primitive contracts before implementation.
+- GSAP choreography contracts: labels, position parameters, plugin registration, transform aliases, and performance rules.
 - Motion that guides attention instead of repeating static slide patterns.
 - Validation, snapshots, and review notes before final delivery.
 - Compact artifact writing: no self-talk, generic pitch language, or unrelated commentary.
@@ -98,6 +108,7 @@ Check a generated project:
 node scripts/check_assets.mjs <project-dir>
 node scripts/check_assets.mjs <project-dir> --strict
 node scripts/validate_artifacts.mjs <project-dir>
+node scripts/validate_design_engineering.mjs <project-dir>
 ```
 
 For implemented HyperFrames compositions, also run the strongest checks supported by the local HyperFrames CLI, such as validate, inspect, snapshot, and render.
@@ -106,8 +117,8 @@ For implemented HyperFrames compositions, also run the strongest checks supporte
 
 ```text
 SKILL.md             Main Agent Skill instructions
-templates/           Brief, design, storyboard, review, beat map, motion map
-references/          Workflow, visual standards, layout, audio sync, stability
+templates/           Brief, design, storyboard, review, schema, vector, motion maps
+references/          Workflow, visual standards, design engineering, GSAP choreography, layout, audio sync, stability
 scripts/             Project scaffold and validation helpers
 evals/               Trigger prompts and evaluation cases
 assets/              README visual assets

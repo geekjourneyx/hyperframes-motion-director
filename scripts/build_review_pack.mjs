@@ -18,10 +18,14 @@ const artifacts = [
   "BRIEF_DESIGN_PROPOSAL.md",
   "DESIGN.md",
   "STORYBOARD.md",
+  "SCENE_SCHEMA.json",
+  "VECTOR_TEMPLATES.json",
+  "MOTION_PRIMITIVES.json",
   "BEAT_MAP.json",
   "MOTION_MAP.json",
   "REVIEW_REPORT.md",
   "ARTIFACT_VALIDATION.json",
+  "DESIGN_ENGINEERING_VALIDATION.json",
 ].filter((file) => existsSync(join(root, file)));
 
 const renders = listFiles("renders");
