@@ -98,5 +98,20 @@
     "allowed_roles": ["scan-rail", "seal", "proof-tick", "cursor", "frame-corner", "route-node"],
     "forbidden_roles": ["random sparkle", "generic rocket", "per-line icon", "decorative badge cluster"],
     "removal_test": "Deleting the mark must reduce comprehension, attention direction, proof, or memory."
+  },
+  "support_asset_policy": {
+    "allowed_decisions": ["none", "generated", "supplied", "code-generated", "mixed"],
+    "allowed_roles": ["symbol", "texture", "anchor", "transition plate", "semantic glyph", "motion accent", "product fragment"],
+    "preferred_code_generated_roles": ["scan rail", "mask", "path", "bracket", "glyph", "frame corner", "motion accent"],
+    "preferred_bitmap_roles": ["background texture", "material surface", "product crop", "proof-safe UI crop", "atmosphere plate"],
+    "style_lock_fields": ["palette", "lighting direction", "texture language", "perspective", "contrast level", "negative-space discipline"],
+    "required_contract_fields": ["decision", "roles", "source", "style_lock", "safe_zones", "motion_purpose", "entrance_exit_timing", "deletion_trigger"],
+    "rejection_tests": [
+      "support_asset_has_no_motion_purpose",
+      "support_asset_competes_with_title_or_cta",
+      "support_asset_breaks_shared_style_lock",
+      "support_asset_enters_textRect_without_being_a_mask",
+      "generated_asset_sheet_contains_unassigned_elements"
+    ]
   }
 }

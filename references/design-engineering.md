@@ -38,6 +38,7 @@ Each scene must declare:
 - `template_id`: one approved vector template.
 - `content_slots`: title, support, proof, data, icon, CTA, or empty.
 - `layout_contract`: textRect, subjectRect, title tier, safeBottomY, motion bounds, and quiet zone.
+- `support_assets`: decision, roles, source, style lock, safe zones, motion purpose, entrance/exit timing, and deletion trigger.
 - `primitive_chain`: the approved motion primitives used by the scene.
 - `selection_reason`: why each primitive fits the meaning of the beat.
 - `readable_hold`: start and end timestamps for text stillness.
@@ -58,11 +59,14 @@ Each vector template must define:
 - Slots and maximum text density.
 - Fixed layout zones and safe margins.
 - Allowed icon/decor roles.
+- Support asset policy for whether symbols, textures, transition plates, semantic glyphs, product fragments, or motion accents are allowed.
 - SVG parts that can animate.
 - Disallowed uses.
 - Snapshot acceptance rules.
 
 Do not let the LLM freely invent SVG geometry for production frames. It may choose and fill approved templates.
+
+Support assets must not bypass this rule. Code-generated paths, masks, glyphs, rails, and marks belong in the vector template system when they need sharp synchronized motion. Bitmap support assets require a declared role, local path after generation, safe zones, motion purpose, and deletion trigger.
 
 ## Motion Primitives
 

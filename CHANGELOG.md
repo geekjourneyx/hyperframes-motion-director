@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.1] - 2026-07-01
+
+### Fixed
+
+- Wired the support-asset system into the v2.4 design-engineering contracts instead of leaving it only in prose artifacts.
+- Added `support_assets` to `SCENE_SCHEMA.template.json` with decision, role, source, style lock, safe zones, motion purpose, entrance/exit timing, and deletion trigger.
+- Added `support_asset_policy` to `VECTOR_TEMPLATES.template.json` so vector templates constrain support asset roles, style-lock fields, required contract fields, and rejection tests.
+- Strengthened `scripts/validate_design_engineering.mjs` so missing support-asset contracts fail design-engineering validation.
+- Updated artifact validation and design-engineering guidance so support assets remain part of the structured Motion Design Compiler workflow.
+
+### Validation
+
+- Ran `node --check scripts/validate_design_engineering.mjs`.
+- Ran `node --check scripts/validate_artifacts.mjs`.
+- Ran `node scripts/check-structure.mjs`.
+- Generated `/tmp/hfmd-support-green` with timing and motion templates.
+- Ran `node scripts/validate_design_engineering.mjs /tmp/hfmd-support-green`.
+- Ran `node scripts/check_assets.mjs /tmp/hfmd-support-green`.
+- Confirmed blank Markdown production templates still fail artifact completeness validation as expected, while all structured design-engineering contract checks pass.
+
 ## [2.5.0] - 2026-07-01
 
 ### Added

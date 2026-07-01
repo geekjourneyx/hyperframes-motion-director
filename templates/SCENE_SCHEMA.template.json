@@ -58,6 +58,18 @@
         "motion_bounds": "title and accent path stay inside textRect during entry, hold, and exit",
         "vertical_center_tolerance_px": 24
       },
+      "support_assets": {
+        "decision": "code-generated",
+        "roles": ["motion accent"],
+        "count": 1,
+        "source": "code-generated",
+        "local_paths": [],
+        "style_lock": "Matches vector template palette, stroke width, contrast, and lighting direction.",
+        "safe_zones": "Must stay outside textRect and below top platform UI unless acting as the title reveal mask.",
+        "motion_purpose": "The accent path guides attention and becomes transition material.",
+        "entrance_exit_timing": "Enters after title mask reveal; exits or hands off before scene transition.",
+        "deletion_trigger": "Delete if the path does not guide attention, bridge a transition, or strengthen the keyword."
+      },
       "primitive_chain": [
         {
           "primitive_id": "maskReveal",
@@ -87,6 +99,6 @@
   "batch_inputs": {
     "content_family": "quote / data / comparison / launch",
     "replaceable_fields": ["title", "support", "proof", "data", "cta"],
-    "non_replaceable_fields": ["template_id", "layout_contract", "primitive_chain"]
+    "non_replaceable_fields": ["template_id", "layout_contract", "support_assets", "primitive_chain"]
   }
 }

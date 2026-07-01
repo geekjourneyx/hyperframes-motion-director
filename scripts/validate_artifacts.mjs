@@ -152,12 +152,12 @@ const checks = [
   {
     name: "Scene schema enforces layout, primitive, and snapshot contracts",
     file: "SCENE_SCHEMA.json",
-    pattern: /"compiler_policy"[\s\S]*"llm_may_invent_svg_geometry": false[\s\S]*"requires_browser_text_measurement": true[\s\S]*"requires_snapshot_validation": true[\s\S]*"scenes"[\s\S]*"template_id"[\s\S]*"layout_contract"[\s\S]*"textRect"[\s\S]*"safeBottomY"[\s\S]*"primitive_chain"[\s\S]*"selection_reason"[\s\S]*"snapshot_tests"/,
+    pattern: /"compiler_policy"[\s\S]*"llm_may_invent_svg_geometry": false[\s\S]*"requires_browser_text_measurement": true[\s\S]*"requires_snapshot_validation": true[\s\S]*"scenes"[\s\S]*"template_id"[\s\S]*"layout_contract"[\s\S]*"textRect"[\s\S]*"safeBottomY"[\s\S]*"support_assets"[\s\S]*"deletion_trigger"[\s\S]*"primitive_chain"[\s\S]*"selection_reason"[\s\S]*"snapshot_tests"/,
   },
   {
     name: "Vector template library defines approved SVG scene systems",
     file: "VECTOR_TEMPLATES.json",
-    pattern: /"templates"[\s\S]*"quote_card"[\s\S]*"data_point"[\s\S]*"comparison"[\s\S]*"allowed_primitives"[\s\S]*"rejection_tests"[\s\S]*"icon_and_decoration_rules"/,
+    pattern: /"templates"[\s\S]*"quote_card"[\s\S]*"data_point"[\s\S]*"comparison"[\s\S]*"allowed_primitives"[\s\S]*"rejection_tests"[\s\S]*"icon_and_decoration_rules"[\s\S]*"support_asset_policy"[\s\S]*"required_contract_fields"[\s\S]*"deletion_trigger"/,
   },
   {
     name: "Motion primitive library defines semantic GSAP/SVG vocabulary",

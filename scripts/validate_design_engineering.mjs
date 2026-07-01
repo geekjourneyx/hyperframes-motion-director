@@ -72,6 +72,20 @@ function validateScene(scene, index, templateIds, primitiveIds) {
     }
   }
 
+  const supportAssets = scene.support_assets;
+  if (!supportAssets || typeof supportAssets !== "object") {
+    errors.push(`${prefix} missing support_assets contract.`);
+  } else {
+    if (!["none", "generated", "supplied", "code-generated", "mixed"].includes(supportAssets.decision)) {
+      errors.push(`${prefix} support_assets.decision must be none/generated/supplied/code-generated/mixed.`);
+    }
+    if (!Array.isArray(supportAssets.roles)) errors.push(`${prefix} support_assets.roles must be an array.`);
+    if (!supportAssets.style_lock) errors.push(`${prefix} support_assets missing style_lock.`);
+    if (!supportAssets.safe_zones) errors.push(`${prefix} support_assets missing safe_zones.`);
+    if (!supportAssets.motion_purpose) errors.push(`${prefix} support_assets missing motion_purpose.`);
+    if (!supportAssets.deletion_trigger) errors.push(`${prefix} support_assets missing deletion_trigger.`);
+  }
+
   const snapshots = Array.isArray(scene.snapshot_tests) ? scene.snapshot_tests : [];
   if (snapshots.length === 0) {
     errors.push(`${prefix} has no snapshot_tests.`);
@@ -109,6 +123,15 @@ if (templateDoc) {
     }
     if (!Array.isArray(template.rejection_tests) || template.rejection_tests.length === 0) {
       errors.push(`Template ${template.id || "missing-id"} missing rejection_tests.`);
+    }
+  }
+  if (!templateDoc.support_asset_policy || typeof templateDoc.support_asset_policy !== "object") {
+    errors.push("VECTOR_TEMPLATES.json missing support_asset_policy.");
+  } else {
+    for (const field of ["allowed_decisions", "allowed_roles", "style_lock_fields", "required_contract_fields", "rejection_tests"]) {
+      if (!Array.isArray(templateDoc.support_asset_policy[field]) || templateDoc.support_asset_policy[field].length === 0) {
+        errors.push(`VECTOR_TEMPLATES.json support_asset_policy.${field} must be a non-empty array.`);
+      }
     }
   }
 }
