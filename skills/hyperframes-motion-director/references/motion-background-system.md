@@ -20,24 +20,24 @@ Before generating a background or animating type over it, choose the layout cont
 
 ## Default Image Rule
 
-For new videos, assume at least one background image stage is needed. Exceptions must be written in the brief:
+Do not assume a numeric image count. For new generated-image work, derive the background set from distinct visual worlds and write any exception in the brief:
 
 - Strong supplied product, UI, logo, or footage assets already carry the scene.
 - The direction is intentionally pure kinetic typography.
 - The task is a narrow edit of an existing composition.
 
-In Phase 1, plan images only. After confirmation, use Codex Image Gen by default for needed bitmap assets and move accepted project-bound files into `assets/images/`.
+Premium multi-scene work requires multiple independent vertical backgrounds unless a user-approved exception applies. In Phase 1, analyze distinct visual worlds and movable foreground objects. After confirmation, use Codex Image Gen by default for needed bitmap assets and move accepted project-bound files into `assets/images/`. Use `references/imagegen-asset-pipeline.md` for the manifest, sheet, cutout, and validation workflow.
 
 ## Image Count
 
-| Video Type | Image Set |
-| --- | --- |
-| 6-10s kinetic motion video | 1 background stage, 0-2 support assets |
-| 10-15s cinematic short | 1 background stage, 1 symbol or anchor, 1-3 support assets |
-| 15-30s launch film | 2-4 scene backgrounds, 1 recurring visual motif, 3-6 support assets reused across beats |
-| Product video | Official product/UI assets first; generate atmosphere, metaphor plates, masks, or proof-safe crops only when needed |
+Do not count images from duration alone.
 
-If two images do the same job, keep the stronger one.
+- Background count equals the approved distinct visual-world count. Premium multi-scene work normally needs multiple independent vertical backgrounds.
+- Transparent component count equals the accepted source-driven movable-object inventory.
+- Sheet count depends on usable resolution, isolation space, component families, and hero-object scale.
+- Official product/UI assets remain the first choice when they prove the claim more faithfully than generated assets.
+
+If two backgrounds do the same job, keep the stronger one. If one sheet crowds the inventory, split the sheet or generate hero objects separately instead of shrinking everything.
 
 ## Image Roles
 
@@ -140,6 +140,7 @@ Every generated-image plan should state:
 - No baked-in text unless required.
 - No fake logos, labels, explanatory icons, diagrams, watermark, or decorative clutter.
 - For support assets: transparent/cutout intent if needed, isolation margin, consistent lighting, and no unrequested icon set.
+- For asset sets: visual-world count reason, component inventory, sheet strategy, hero-object decision, manifest path, and dark/light cutout proof.
 - Local output path after acceptance.
 
 After generation, inspect the image before writing animation code:
@@ -148,6 +149,7 @@ After generation, inspect the image before writing animation code:
 - Recrop or regenerate when the quiet zone contains busy detail, bright seams, faces, product edges, fake UI, or accidental text.
 - Keep final text, proof notes, CTA, masks, parallax, focus pulls, and timing in HyperFrames unless the brief requires baked-in content.
 - Remove repeated assets that serve the same role.
+- Run `validate_image_assets.mjs` after cropping accepted component-sheet items and before animation.
 
 ## Review Gate
 

@@ -108,7 +108,8 @@ Reject support assets when:
 - Generated images should avoid baked-in text, fake UI, fake logos, labels, explanatory icons, watermarks, and random decoration unless specifically required.
 - Each Codex Image Gen asset needs one declared role, target scene, standard ratio, focal subject position, quiet text zone, crop-safe region, and accepted local path.
 - Inspect generated images before motion work. Regenerate or crop when busy detail, bright edges, faces, product seams, fake UI, or accidental text enters the quiet text zone.
-- More images are not better. Use one strong image stage for short motion videos; use 2-4 only when the story truly changes visual worlds.
+- More images are not better, and fixed counts are not direction. Generate one independent vertical background per declared visual world. Merge worlds that genuinely share space and story job; split them when reuse would turn the film into text over wallpaper.
+- Derive transparent foreground components from the accepted source-driven object inventory. Use multiple sheets or supplemental separate hero generations when one sheet would crowd the assets or reduce usable resolution.
 
 ## Motion
 

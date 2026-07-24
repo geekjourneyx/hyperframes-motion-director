@@ -213,10 +213,13 @@
 - Text-to-component map:
 - Big text boxes replaced by:
 - Generic visual assets rejected:
-- Generated image 1:
-- Generated image 1 role / size / layout contract / local path:
-- Generated image 2:
-- Generated image 2 role / size / layout contract / local path:
+- Asset manifest path:
+- Distinct visual worlds / source beats:
+- Background count decision / reason:
+- Generated background inventory / roles / sizes / layout contracts / local paths:
+- Component inventory / count decision / reason:
+- Component sheet strategy / count reason:
+- Separate hero object generations:
 - Generated texture / atmosphere:
 - Primary visual object system:
 - Functional mark types:
@@ -227,6 +230,9 @@
 - Component snapshot timestamps:
 - Component sheet source / crop boxes / accepted local paths:
 - Component sheet style system:
+- Transparent outer-edge / matte-spill verdict:
+- Dark / light contact sheet paths:
+- Asset plan revisions after approval:
 - Static components rejected:
 - Icon library:
 - Decorative element library:

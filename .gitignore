@@ -8,6 +8,7 @@
 # Agent/session metadata
 .agents/
 .codex/
+docs/superpowers/
 
 # Dependencies and package-manager noise
 node_modules/

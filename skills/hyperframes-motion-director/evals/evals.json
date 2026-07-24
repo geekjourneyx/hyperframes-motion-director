@@ -130,7 +130,7 @@
         "Output identifies this as a premium product promo or equivalent.",
         "Output includes a product proof inventory with commands, output examples, numbers, screenshots or generated product-safe mockups.",
         "Output requires a mandatory visual component library rather than only a background and big text.",
-        "Output names at least four concrete components such as command card, output card, proof card, stat block, anchored signal, route-node sequence, chip group, screenshot surface, or CTA badge.",
+        "Output derives a complete component inventory from the actual product mechanisms and proof needs instead of targeting a fixed component count.",
         "Output includes an icon or mark system and explains what the icons/marks prove.",
         "Output includes decorative elements as a named system rather than filler.",
         "Output includes an asset library plan covering existing assets, generated assets, screenshots or code-native components.",
@@ -153,6 +153,25 @@
         "Output removes or replaces free-floating decorative lines instead of merely repositioning them.",
         "Output updates the relevant storyboard, design, review report, schema, or SKILL guidance when optimizing the production system.",
         "Output reruns relevant snapshot, render, or validation checks before claiming completion."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "请给一个高级感竖屏产品片的 Phase 1 方案。先根据内容判断到底需要多少个不同场景背景、多少个可独立运动的视觉组件，不要套用固定的 4 张背景或 12 个组件。需要生成独立竖屏背景、组件素材合集，再切成透明独立素材，确认后才开始生图。",
+      "expected_output": "A Phase 1 proposal that derives background and component counts from the source, plans independent vertical background plates and at least one source-driven component sheet with supplemental separate hero generations when needed, requires transparent named cutouts and contact-sheet review, records the decision in an asset manifest, and waits for confirmation.",
+      "files": [],
+      "assertions": [
+        "Output identifies distinct visual worlds or scene states before deciding the background count.",
+        "Output derives the component count from a complete movable foreground inventory tied to source phrases, product mechanisms, proof, or actions.",
+        "Output rejects fixed targets such as 4 backgrounds or 12 components unless the content analysis independently leads to those exact counts.",
+        "Output plans independent vertical background plates with composition-safe negative space rather than one reusable background collage.",
+        "Output chooses one sheet or multiple sheets based on isolation space and usable resolution, adding separate hero generation only when needed.",
+        "Output includes at least one source-driven component sheet for premium generated-image work; separate hero generation is supplemental.",
+        "Output requires every accepted sheet item to be cropped into a named transparent local asset before composition.",
+        "Output requires real alpha, transparent outer edges, matte cleanup, and dark/light contact-sheet review.",
+        "Output records approved worlds, inventory, count reasons, local paths, and revisions in ASSET_MANIFEST.json.",
+        "Output forbids direct use of the source component sheet in the final composition.",
+        "Output asks for confirmation before image generation or implementation."
       ]
     }
   ]

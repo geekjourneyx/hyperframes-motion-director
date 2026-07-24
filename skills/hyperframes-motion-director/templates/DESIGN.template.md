@@ -72,6 +72,11 @@
 ## Background Image System
 - Default background stage: generated / supplied / pure-code exception
 - Visual asset floor for this video:
+- Asset manifest path:
+- Distinct visual worlds:
+- Background count decision:
+- Background count reason:
+- Background inventory / scene ownership:
 - Local background / screenshot / generated proof assets:
 - Empty `assets/images` allowed: yes / no, with user-approved reason
 - Pure-code exception reason, if any:
@@ -103,8 +108,13 @@
 - Object restraint:
 - Removal test:
 - Mandatory visual component library:
-- Product visual component floor:
+- Product visual component coverage:
 - Source phrase required per component:
+- Component inventory:
+- Component count decision:
+- Component count reason:
+- Component sheet strategy:
+- Component sheet count reason:
 - Component sheet source / crop plan:
 - Component sheet source phrases:
 - Component sheet style system:
@@ -119,7 +129,9 @@
 - Connector allowed only when anchored to:
 - Component-attached signal fallback:
 - CTA badge / action pill:
-- Component count target:
+- Separate hero object decision:
+- Transparent cutout rule:
+- Dark / light contact sheet rule:
 - Component rejection tests:
 - Static-component rejection tests:
 - Big-text-box rejection tests:
@@ -144,7 +156,8 @@
 
 ## Support Asset System
 - Support asset decision: none / generated / supplied / code-generated / mixed
-- Asset count range:
+- Asset count decision:
+- Asset count reason:
 - Asset roles: symbol / texture / anchor / transition plate / semantic glyph / motion accent / product fragment
 - Shared style lock: palette / lighting direction / texture language / perspective
 - Generated asset sheet needed: yes / no
@@ -209,20 +222,20 @@
 - State-change rule:
 
 ## Image Generation Plan
-- Key visual 1:
-- Key visual 1 role / scene / size / quiet zone:
-- Key visual 1 focal subject / crop-safe region:
-- Key visual 1 prompt constraints:
-- Key visual 1 acceptance test:
-- Key visual 2:
-- Key visual 2 role / scene / size / quiet zone:
-- Key visual 2 focal subject / crop-safe region:
-- Key visual 2 prompt constraints:
-- Key visual 2 acceptance test:
+- Asset manifest path:
+- Visual-world inventory:
+- Background count decision / reason:
+- Background prompts / roles / scenes / sizes / quiet zones / acceptance tests:
+- Movable foreground inventory:
+- Component count decision / reason:
+- Component sheet strategy / count reason:
+- Separate hero-object generations:
 - Texture / atmosphere:
 - Texture role / size:
-- Support asset sheet:
-- Support asset sheet roles / isolation margins:
+- Component sheets:
+- Component sheet roles / cells / isolation margins:
+- Transparent cutout output paths:
+- Dark / light contact sheet paths:
 - Semantic glyphs or motion accents:
 - Which elements stay code-generated:
 - Required negative space:

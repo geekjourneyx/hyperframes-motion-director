@@ -87,6 +87,9 @@ MOTION_MAP.json           GSAP choreography and transition map
 - A confirmed brief before implementation.
 - Chinese vertical-video defaults, with documented overrides for other platforms.
 - Image Gen assets with a clear role, quiet text zone, crop-safe area, and local path.
+- Background and component counts derived from the actual story, product mechanism, and proof needs rather than a fixed quota.
+- Independent vertical background plates plus source-driven component sheets, with separate hero generations added when needed.
+- Named transparent cutouts, dark/light contact-sheet review, and a manifest that records accepted assets and revisions.
 - Text-over-background layout contracts before animation.
 - Scene schema, vector template, and motion primitive contracts before implementation.
 - GSAP choreography contracts: labels, position parameters, plugin registration, transform aliases, and performance rules.
@@ -107,6 +110,8 @@ Check a generated project:
 ```bash
 node skills/hyperframes-motion-director/scripts/check_assets.mjs <project-dir>
 node skills/hyperframes-motion-director/scripts/check_assets.mjs <project-dir> --strict
+node skills/hyperframes-motion-director/scripts/check_assets.mjs <project-dir> --require-premium-assets
+node skills/hyperframes-motion-director/scripts/validate_image_assets.mjs <project-dir>
 node skills/hyperframes-motion-director/scripts/validate_artifacts.mjs <project-dir>
 node skills/hyperframes-motion-director/scripts/validate_design_engineering.mjs <project-dir>
 ```

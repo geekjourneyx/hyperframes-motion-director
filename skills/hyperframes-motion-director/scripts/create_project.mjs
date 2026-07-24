@@ -22,6 +22,11 @@ const dirs = [
   "assets/audio",
   "assets/fonts",
   "assets/images",
+  "assets/images/backgrounds",
+  "assets/images/components",
+  "assets/images/proof",
+  "assets/images/source",
+  "assets/images/style-reference",
   "assets/video",
   "compositions",
   "renders",
@@ -39,6 +44,7 @@ const templateMap = {
   "SCENE_SCHEMA.template.json": "SCENE_SCHEMA.json",
   "VECTOR_TEMPLATES.template.json": "VECTOR_TEMPLATES.json",
   "MOTION_PRIMITIVES.template.json": "MOTION_PRIMITIVES.json",
+  "ASSET_MANIFEST.template.json": "ASSET_MANIFEST.json",
   "REVIEW_REPORT.template.md": "REVIEW_REPORT.md",
 };
 
@@ -69,11 +75,12 @@ Default production assumption: Simplified Chinese promotional film, vertical 9:1
 4. SCENE_SCHEMA.json
 5. VECTOR_TEMPLATES.json
 6. MOTION_PRIMITIVES.json
-7. REVIEW_REPORT.md
-8. compositions/
-9. snapshots/
-10. renders/
-11. REVIEW_PACK.md (generated after review assets exist)
+7. ASSET_MANIFEST.json
+8. REVIEW_REPORT.md
+9. compositions/
+10. snapshots/
+11. renders/
+12. REVIEW_PACK.md (generated after review assets exist)
 
 Optional:
 
@@ -84,6 +91,7 @@ Optional:
 
 \`\`\`bash
 node ${skillRoot}/scripts/check_assets.mjs .
+node ${skillRoot}/scripts/validate_image_assets.mjs .
 node ${skillRoot}/scripts/check_assets.mjs . --strict
 node ${skillRoot}/scripts/validate_artifacts.mjs .
 node ${skillRoot}/scripts/validate_design_engineering.mjs .

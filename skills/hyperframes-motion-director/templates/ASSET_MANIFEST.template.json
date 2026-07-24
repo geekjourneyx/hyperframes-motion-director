@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "production": {
+    "premium_vertical_promo": true,
+    "duration_seconds": 15,
+    "scene_count": 5,
+    "exception": null,
+    "exception_approved_by_user": false,
+    "exception_reason": null,
+    "approval_reference": null
+  },
+  "requirements": {
+    "approved_background_count": 0,
+    "component_sheet_strategy": "replace_after_content_analysis",
+    "approved_component_count": 0,
+    "minimum_background_long_edge": 1280,
+    "minimum_sheet_long_edge": 1280,
+    "minimum_component_long_edge": 192
+  },
+  "asset_analysis": {
+    "background_count_reason": "",
+    "component_count_reason": "",
+    "sheet_count_reason": "",
+    "hero_generation_reason": "",
+    "visual_worlds": [],
+    "component_inventory": []
+  },
+  "backgrounds": [],
+  "component_sheets": [],
+  "components": [],
+  "proof": {
+    "dark_contact_sheet": "",
+    "light_contact_sheet": "",
+    "reviewed": false,
+    "review_notes": ""
+  },
+  "revisions": []
+}

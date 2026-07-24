@@ -27,6 +27,7 @@ Use these prompts later for trigger and non-trigger evaluation of the skill desc
 21. "这个产品宣传片不够高级，缺少图标库、装饰元素、图片资源库和动画交互。参考顶级黑金产品片，复盘并优化 HyperFrames skill。"
 22. "Make a premium product promo in HyperFrames. It must include a visual component library, proof cards, command cards, chips, screenshots, decorative marks, and a real CTA path."
 23. "视频中的线条和弧线路径位置有问题，真的必要吗？按第一性原理复盘 HyperFrames 宣传片，并优化 SKILL 规则。"
+24. "先按内容判断需要多少个竖屏背景和独立组件，再用 Image Gen 生成背景、组件合集并切成透明素材，不要固定成 4 张背景或 12 个组件。"
 
 ## Should Not Trigger
 

@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.7.0] - 2026-07-24
+
+### Added
+
+- Added a content-derived Image Gen asset workflow: distinct visual worlds determine independent vertical backgrounds, while a source-driven movable-object inventory determines component count.
+- Added one-or-more component-sheet planning, separate hero-object generation when needed, transparent cutout requirements, dark/light contact-sheet review, and a ban on composing with the source sheet.
+- Added `ASSET_MANIFEST.json` scaffolding and image-asset validation for background coverage, component inventory coverage, real transparency, clean outer edges, matte spill, minimum resolution, composition usage, and source-sheet leakage.
+- Added regression tests that prove small and large valid inventories pass while missing worlds, missing components, opaque cutouts, edge-touching cutouts, matte spill, and direct source-sheet use fail.
+
+### Changed
+
+- Replaced fixed background and component quotas with explicit count reasons derived from the current source and approved visual plan.
+- Updated the brief, design, storyboard, review, workflow, promo, visual-standard, and background-system guidance to use the same dynamic asset contract.
+- Updated project scaffolding with dedicated background, component, source, proof, and style-reference folders.
+
 ## [2.6.2] - 2026-07-05
 
 ### Added

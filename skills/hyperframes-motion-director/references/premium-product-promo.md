@@ -61,15 +61,7 @@ Look for:
 - Taxonomy: themes, modules, integrations, modes, providers, commands, features, or stages.
 - Trust evidence: checks, validations, snapshots, review reports, export files, logs, or status badges.
 
-For a 10-18 second vertical product promo, target:
-
-- 1 product/brand lockup.
-- 1 concrete product surface, such as a command card, UI panel, document, template stack, or output preview.
-- 2-4 proof artifacts across the film.
-- 4-8 chips, labels, or marks used as product taxonomy, not decoration.
-- 1 recurring motion object, anchored signal, or route that connects scenes.
-
-If fewer than three product-specific artifacts can be named, the brief must either request/supply assets, generate proof-safe representations, or acknowledge that the result will feel more like a concept film than a top-tier product promo.
+Derive the asset inventory from the product and confirmed copy. Include a product/brand lockup, concrete surfaces, proof artifacts, taxonomy, and recurring motion objects only where the source requires them. If the inventory cannot visibly prove the mechanism, the brief must request/supply assets, generate proof-safe representations, or acknowledge that the result will feel more like a concept film than a top-tier product promo.
 
 ## Component Library
 
@@ -77,16 +69,14 @@ A premium promo needs a small component library before implementation. Component
 
 No visible product component, no product promo. Treat the component library as a production dependency, not a nice-to-have. A component counts only when it is visible in snapshots and has product-specific content, state, and interaction. Generic cards, titles, labels, background glows, floating lines, and decorative icons are not enough.
 
-Minimum component floor for a 10-18 second product promo:
+Content-derived component coverage:
 
-- 4+ product-specific component types.
-- 2+ component types visible before the midpoint.
-- 1 concrete product surface: screenshot, UI frame, command card, output card, template stack, document, report, or generated proof-safe mockup.
-- 1 taxonomy component: module, provider, feature, mode, theme, status, or validation chips.
-- 1 final action component: CTA badge, install command, publish button, save/export pill, action stamp, or route endpoint.
-- Snapshot proof for each major component type.
-- Motion proof for every component type. A component that only sits in the frame does not count.
-- Optional generated component sheet: a single image containing multiple product-specific props, UI fragments, marks, cards, badges, chips, output tiles, or frames, designed for clean crop extraction and consistent style.
+- Every source phrase, mechanism, proof claim, taxonomy group, and final action that needs a visual object appears in the inventory.
+- Concrete product surfaces, taxonomy components, and final actions are included when the source contains them.
+- Important mechanism or proof components appear early enough that the first half is not only titles and atmosphere.
+- Snapshot proof exists for each major component type.
+- Motion proof exists for every component type. A component that only sits in the frame does not count.
+- Premium vertical generated-image work uses at least one source-driven component sheet designed for clean crop extraction and consistent style. The content decides its inventory size.
 
 Useful product promo components:
 
@@ -117,7 +107,7 @@ Each component must define:
 
 ## Generated Visual Component Sheet
 
-A component sheet is useful when the video needs many related visual pieces without generating one image per object. Use it as source material, not as a finished frame.
+A component sheet is required for premium vertical generated-image work unless the user approves an explicit pipeline exception. Use it as source material, not as a finished frame. The inventory decides how many components are needed; isolation space and resolution decide whether to use one sheet, multiple sheets, or additional separate hero-object generations.
 
 Allowed sheet contents:
 
@@ -135,6 +125,7 @@ Sheet requirements:
 - No baked-in final screen text unless that text is the component itself.
 - Accepted items are cropped into local files or isolated as SVG/CSS pieces before implementation.
 - The storyboard records crop boxes, local paths, motion action, and deletion test.
+- Dark and light contact sheets prove clean transparent edges before animation.
 
 Reject a component sheet when it is a decorative sticker pack, contains random icons, mixes styles, lacks crop-safe spacing, looks like generic office/productivity material, or includes components that cannot be assigned to a source phrase, scene, and motion action.
 
@@ -267,7 +258,7 @@ Block final delivery when any of these are true:
 
 - The film uses only one abstract metaphor and no product-specific proof artifacts.
 - The product promo has no visible visual component library.
-- Fewer than four product-specific component types are defined and visible without an explicit concept-film exception.
+- The source-driven component inventory is incomplete or its count has no written reason.
 - The component list is only prose and cannot be found in snapshots or rendered frames.
 - Components are generic duplicate cards with changed labels and no different product role.
 - Components are static placements with no state-change action.
@@ -275,7 +266,7 @@ Block final delivery when any of these are true:
 - Components or generated assets are visually rich but not source-specific; they could fit a different product after relabeling.
 - Hero frames are dominated by large text boxes while visual components only decorate the margins.
 - The visual system has no source phrase mapping, visual lexicon, motif family, or generic rejection list.
-- The storyboard cannot name at least four concrete visual components for a 15s product promo.
+- The storyboard cannot name every concrete visual component required by the confirmed source and explain why each is needed.
 - The asset library has no official, existing, generated, screenshot, or code-native asset decision.
 - Copy is generic and could fit a different product.
 - Icons or decoration are either absent when the scene needs taxonomy/proof, or present only as unrelated ornaments.

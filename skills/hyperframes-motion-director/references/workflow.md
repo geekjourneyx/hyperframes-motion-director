@@ -4,7 +4,7 @@ This workflow turns a vague motion-video request into a reviewable HyperFrames p
 
 The default creative direction is a Chinese-first vertical promotional film with black-background cinematic metaphor. Extract the essence of the article, theme, product, or argument, then build a restrained symbol that carries the point.
 
-New videos need a background stage by default. They also need a support-asset decision: none, generated, supplied, code-generated, or mixed. The background creates space, carries metaphor, protects text readability, or grounds the product. Support assets add semantic depth, tactile texture, product proof, or transition material when the background alone is too flat.
+New videos need a content-derived background decision by default. Premium multi-scene work normally needs multiple independent vertical backgrounds, one for each declared visual world. It also needs a support-asset decision: none, generated, supplied, code-generated, or mixed. Backgrounds create space, carry metaphor, protect text readability, or ground the product. Support assets add semantic depth, tactile texture, product proof, or transition material when the background alone is too flat.
 
 For text over or near background imagery, use `references/text-over-background-layout.md`. Choose a candidate layout strategy before image generation, then lock the final per-beat layout contract after generated or supplied imagery is inspected. The final contract owns image ratio, text rectangle, subject rectangle, quiet text zone, title tier, mobile safe zones, and motion bounds.
 
@@ -76,6 +76,7 @@ Before any implementation, produce `BRIEF_DESIGN_PROPOSAL.md` or the equivalent 
 - Language, platform, aspect ratio, pixel size, duration, FPS, safe margins.
 - Writing style: plain, compact, project-specific, no self-talk, no generic pitch language, no repeated contrast-connector phrasing.
 - Image generation decision, including default background image role or the explicit reason it is not needed.
+- Asset count analysis: distinct visual worlds, movable foreground inventory, count reasons, sheet strategy, separately generated hero objects, and `ASSET_MANIFEST.json`.
 - Support asset plan: role, source, style lock, safe zones, motion purpose, and deletion trigger for any symbol, texture, anchor, transition plate, semantic glyph, product/UI fragment, or motion accent.
 - Typography, layout, overflow handling, and mobile crop handling.
 - Motion plan and risk gates.
@@ -99,7 +100,7 @@ Define:
 - First eye target and center-impact policy for hook, central claim, proof, and CTA frames.
 - Layout grid or placement logic.
 - Background image system: role, crop, focal subject, quiet text zone, contrast treatment, and local asset path plan.
-- Support asset system: role, source, count range, shared style lock, safe zones, motion purpose, code-generated versus bitmap-generated split, and deletion triggers.
+- Support asset system: role, source, content-derived count decision, shared style lock, safe zones, motion purpose, code-generated versus bitmap-generated split, and deletion triggers.
 - Background text layout system: default layout strategies, allowed final contract variants, image ratios, text rectangles, subject rectangles, title tiers, mobile safe zones, motion bounds, and regenerate/recrop triggers.
 - Text-over-image rules: where type may sit, how the image will be darkened/blurred/desaturated behind text, and what crop is forbidden.
 - Component patterns such as title card, product frame, proof stat, and CTA.
@@ -160,7 +161,7 @@ The hero frame is the timestamp where the scene best communicates its idea. If t
 
 ## 6. Visual Asset Planning
 
-If the metaphor needs generated bitmap source material, plan images before implementation. For new video work, default to one background stage plus an explicit support-asset decision unless a pure-code or supplied-asset exception is written in the brief.
+If the metaphor needs generated bitmap source material, plan images before implementation. Count distinct visual worlds and independently movable foreground objects before choosing how many assets or sheets to generate. Do not default to one reusable background or to a duration-based asset count.
 
 - Background stage: atmosphere, depth, light, metaphor, or product context.
 - Center symbol.
@@ -186,8 +187,9 @@ Each planned/generated image must specify:
 - Local output path.
 - Forbidden content: no baked-in text, fake logos, generic icons, labels, diagrams, decorative clutter, or watermark unless required.
 - For support assets: shared style lock, isolation/cutout plan, safe zones, motion purpose, and deletion trigger.
+- For asset sets: visual-world inventory, component inventory, count reasons, sheet strategy, separate hero-object decision, manifest path, and dark/light cutout proof.
 
-Use Codex Image Gen by default after user confirmation when a generated bitmap is needed. Prefer HyperFrames/CSS/SVG for simple lines, marks, masks, traces, glyphs, and geometric accents. Inspect returned images against the layout contract before implementation. Recrop or regenerate if the quiet zone is busy, the subject lands in an unsafe crop area, or fake UI/text/logos appear. Reference project-bound generated images only after they have been moved into the project asset folders.
+Use Codex Image Gen by default after user confirmation when a generated bitmap is needed. Prefer HyperFrames/CSS/SVG for simple lines, marks, masks, traces, glyphs, and geometric accents. Inspect returned images against the layout contract before implementation. Recrop or regenerate if the quiet zone is busy, the subject lands in an unsafe crop area, or fake UI/text/logos appear. Preserve component sheets, crop every accepted item into an independent transparent asset, verify it on dark and light proof sheets, and run `validate_image_assets.mjs` before animation. Reference project-bound generated images only after they have been moved into the project asset folders.
 
 ## 7. Optional Beat Map
 

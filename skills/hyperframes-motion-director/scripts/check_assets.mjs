@@ -2,11 +2,14 @@
 
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { listVisualAssetFiles, validateImageAssets } from "./lib/image-assets.mjs";
 
-const targetArg = process.argv[2] || ".";
+const args = process.argv.slice(2);
+const targetArg = args.find((arg) => !arg.startsWith("--")) || ".";
 const root = resolve(process.cwd(), targetArg);
-const strict = process.argv.includes("--strict");
-const requireVisualAssets = process.argv.includes("--require-visual-assets");
+const strict = args.includes("--strict");
+const requireVisualAssets = args.includes("--require-visual-assets");
+const requirePremiumAssets = args.includes("--require-premium-assets");
 
 const textFiles = [
   "BRIEF_DESIGN_PROPOSAL.md",
@@ -60,9 +63,10 @@ const assetDirs = ["assets/audio", "assets/fonts", "assets/images", "assets/vide
 const emptyAssetDirs = assetDirs
   .filter((dir) => existsSync(join(root, dir)))
   .filter((dir) => readdirSync(join(root, dir)).filter((name) => name !== ".gitkeep").length === 0);
-const visualAssetFiles = existsSync(join(root, "assets/images"))
-  ? readdirSync(join(root, "assets/images")).filter((name) => /\.(png|jpe?g|webp|gif|svg)$/i.test(name))
-  : [];
+const visualAssetFiles = listVisualAssetFiles(join(root, "assets/images"));
+const imageAssetReport = requirePremiumAssets && existsSync(join(root, "ASSET_MANIFEST.json"))
+  ? validateImageAssets(root)
+  : null;
 
 if (missing.length > 0) {
   console.error("Missing local asset references:");
@@ -84,6 +88,21 @@ if (requireVisualAssets && visualAssetFiles.length === 0) {
   console.error("Required visual assets missing: assets/images has no image files.");
 }
 
-if (missing.length > 0 || (strict && remote.length > 0) || (requireVisualAssets && visualAssetFiles.length === 0)) process.exit(1);
+if (requirePremiumAssets && !imageAssetReport) {
+  console.error("Required premium image asset manifest missing: ASSET_MANIFEST.json.");
+}
+
+if (requirePremiumAssets && imageAssetReport && !imageAssetReport.valid) {
+  console.error("Image asset manifest validation failed:");
+  for (const error of imageAssetReport.errors) console.error(`- ${error}`);
+}
+
+if (
+  missing.length > 0
+  || (strict && remote.length > 0)
+  || (requireVisualAssets && visualAssetFiles.length === 0)
+  || (requirePremiumAssets && !imageAssetReport)
+  || (requirePremiumAssets && imageAssetReport && !imageAssetReport.valid)
+) process.exit(1);
 
 console.log("Asset check passed for required local references.");

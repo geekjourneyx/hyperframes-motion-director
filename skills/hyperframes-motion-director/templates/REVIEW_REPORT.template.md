@@ -39,9 +39,15 @@
 | generic visual rejection |  |  |
 | product proof inventory |  |  |
 | mandatory visual component library |  |  |
-| product visual component floor |  |  |
+| product visual component coverage |  |  |
+| asset count analysis |  |  |
+| asset manifest |  |  |
+| distinct visual world coverage |  |  |
+| component inventory coverage |  |  |
 | component state-change actions |  |  |
 | component sheet crop / isolation |  |  |
+| transparent component edges |  |  |
+| dark / light cutout contact sheets |  |  |
 | icon / decorative system |  |  |
 | connector / line anchoring |  |  |
 | copy specificity |  |  |
@@ -138,10 +144,20 @@ Use this section for product, CLI, SaaS, API, workflow, skill, template, or refe
 - Visual component families share one motif and style system:
 - Product proof inventory is documented when relevant:
 - Mandatory visual component library exists for product promos:
-- Product visual component floor is met:
+- Product visual component coverage is complete:
+- Premium generated-image work includes at least one source-driven component sheet unless a user-approved pipeline exception is recorded:
+- Asset manifest records the approved analysis and accepted local paths:
+- Background count is derived from distinct visual worlds:
+- Component count is derived from the movable foreground inventory:
+- Component sheet count is based on isolation space and usable resolution:
+- Separate hero objects are generated when sheet resolution is insufficient:
 - Visual components are reusable and product-specific:
 - Each major product component performs a state-change action:
 - Generated component sheets were cropped into named local assets before use:
+- Transparent cutouts have real alpha and fully transparent outer edges:
+- Declared matte color is removed from visible pixels:
+- Dark and light cutout contact sheets were reviewed:
+- Source component sheets are not referenced by compositions:
 - Component snapshot timestamps prove visibility:
 - Icon library or mark system exists when the scene needs product taxonomy/proof:
 - Decorative elements form a named system instead of filler:
@@ -201,12 +217,15 @@ Use this section for product, CLI, SaaS, API, workflow, skill, template, or refe
 - Motion uses CSS3 / SVG / GSAP structure or documents a deliberate stillness exception:
 - Visual object system has one primary object and no more than three mark types:
 - Product promos do not rely only on one background image plus big text:
-- Product promo storyboards name at least four concrete visual components for a 15s premium promo:
+- Product promo storyboards name every required concrete visual component and explain the count:
+- Premium multi-scene backgrounds cover every declared visual world:
+- Fixed asset targets such as 4 backgrounds or 12 components are rejected unless the source analysis independently produces them:
 - Product promo visuals are source-specific and not an attractive generic asset pack:
 - Hero frames would reveal the source topic without reading paragraph boxes:
 - Component sheets map every accepted item to a source phrase and component family:
 - Product promo components are visible, product-specific, and action-bearing:
 - Product promo component sheets are not decorative collages:
+- Separate hero generation supplements rather than replaces the required component sheet:
 - Product promo snapshots look like product proof frames, not only title cards:
 - Added objects are not generic decoration:
 - No floating arcs, unanchored route lines, or decorative underlines remain:

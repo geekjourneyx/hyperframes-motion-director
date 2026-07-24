@@ -63,30 +63,24 @@ The film must build a product proof ecosystem:
 - Motion interactions: each major component must reveal a product state change, not only enter the scene.
 - Copy ladder: pain -> mechanism -> proof -> confidence -> CTA. If a line could fit any product, rewrite it.
 
-Minimum product visual component floor:
+Content-derived product visual component coverage:
 
-- 4+ product-specific component types for a 10-18s product promo, unless the user explicitly approves a minimal concept film.
-- 2+ component types visible in the first half of the film.
-- 1+ concrete product surface: real screenshot, faithful UI/product frame, command card, output card, template stack, document, report, or generated proof-safe mockup.
-- 1+ taxonomy component: module chips, provider chips, feature chips, theme chips, mode labels, or status marks.
-- 1+ final action component: CTA badge, install command, publish button, save/export pill, route endpoint, or action stamp.
+- Derive the component count from source phrases, product mechanisms, proof claims, and actions. Do not target a fixed number such as 4, 6, or 12.
+- Include a concrete product surface when the claim depends on a real or faithful product state.
+- Include taxonomy components only when the source contains modules, providers, features, themes, modes, or statuses.
+- Include a final action component when the film has a CTA.
+- Show the important mechanism or proof components early enough that the first half is not only titles and atmosphere.
 - Every product component defines role, source, content slots, visual state, motion interaction, snapshot timestamp, and deletion test.
 - Every visible product component must perform an action: type, route, fan, assemble, reveal, scan, validate, transform, count, lock, export, publish, save, collapse, or hand off. Static placement alone does not count.
-- A generated visual component sheet is allowed and often useful. It must contain multiple product-specific components with transparent or clean crop boundaries, consistent style, named roles, target scenes, crop boxes, motion purpose, and deletion tests. Auto-crop or manual crop each accepted component into local assets before implementation.
+- For premium vertical generated-image work, generate at least one source-driven visual component sheet. Its inventory size comes from the content, not a preset quota. Every sheet must contain product-specific components with clean isolation boundaries, consistent style, named roles, target scenes, crop boxes, motion purpose, and deletion tests. Crop every accepted component into an independent transparent local asset before implementation.
+- Generate a hero object separately when a crowded sheet would not provide enough usable resolution or isolation space, but treat separate hero generation as a supplement rather than a replacement for the component sheet.
+- Keep text-rich commands, screenshots, UI, and proof states faithful by using official assets or code-native reconstruction. That fidelity requirement does not waive the source-driven component sheet; use it for the bitmap objects, material pieces, proof-safe shells, symbols, stamps, transition objects, and product-specific foreground elements that benefit from Image Gen.
 
 Block product promo delivery when the component library is only prose, when components are not visible in snapshots, when all components are generic cards with different labels, when components merely sit on screen without action, or when motion does not show product state change.
 
 Use `references/premium-product-promo.md` before proposing, storyboarding, implementing, or reviewing a product promo, especially when the user provides a premium reference or complains about missing icon libraries, decorative elements, image resources, animation interaction, or top-tier design quality.
 
-Default product promo asset target for a 10-18s vertical film:
-
-- 1 product/brand lockup.
-- 1 concrete product surface.
-- 2-4 proof artifacts.
-- 4-8 taxonomy chips, labels, icons, or marks.
-- 1 recurring motion object, anchored signal, or route that connects scenes.
-
-If the brief cannot name at least three product-specific proof artifacts and four reusable visual components, do not hide behind an abstract metaphor. Inspect the project, use existing assets, generate product-safe mockups, capture screenshots, or state that the result will be a concept film rather than a premium product promo.
+The brief must derive its asset inventory from the product. Include the product/brand lockup, concrete surfaces, proof artifacts, taxonomy, and recurring motion objects only when the source and story require them. If the visual inventory cannot prove the product mechanism, inspect the project, use existing assets, generate product-safe mockups, capture screenshots, or state that the result will be a concept film rather than a premium product promo.
 
 ## Source-Driven Visual System Rule
 
@@ -129,14 +123,28 @@ Treat each frame as four coordinated layers:
 
 Use `references/motion-background-system.md` for image counts, text-over-image layout, motion grammar, and review gates.
 
+## Content-Derived Image Asset Architecture Rule
+
+Do not choose background or component counts from duration alone. Derive the asset architecture from the confirmed source, storyboard, and motion jobs:
+
+- Visual worlds: group adjacent beats that can truthfully share one spatial stage. Generate one independent vertical background for each genuinely different world. Premium multi-scene work normally needs multiple backgrounds, but the approved analysis decides the count.
+- Movable foreground inventory: list every source-specific object that must move independently, prove a claim, or carry a transition. That list decides the transparent component count.
+- Sheet strategy: premium vertical generated-image work uses at least one component sheet. Use one when the complete inventory fits with generous isolation space and usable resolution. Split it across multiple sheets, or add separately generated hero objects, when one sheet would crowd or shrink the assets.
+- Cutout contract: preserve each source sheet, crop every accepted item into a named transparent PNG, keep fully transparent outer edges, remove matte spill, and review the cutouts on both dark and light contact sheets.
+- Manifest: write `ASSET_MANIFEST.json` after the Phase 1 asset decision and update it with accepted local paths in Phase 2. It is the source of truth for visual worlds, background ownership, component inventory, sheet cells, cutouts, target scenes, motion actions, and proof sheets.
+
+Phase 1 must state why the chosen counts are necessary. A fixed target such as "4 backgrounds and 12 components" without source-driven analysis is a template failure. Phase 2 must not silently rewrite the approved counts; record a revision and reason when the asset analysis changes.
+
+Use `references/imagegen-asset-pipeline.md` before planning, generating, cutting, validating, or reviewing bitmap assets for premium vertical work.
+
 ## Pure-Code Exception Rule
 
 Pure-code black stages are an exception, not the default production shortcut. Do not mark a video premium or ready when it is only dark gradients, big text, translucent cards, and thin lines unless the user explicitly requested a typography-only motion study.
 
-For article-to-video, content-system, workflow, product, tutorial, personal knowledge-base, local-folder, or tool-comparison promos, Phase 1 and Phase 2 must include a visual asset floor:
+For article-to-video, content-system, workflow, product, tutorial, personal knowledge-base, local-folder, or tool-comparison promos, Phase 1 and Phase 2 must include a content-derived visual asset floor:
 
-- At least one background stage, product screenshot, workspace/file-tree capture, generated metaphor plate, or supplied image with a documented role.
-- At least two scene-specific proof visuals beyond text boxes: folder/workspace crop, real or faithful UI surface, diagram object, process artifact, metric board, cover frame, or generated symbolic plate.
+- Enough independent background stages, product screenshots, workspace/file-tree captures, generated metaphor plates, or supplied images to cover the declared visual worlds.
+- Enough scene-specific proof visuals beyond text boxes to cover the declared source phrases, mechanisms, and proof claims.
 - A local asset path for every bitmap or screenshot, or an explicit user-approved reason why a custom SVG/3D/vector system is stronger than bitmap assets.
 - A screenshot review that proves frames do not reduce to "black background + title + cards".
 
@@ -232,14 +240,14 @@ Use Codex Image Gen after confirmation for support bitmap assets when they canno
 
 Each support asset must declare: role, source, local path if bitmap-based, visual relationship to the background, safe zones, motion purpose, entrance/exit timing, and deletion trigger. Delete or omit any support asset that does not strengthen meaning, depth, transition continuity, product proof, or readability.
 
-Default support-asset guidance:
+Content-derived support-asset guidance:
 
-- 6-10s kinetic video: 1 background stage plus 0-2 support assets.
-- 10-15s cinematic short: 1 background stage, 1 symbol or anchor, and 1-3 support assets.
-- 15-30s launch film: 2-4 scene backgrounds, 1 recurring visual motif, and 3-6 support assets reused across beats.
-- Product video: official product/UI assets first; generate atmosphere, metaphor plates, masks, or proof-safe crops only when needed.
+- Count visual worlds, not seconds. Adjacent beats may share a background only when their spatial world, text-safe zone, and story job are genuinely the same.
+- Count movable objects from source nouns, process verbs, proof claims, and transition jobs. Do not add or remove assets to hit a preset number.
+- Use official product/UI assets first. Generate atmosphere, metaphor plates, masks, component sheets, hero objects, or proof-safe crops only when the declared inventory needs them.
+- Keep simple lines, masks, typography, and sharp vector marks code-generated when they do not benefit from bitmap material.
 
-All generated assets in one video must share the same art direction: palette, lighting direction, lens/texture language, contrast level, and negative-space discipline. A generated asset sheet is acceptable only when every cut-out element has a named role and will be isolated before animation.
+All generated assets in one video must share the same art direction: palette, lighting direction, lens/texture language, contrast level, and negative-space discipline. A generated asset sheet is acceptable only when every cut-out element has a named role and will be isolated before animation. Use additional sheets or separate hero generations when a single sheet would reduce crop safety or usable resolution.
 
 ## Anti-PPT Motion Craft Rule
 
@@ -416,6 +424,7 @@ The proposal must include:
 - Structure: center symbol / huge title / person anchor / huge number.
 - Format: language, platform, aspect ratio, pixel size, duration, FPS, safe margins. Default to Simplified Chinese, vertical 9:16, and `1080x1920` unless overridden.
 - Image decision: whether generated bitmap images are needed, each asset role, image ratio, quiet text zone, forbidden content, and what must stay in HyperFrames.
+- Asset count analysis: distinct visual worlds, movable foreground inventory, count rationale, sheet count, separately generated hero objects, and the planned `ASSET_MANIFEST.json`.
 - Background plan: image role, layout contract, subject position, text-safe area, crop risks, and whether Codex Image Gen will be used after confirmation.
 - Writing standard: terse, project-specific, no self-talk, no generic hype, no repeated contrast-connector phrasing.
 - Visual object plan: primary object, functional marks, texture pieces, why each object is necessary, and excluded object types.
@@ -583,11 +592,11 @@ node scripts/validate_design_engineering.mjs <project-dir>
 
 ### 6. Visual Asset Plan
 
-If the confirmed proposal calls for bitmap assets, generate or source them before HyperFrames implementation. For new videos, default to one background image stage plus a support-asset decision unless the brief explains a pure-code or supplied-asset approach.
+If the confirmed proposal calls for bitmap assets, generate or source them before HyperFrames implementation. For premium multi-scene vertical work, generate the content-derived set of independent vertical backgrounds and foreground objects declared in `ASSET_MANIFEST.json`; do not default to one reusable background or a fixed asset count.
 
 For product promos, do not stop at background images. Build an asset library that can include official assets, repository assets, screenshots, generated mockups, code-native cards, SVG icons, chip groups, panels, anchored signals, and output previews. Each asset must prove a product claim or support a motion interaction. A product promo with no visual component library is not ready for implementation.
 
-For content-system, workflow, local-folder, knowledge-base, tutorial, or article-to-video promos, do not accept an empty image asset folder by default. Capture or generate at least one concrete visual stage and two proof visuals unless the user explicitly approves a typography-only film. Real local workflow material is usually stronger than abstract cards: file-tree crops, draft screenshots, gate reports, metric tables, workspace panels, product surfaces, or generated symbolic background plates.
+For content-system, workflow, local-folder, knowledge-base, tutorial, or article-to-video promos, do not accept an empty image asset folder by default. Derive enough concrete visual stages and proof visuals to cover every declared visual world and every source claim that needs visible evidence, unless the user explicitly approves a typography-only film. Real local workflow material is usually stronger than abstract cards: file-tree crops, draft screenshots, gate reports, metric tables, workspace panels, product surfaces, or generated symbolic background plates.
 
 For each Codex Image Gen request:
 
@@ -603,6 +612,8 @@ After generation:
 - Inspect the returned image against the layout contract.
 - Reject images with text in the quiet zone, fake UI, fake logos, labels, watermarks, random icons, busy detail, or unclear subject placement.
 - Recrop or regenerate before implementation when the image cannot hold readable text.
+- Preserve component-sheet sources, crop every accepted item into a named transparent PNG, verify transparent outer edges and matte cleanup, and build dark/light contact sheets.
+- Run `node scripts/validate_image_assets.mjs <project-dir>` before animation code.
 - Save accepted assets into project asset folders before referencing them.
 
 ### 7. Layout Before Animation
@@ -737,13 +748,16 @@ Before claiming the video is ready, verify:
 - Generated images have a role, target scene, quiet text zone, accepted local path, and usable crop before use.
 - Product promos include a product proof inventory, mandatory visual component library, icon/decorative system, asset library, copy ladder, and component interaction plan.
 - Product, article, workflow, and knowledge promos include a source-driven visual system: source phrases, nouns, process verbs, motif families, text-to-component mapping, big-text-box replacement, and generic visual rejection.
-- Product promos meet the visual component floor: 4+ product-specific component types, 2+ visible in the first half, one concrete product surface, one taxonomy component, one final action component, and snapshot proof for each major component.
+- Product promos fulfill the approved source-driven component inventory, including every required concrete surface, taxonomy, proof, or final action component and snapshot proof for each major component.
 - Hero frames prove source-text recognition. A viewer should see source-specific objects, actions, numbers, or product states, not only generic office props, large text boxes, or attractive asset packs.
-- Product promo storyboards name at least four concrete visual components for a 15s premium product promo, or explicitly document why a concept-film exception is better.
+- Product promo storyboards name every concrete visual component required by the source and explain the count; a preset component number is not accepted as analysis.
 - Product promo copy is specific: pain, mechanism, proof, confidence, and CTA are not generic.
 - Product promo snapshots look like product proof frames, not only title cards.
 - Product promo connectors are anchored to visible product components or replaced by card-attached signals; no floating arcs or decorative lines remain.
 - Support asset decision is documented for new videos, even when the decision is none.
+- `ASSET_MANIFEST.json` records the approved visual worlds, background count decision, component inventory, sheet strategy, cutout paths, and proof sheets when generated bitmaps are used.
+- Premium multi-scene image work uses independent vertical backgrounds for every declared visual world; fixed duration-based counts and one-background shortcuts are rejected.
+- Every accepted component-sheet item exists as an independent transparent asset, passes dark/light contact-sheet review, and is referenced by the composition.
 - Support assets have role, source, style lock, safe zones, motion purpose, entrance/exit timing, and deletion trigger before they are generated or animated.
 - No support asset competes with the dominant text, symbol, product, or CTA.
 - Multi-scene work has meaningful scene bridges, readable holds, and a motion craft plan.
@@ -782,6 +796,7 @@ Use seeded randomness, fixed duration, fixed fps, fixed dimensions, local assets
 ## References
 
 - Read `references/workflow.md` for the full production workflow.
+- Read `references/imagegen-asset-pipeline.md` when planning generated background sets, component sheets, transparent cutouts, asset manifests, or image asset validation.
 - Read `references/visual-standard.md` when judging style, typography, layout, and motion.
 - Read `references/text-over-background-layout.md` when planning layout contracts, text rectangles, subject rectangles, title tiers, crop-safe zones, and mobile safe boundaries.
 - Read `references/motion-craft.md` when planning kinetic typography, CSS3/SVG structure, GSAP choreography, scene transitions, or anti-PPT improvements.
@@ -801,6 +816,7 @@ Use the templates in `templates/` for production artifacts:
 - `SCENE_SCHEMA.template.json`
 - `VECTOR_TEMPLATES.template.json`
 - `MOTION_PRIMITIVES.template.json`
+- `ASSET_MANIFEST.template.json`
 
 Optional templates:
 
@@ -815,6 +831,7 @@ This skill includes deterministic utility scripts:
 node scripts/check-structure.mjs
 node scripts/create_project.mjs <target-dir>
 node scripts/check_assets.mjs <project-dir>
+node scripts/validate_image_assets.mjs <project-dir>
 node scripts/validate_artifacts.mjs <project-dir>
 node scripts/validate_design_engineering.mjs <project-dir>
 node scripts/build_review_pack.mjs <project-dir>
