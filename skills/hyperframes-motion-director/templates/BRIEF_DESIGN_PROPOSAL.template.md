@@ -64,6 +64,17 @@
 - Texture:
 - Forbidden visuals:
 
+## Reference Fidelity And Narrative Boundary
+- Reference source type: attachment / pasted prompt / local path / repository / named style / house style
+- Exact source inspected:
+- Exact source reviewed: yes / no
+- Observed visual grammar:
+- What the reference controls:
+- Product / source story that must remain primary:
+- Narrative boundary:
+- Forbidden style drift or generic substitutions:
+- Reference uncertainty, if any:
+
 ## Image Generation Decision
 - Generate images: yes / no
 - Default background stage: generated / supplied / pure-code exception
@@ -141,6 +152,17 @@
 - Static-component rejection rule:
 - Big-text-box rejection rule:
 - If no component library, why this is a deliberate concept-film exception:
+
+## Motion-Role Coverage And Combination Proof
+- Narrative anchor components:
+- Product proof components:
+- Transition carrier components:
+- Additional source-derived motion roles:
+- Why the library has real role diversity:
+- Combination test 1: component set / scene / choreography / timestamp / deletion test
+- Combination test 2: component set / scene / choreography / timestamp / deletion test
+- Repeated silhouette or same-card rejection:
+- Independent fade-in rejection:
 
 ## Copy Strategy
 - Pain line:

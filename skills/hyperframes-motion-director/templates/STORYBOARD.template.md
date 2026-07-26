@@ -255,10 +255,22 @@
 - Layout contracts:
 - HyperFrames-only elements:
 - Exact local asset paths:
+- Exact style source inspected:
+- Observed reference grammar:
+- Narrative boundary:
+- Forbidden style drift:
+- Narrative anchor components:
+- Product proof components:
+- Transition carrier components:
+- Combination test 1 / scene / timestamp / deletion test:
+- Combination test 2 / scene / timestamp / deletion test:
+- Composite owner groups:
+- Transparent assets using visible alpha bounds:
+- Narrow text containers using exported font measurement:
 
 ## Snapshot Plan
-| Timestamp | Beat | Expected visible text | Expected dominant visual | Risk being checked |
-| --- | --- | --- | --- | --- |
-|  |  |  |  |  |
+| Timestamp | Beat | Phase | Browser snapshot | Final MP4 frame | Expected visible text | Expected dominant visual | Risk being checked |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  | entry / hold / exit |  |  |  |  |  |
 
-Capture hero frames, readable holds, and transition midpoints. Each snapshot must prove black-background cinematic style, readable hierarchy, background/text relationship, motion continuity, and metaphor clarity.
+Capture hero frames, readable holds, transition midpoints, and entry / hold / exit frames for layered or text-rich scenes. Final delivery evidence must come from the rendered MP4. Each checkpoint must prove readable hierarchy, background/text relationship, composite ownership, visible-alpha-bound placement, exported text fit, motion continuity, and metaphor clarity.

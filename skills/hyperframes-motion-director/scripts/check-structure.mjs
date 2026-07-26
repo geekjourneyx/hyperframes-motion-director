@@ -15,6 +15,7 @@ const requiredFiles = [
   "references/premium-product-promo.md",
   "references/motion-background-system.md",
   "references/imagegen-asset-pipeline.md",
+  "references/asset-choreography-and-render-qa.md",
   "references/motion-craft.md",
   "references/design-engineering.md",
   "references/gsap-choreography.md",
@@ -58,11 +59,15 @@ const requiredSkillTerms = [
   "Premium Product Promo Rule",
   "Source-Driven Visual System Rule",
   "Content-Derived Image Asset Architecture Rule",
+  "Reference Fidelity And Narrative Boundary Rule",
+  "Motion-Role Asset Coverage Rule",
+  "Rendered-Frame Integrity Gate",
   "Anchored Connector Rule",
   "First-Frame Visual Center Gate",
   "mandatory visual component library",
   "premium-product-promo.md",
   "imagegen-asset-pipeline.md",
+  "asset-choreography-and-render-qa.md",
   "Design Engineering Contract Rule",
   "GSAP Choreography Contract Rule",
   "Motion Design Compiler",
@@ -85,7 +90,7 @@ const positioningChecks = [
   {
     base: root,
     file: "SKILL.md",
-    required: ["name: hyperframes-motion-director", "# HyperFrames Motion Director", "Text Over Background Layout Rule", "text-over-background-layout.md", "Premium Product Promo Rule", "Source-Driven Visual System Rule", "Content-Derived Image Asset Architecture Rule", "at least one source-driven visual component sheet", "premium-product-promo.md", "imagegen-asset-pipeline.md", "Anchored Connector Rule"],
+    required: ["name: hyperframes-motion-director", "# HyperFrames Motion Director", "Text Over Background Layout Rule", "text-over-background-layout.md", "Premium Product Promo Rule", "Source-Driven Visual System Rule", "Content-Derived Image Asset Architecture Rule", "Reference Fidelity And Narrative Boundary Rule", "Motion-Role Asset Coverage Rule", "Rendered-Frame Integrity Gate", "at least one source-driven visual component sheet", "premium-product-promo.md", "imagegen-asset-pipeline.md", "asset-choreography-and-render-qa.md", "Anchored Connector Rule"],
     forbidden: ["name: video-ad-director", "# Video Ad Director", "AI video ad or promo", "HyperFrames advertising work", "4+ product-specific component types", "at least one concrete visual stage and two proof visuals"],
   },
   {
@@ -103,8 +108,14 @@ const positioningChecks = [
   {
     base: root,
     file: "templates/ASSET_MANIFEST.template.json",
-    required: ["approved_background_count", "approved_component_count", "sheet_count_reason", "hero_generation_reason", "revisions"],
+    required: ["\"schema_version\": 2", "approved_background_count", "approved_component_count", "sheet_count_reason", "hero_generation_reason", "style_reference", "narrative_boundary", "motion_role_coverage", "narrative_anchor", "product_proof", "transition_carrier", "combination_tests", "revisions"],
     forbidden: ["\"approved_background_count\": 2", "\"approved_component_count\": 3"],
+  },
+  {
+    base: root,
+    file: "templates/SCENE_SCHEMA.template.json",
+    required: ["requires_rendered_mp4_text_measurement", "requires_alpha_visible_bounds_measurement", "requires_occlusion_group_validation", "render_qa_contract", "composite_groups", "alpha_visible_bounds_assets", "export_checkpoints"],
+    forbidden: [],
   },
   {
     base: root,

@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.0] - 2026-07-26
+
+### Added
+
+- Added exact-reference fidelity and narrative-boundary rules so supplied prompts, images, repositories, and local paths are inspected directly instead of reduced to a generic style label.
+- Added motion-role asset coverage for narrative anchors, product proof, and transition carriers, plus distinct component-combination proofs.
+- Added rendered-frame integrity contracts for composite ownership, visible alpha bounds, exported font fit, and entry/hold/exit MP4 evidence.
+- Added regression evaluations based on real asset-monotony, style-drift, transparency, occlusion, and exported-overflow feedback.
+
+### Changed
+
+- Upgraded `ASSET_MANIFEST.json` to schema version 2 and made style-source evidence, narrative boundaries, motion-role coverage, and combination tests enforceable.
+- Upgraded `SCENE_SCHEMA.json` to require rendered-MP4 text checks, alpha-visible-bounds measurement, occlusion-group validation, and export checkpoints.
+- Expanded brief, design, storyboard, and review templates so the new rules produce auditable evidence rather than prose-only quality claims.
+
 ## [2.7.0] - 2026-07-24
 
 ### Added

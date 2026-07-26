@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "production": {
     "premium_vertical_promo": true,
     "duration_seconds": 15,
@@ -22,8 +22,36 @@
     "component_count_reason": "",
     "sheet_count_reason": "",
     "hero_generation_reason": "",
+    "style_reference": {
+      "source_type": "",
+      "exact_source": "",
+      "reviewed": false,
+      "visual_grammar": [],
+      "narrative_boundary": "",
+      "forbidden_drift": []
+    },
     "visual_worlds": [],
-    "component_inventory": []
+    "component_inventory": [],
+    "motion_role_coverage": {
+      "roles": [
+        {
+          "id": "narrative_anchor",
+          "reason": "",
+          "component_ids": []
+        },
+        {
+          "id": "product_proof",
+          "reason": "",
+          "component_ids": []
+        },
+        {
+          "id": "transition_carrier",
+          "reason": "",
+          "component_ids": []
+        }
+      ],
+      "combination_tests": []
+    }
   },
   "backgrounds": [],
   "component_sheets": [],

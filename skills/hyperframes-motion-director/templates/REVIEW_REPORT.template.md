@@ -32,6 +32,10 @@
 | first eye target |  |  |
 | transition midpoints |  |  |
 | layout overflow |  |  |
+| composite ownership / occlusion |  |  |
+| transparent asset visible bounds |  |  |
+| exported font fit |  |  |
+| entry / hold / exit MP4 evidence |  |  |
 | visual object necessity |  |  |
 | source-driven visual system |  |  |
 | text-to-component mapping |  |  |
@@ -45,6 +49,10 @@
 | distinct visual world coverage |  |  |
 | component inventory coverage |  |  |
 | component state-change actions |  |  |
+| exact style reference reviewed |  |  |
+| style / narrative boundary |  |  |
+| motion-role coverage |  |  |
+| distinct component combinations |  |  |
 | component sheet crop / isolation |  |  |
 | transparent component edges |  |  |
 | dark / light cutout contact sheets |  |  |
@@ -63,6 +71,18 @@
 |  |  |  |  |
 
 Required snapshots: first frame, first readable hold, each hero frame, each transition midpoint, CTA frame, and any frame with dense text or product imagery. After final render, extract at least one MP4 still from the first readable hold and confirm the dominant visual mass has the intended center or offset and no important edge is clipped.
+
+## Rendered-Frame Integrity Evidence
+
+| Scene | Phase | Timestamp | Final MP4 frame path | Assertions | Result | Fix / rerun evidence |
+| --- | --- | ---: | --- | --- | --- | --- |
+|  | entry / hold / exit |  |  | composite ownership / visible alpha bounds / exported font fit / contrast / overflow |  |  |
+
+- Every layered or text-rich scene has entry, hold, and exit evidence:
+- Composite shells, text, controls, shadows, and highlights share one owner group:
+- Transparent assets were aligned using visible alpha bounds where needed:
+- Narrow containers were measured with exported font metrics:
+- Browser and MP4 disagreements were resolved in favor of the MP4:
 
 ## Watch Notes
 
@@ -142,6 +162,10 @@ Use this section for product, CLI, SaaS, API, workflow, skill, template, or refe
 - Big text boxes were replaced by objects, chips, proof surfaces, kinetic words, or short captions:
 - Generic office / AI / productivity / dashboard props were rejected unless source-specific:
 - Visual component families share one motif and style system:
+- Exact style source was inspected instead of inferred from a label:
+- Observed visual grammar is recorded:
+- Style controls rendering language without replacing product narrative:
+- Forbidden style drift is recorded:
 - Product proof inventory is documented when relevant:
 - Mandatory visual component library exists for product promos:
 - Product visual component coverage is complete:
@@ -149,6 +173,8 @@ Use this section for product, CLI, SaaS, API, workflow, skill, template, or refe
 - Asset manifest records the approved analysis and accepted local paths:
 - Background count is derived from distinct visual worlds:
 - Component count is derived from the movable foreground inventory:
+- Narrative anchor, product proof, and transition carrier roles are covered:
+- At least two distinct component combinations are proven for premium multi-scene work:
 - Component sheet count is based on isolation space and usable resolution:
 - Separate hero objects are generated when sheet resolution is insufficient:
 - Visual components are reusable and product-specific:
@@ -176,6 +202,10 @@ Use this section for product, CLI, SaaS, API, workflow, skill, template, or refe
 - First-frame dominant visual mass is optically centered or intentionally offset:
 - Hero-frame product cards, screenshots, symbols, and CTA clear edge-safe bounds:
 - Rendered MP4 stills match the browser snapshot layout:
+- Composite children share transform, opacity, clipping, and occlusion ownership:
+- Transparent asset placement uses visible alpha bounds where canvas padding changes alignment:
+- Entry, hold, and exit frames were extracted from the final MP4:
+- Exported font fit passes inside narrow visible containers:
 - TextRect, subjectRect, and safeBottomY are verified:
 - Text sits in a safe quiet zone:
 - Mobile safe zones are respected:
@@ -220,6 +250,10 @@ Use this section for product, CLI, SaaS, API, workflow, skill, template, or refe
 - Product promo storyboards name every required concrete visual component and explain the count:
 - Premium multi-scene backgrounds cover every declared visual world:
 - Fixed asset targets such as 4 backgrounds or 12 components are rejected unless the source analysis independently produces them:
+- Asset libraries with many files but only one motion role are rejected:
+- Reusing the same component set does not count as a second combination:
+- Named style labels never substitute for inspecting the exact reference source:
+- Style mechanisms do not replace the product or source story:
 - Product promo visuals are source-specific and not an attractive generic asset pack:
 - Hero frames would reveal the source topic without reading paragraph boxes:
 - Component sheets map every accepted item to a source phrase and component family:
@@ -229,6 +263,8 @@ Use this section for product, CLI, SaaS, API, workflow, skill, template, or refe
 - Product promo snapshots look like product proof frames, not only title cards:
 - Added objects are not generic decoration:
 - No floating arcs, unanchored route lines, or decorative underlines remain:
+- Browser-only layout evidence does not close a rendered-frame defect:
+- Composite child layers never cross their owner's external occlusion boundary:
 - Reducing the video to screenshots would remove meaningful motion information:
 - Anti-PPT verdict: pass / revise before delivery
 

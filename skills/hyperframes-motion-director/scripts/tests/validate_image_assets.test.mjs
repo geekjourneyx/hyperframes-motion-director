@@ -160,7 +160,7 @@ function buildFixture(overrides = {}) {
   }
 
   const manifest = {
-    schema_version: 1,
+    schema_version: 2,
     production: {
       premium_vertical_promo: true,
       duration_seconds: 15,
@@ -189,6 +189,21 @@ function buildFixture(overrides = {}) {
       component_count_reason: "Every accepted source noun that must move is listed once.",
       sheet_count_reason: "One sheet preserves style while keeping every accepted cell large enough.",
       hero_generation_reason: separateHeroIndex >= 0 ? "The hero needs independent native resolution." : "No separate hero is needed.",
+      style_reference: overrides.omitStyleReference ? null : {
+        source_type: "house_style",
+        exact_source: "skills/hyperframes-motion-director/SKILL.md#House-Style",
+        reviewed: true,
+        visual_grammar: [
+          "deep black stage",
+          "restrained warm-gold accents",
+          "one dominant visual mass",
+        ],
+        narrative_boundary: "The style shapes material and transitions; product actions remain the story.",
+        forbidden_drift: [
+          "Do not replace product proof with a style-mechanism demonstration.",
+          "Do not substitute a generic interpretation of the named style.",
+        ],
+      },
       visual_worlds: Array.from({ length: declaredBackgroundCount }, (_, index) => ({
         id: overrides.duplicateWorldIds ? "world-1" : `world-${index + 1}`,
         source_beats: [`scene-${index + 1}`],
@@ -200,6 +215,67 @@ function buildFixture(overrides = {}) {
         source_phrase: `source phrase ${index + 1}`,
         reason: `Must perform action ${index + 1}`,
       })),
+      motion_role_coverage: {
+        roles: overrides.insufficientMotionRoles
+          ? [
+            {
+              id: "product_proof",
+              reason: "Every component only repeats the same proof-card job.",
+              component_ids: Array.from(
+                { length: declaredComponentCount },
+                (_, index) => `component-${index + 1}`,
+              ),
+            },
+          ]
+          : [
+            {
+              id: "narrative_anchor",
+              reason: "Keeps the same source object recognizable across the story.",
+              component_ids: ["component-1"],
+            },
+            {
+              id: "product_proof",
+              reason: "Makes the product claim visible as a concrete state.",
+              component_ids: ["component-2"],
+            },
+            {
+              id: "transition_carrier",
+              reason: "Hands visual material from one beat into the next.",
+              component_ids: declaredComponentCount > 2
+                ? Array.from(
+                  { length: declaredComponentCount - 2 },
+                  (_, index) => `component-${index + 3}`,
+                )
+                : ["component-1"],
+            },
+          ],
+        combination_tests: [
+          {
+            id: "assembly-a",
+            scene_id: "scene-1",
+            component_ids: declaredComponentCount > 1
+              ? ["component-1", "component-2"]
+              : ["component-1"],
+            choreography: "The narrative anchor hands the claim into the proof surface.",
+            snapshot_timestamp: 2.4,
+            deletion_test: "Deleting either object breaks the action-to-proof handoff.",
+          },
+          {
+            id: "assembly-b",
+            scene_id: "scene-2",
+            component_ids: overrides.duplicateCombinationTests
+              ? (declaredComponentCount > 1
+                ? ["component-1", "component-2"]
+                : ["component-1"])
+              : declaredComponentCount > 2
+                ? ["component-2", "component-3"]
+                : ["component-2", "component-1"],
+            choreography: "The proof surface exits through a transition carrier.",
+            snapshot_timestamp: 5.2,
+            deletion_test: "Deleting the carrier turns the bridge into a generic cut.",
+          },
+        ],
+      },
     },
     backgrounds: backgroundPaths.map((path, index) => ({
       id: `stage-${index + 1}`,
@@ -300,6 +376,24 @@ test("accepts a complete content-derived premium image asset pipeline", () => {
   assert.equal(report.valid, true);
   assert.equal(report.summary.backgrounds, 2);
   assert.equal(report.summary.components, 3);
+});
+
+test("rejects premium work that never records the exact style source and narrative boundary", () => {
+  const result = runValidator(buildFixture({ omitStyleReference: true }));
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /style_reference/i);
+});
+
+test("rejects an asset library whose components all repeat one motion role", () => {
+  const result = runValidator(buildFixture({ insufficientMotionRoles: true }));
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /narrative_anchor|transition_carrier|motion role/i);
+});
+
+test("rejects repeated component combinations that do not prove compositional range", () => {
+  const result = runValidator(buildFixture({ duplicateCombinationTests: true }));
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /combination.*duplicate|duplicate.*combination/i);
 });
 
 test("accepts CLI flags before the project directory", () => {

@@ -110,6 +110,21 @@ Block delivery when:
 - Components repeat as same-shaped cards with different labels instead of distinct roles and actions.
 - The review report passes "asset floor" while failing source-text recognition, motif cohesion, or big-text replacement.
 
+## Reference Fidelity And Narrative Boundary Rule
+
+When the user supplies a style prompt, image, repository, local path, or named reference, inspect that exact source before describing or generating the visual system. A style label such as Riso, editorial collage, or premium tech is not evidence that the source was understood.
+
+Record in `ASSET_MANIFEST.json`:
+
+- Exact source: the attachment, text prompt, repository, path, screenshot, or house-style section actually inspected.
+- Observed visual grammar: at least three concrete properties visible in that source, such as palette, material, edge treatment, composition, typography relationship, depth, or transition behavior.
+- Narrative boundary: what the reference controls and what it must not replace.
+- Forbidden drift: generic substitutions, adjacent styles, or attractive mechanisms that would erase the product story.
+
+Style is a rendering language. Product actions, source claims, characters, objects, and proof states remain the story. Do not turn a product promo into a demonstration of printing, collage, scanning, machinery, or another style mechanism unless that mechanism is itself the product claim.
+
+If the user corrects the reference source or says the style has overtaken the story, return to the brief and asset manifest before generating more assets. Do not patch the mistake only in animation.
+
 ## Background And Motion Rule
 
 For new video work, plan background imagery by default. Phase 1 defines what is needed; Phase 2 generates or sources the assets after confirmation. Use Codex Image Gen for project-bound bitmap assets unless the user supplied strong assets or the confirmed direction is pure kinetic typography.
@@ -136,6 +151,24 @@ Do not choose background or component counts from duration alone. Derive the ass
 Phase 1 must state why the chosen counts are necessary. A fixed target such as "4 backgrounds and 12 components" without source-driven analysis is a template failure. Phase 2 must not silently rewrite the approved counts; record a revision and reason when the asset analysis changes.
 
 Use `references/imagegen-asset-pipeline.md` before planning, generating, cutting, validating, or reviewing bitmap assets for premium vertical work.
+
+## Motion-Role Asset Coverage Rule
+
+Do not judge a visual asset library by count alone. A large sheet of same-shaped cards is still one visual idea.
+
+For premium multi-scene work, the accepted component inventory must cover three different jobs:
+
+- Narrative anchor: preserves the same subject, article, person, product surface, or hero object across beats.
+- Product proof: makes a claim visible as a real state, result, command, screenshot, number, choice, or validation.
+- Transition carrier: tears, folds, routes, wipes, stamps, fans, assembles, scans, or otherwise moves story material between scenes.
+
+One component may cover more than one job when the mapping is explicit, but premium multi-scene work needs at least three independent movable components. This is not an inventory target; it is the smallest library that can prove two distinct two-object combinations.
+
+Before implementation, record at least two distinct combination tests for premium multi-scene work. Each test names the component set, scene, choreography, snapshot timestamp, and deletion test. Reusing the same component set with a different label is not a second combination.
+
+Block animation when the library has many files but only one motion job, when all proof surfaces share one silhouette, or when components can only enter independently and cannot hand off, assemble, replace, reveal, or transform together.
+
+Use `references/asset-choreography-and-render-qa.md` before approving an asset inventory or component sheet.
 
 ## Pure-Code Exception Rule
 
@@ -318,6 +351,24 @@ Layout contract: cinematic side-title stage / 9:16 / left axis / textRect x=8% y
 The contract must include layout intent, image ratio, text axis, text rectangle, subject rectangle, quiet zone, safe bottom boundary, title size tier, and motion bounds. For non-Chinese or non-vertical work, adapt the contract intentionally and document the override.
 
 If the generated image puts detail, faces, product edges, UI text, or high contrast texture inside the quiet text zone, regenerate or recrop before motion. Motion cannot rescue a broken text-over-background composition.
+
+## Rendered-Frame Integrity Gate
+
+Browser previews are planning evidence. Rendered MP4 frames are delivery evidence.
+
+For every scene, declare entry, readable-hold, and exit checkpoints in `SCENE_SCHEMA.json`. Extract and inspect the matching frames from the final MP4 when the scene contains text, transparent assets, product UI, layered cards, or composite components.
+
+Hard rules:
+
+- A component's container, text, controls, shadows, highlights, and decorative shell share one owner group for transform, opacity, clipping, and occlusion. Children may not cross in front of an object while their container sits behind it.
+- Position transparent assets by their visible alpha bounds when aligning them to text, frames, or safe zones. The PNG canvas rectangle is not the visible object.
+- Measure exported font metrics when text must fit inside a control, card, badge, search field, or narrow frame. Browser fit does not waive rendered-frame overflow.
+- Check entry, hold, and exit, not only the hero hold. Motion can create clipping or overlap between approved still frames.
+- A review pass without the rendered frame path, timestamp, and named assertion is not evidence.
+
+If browser and MP4 disagree, the MP4 wins. Update the layout contract, composite ownership, alpha-bound placement, or font sizing, then rerender and re-extract the frame.
+
+Use `references/asset-choreography-and-render-qa.md` for the full occlusion, visible-bounds, export-parity, and evidence workflow.
 
 ## Design Engineering Contract Rule
 
@@ -517,6 +568,7 @@ Read `references/text-over-background-layout.md` before deciding layout contract
 Read `references/motion-craft.md` before deciding kinetic typography, CSS/SVG layers, scene transitions, GSAP structure, or anti-PPT quality gates.
 Read `references/design-engineering.md` before deciding scene schemas, vector templates, motion primitives, template selection rules, render validation, or batch templates.
 Read `references/gsap-choreography.md` before implementing timelines, labels, position parameters, GSAP plugin usage, SplitText, DrawSVG, MorphSVG, MotionPath, CustomEase, or performance rules.
+Read `references/asset-choreography-and-render-qa.md` before approving style references, asset role coverage, composite ownership, transparent-asset alignment, or rendered-frame evidence.
 
 ### 4. Storyboard And Copy
 
@@ -579,6 +631,7 @@ The contracts must lock:
 - Semantic selection reason for every primitive.
 - GSAP labels, position parameters, transform aliases, plugin requirements, and `autoAlpha` policy.
 - Transition midpoint snapshot requirements.
+- Composite ownership, alpha-visible-bounds decisions, and entry/hold/exit export checkpoints.
 - Rejection tests for templates and primitives.
 - Whether content can be batch-replaced without changing layout, SVG geometry, or timing grammar.
 
@@ -604,6 +657,8 @@ For each Codex Image Gen request:
 - Give each image or support asset one role and one target scene.
 - Specify aspect ratio, target size, focal subject position, quiet text zone, crop-safe region, platform-safe boundaries, and forbidden content.
 - Specify support asset style lock, safe zones, motion purpose, entrance/exit timing, and deletion trigger before generation.
+- Carry the exact inspected reference grammar and narrative boundary into the prompt; do not rely on the style name alone.
+- Name the component's motion role: narrative anchor, product proof, transition carrier, or an explicit source-derived extension.
 - Ask for sparse composition, usable negative space, dark contrast, and no baked-in text unless exact title text is required.
 - Keep typography, proof notes, CTA, logos, masks, crops, parallax, focus pulls, and timing in HyperFrames whenever possible.
 
@@ -613,6 +668,8 @@ After generation:
 - Reject images with text in the quiet zone, fake UI, fake logos, labels, watermarks, random icons, busy detail, or unclear subject placement.
 - Recrop or regenerate before implementation when the image cannot hold readable text.
 - Preserve component-sheet sources, crop every accepted item into a named transparent PNG, verify transparent outer edges and matte cleanup, and build dark/light contact sheets.
+- Reject a visually rich sheet when all accepted items repeat one silhouette or one motion job.
+- Run the declared component combination tests before animation implementation.
 - Run `node scripts/validate_image_assets.mjs <project-dir>` before animation code.
 - Save accepted assets into project asset folders before referencing them.
 
@@ -756,6 +813,7 @@ Before claiming the video is ready, verify:
 - Product promo connectors are anchored to visible product components or replaced by card-attached signals; no floating arcs or decorative lines remain.
 - Support asset decision is documented for new videos, even when the decision is none.
 - `ASSET_MANIFEST.json` records the approved visual worlds, background count decision, component inventory, sheet strategy, cutout paths, and proof sheets when generated bitmaps are used.
+- `ASSET_MANIFEST.json` records the exact style source, observed visual grammar, narrative boundary, forbidden drift, motion-role coverage, and distinct component combination tests.
 - Premium multi-scene image work uses independent vertical backgrounds for every declared visual world; fixed duration-based counts and one-background shortcuts are rejected.
 - Every accepted component-sheet item exists as an independent transparent asset, passes dark/light contact-sheet review, and is referenced by the composition.
 - Support assets have role, source, style lock, safe zones, motion purpose, entrance/exit timing, and deletion trigger before they are generated or animated.
@@ -763,6 +821,10 @@ Before claiming the video is ready, verify:
 - Multi-scene work has meaningful scene bridges, readable holds, and a motion craft plan.
 - Kinetic relay work includes keyword chain, action-object chain, direction map, relay continuity, midpoint snapshots, and a score of 90 or higher.
 - Design engineering validation has run, including scene schema, vector template, and motion primitive checks.
+- Composite children share one owner for transform, opacity, clipping, and occlusion.
+- Transparent asset placement uses visible alpha bounds where canvas padding would change alignment.
+- Entry, readable-hold, and exit checkpoints were extracted from the final MP4 for text-rich or layered scenes.
+- Narrow text containers pass exported font measurement and rendered-frame overflow review.
 - Typography, visual objects, image stages, and motion all support the extracted essence.
 - The work avoids repeated fade-ups, identical centered layouts, empty black gaps, generic icon clutter, and interchangeable wallpaper.
 - Timing is deterministic; HyperFrames validation or the best available substitute has run.
@@ -797,6 +859,7 @@ Use seeded randomness, fixed duration, fixed fps, fixed dimensions, local assets
 
 - Read `references/workflow.md` for the full production workflow.
 - Read `references/imagegen-asset-pipeline.md` when planning generated background sets, component sheets, transparent cutouts, asset manifests, or image asset validation.
+- Read `references/asset-choreography-and-render-qa.md` when using a supplied style reference, approving asset-role coverage, testing component combinations, aligning transparent assets, or validating rendered MP4 frames.
 - Read `references/visual-standard.md` when judging style, typography, layout, and motion.
 - Read `references/text-over-background-layout.md` when planning layout contracts, text rectangles, subject rectangles, title tiers, crop-safe zones, and mobile safe boundaries.
 - Read `references/motion-craft.md` when planning kinetic typography, CSS3/SVG structure, GSAP choreography, scene transitions, or anti-PPT improvements.

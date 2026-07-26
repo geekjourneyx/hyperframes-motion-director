@@ -173,6 +173,55 @@
         "Output forbids direct use of the source component sheet in the final composition.",
         "Output asks for confirmation before image generation or implementation."
       ]
+    },
+    {
+      "id": 11,
+      "prompt": "不要只看 Riso 这个名字，一定要读我发的本地文本提示词和参考图。Riso 只是视觉风格，产品叙事还是 md2wechat 的一站式公众号创作流程，不能变成一支讲印刷机制的片子。请重做 Phase 1。",
+      "expected_output": "A revised Phase 1 proposal that inspects and records the exact supplied reference, extracts observable visual grammar, separates style language from product narrative, preserves concrete product states and proof, names forbidden style drift, and waits for confirmation.",
+      "files": [],
+      "assertions": [
+        "Output says it will inspect or has inspected the exact supplied prompt, attachment, or local reference rather than relying on the Riso label.",
+        "Output records concrete observed visual grammar such as palette, paper, halftone, edge, registration, composition, or transition behavior.",
+        "Output defines what the reference controls and what it must not replace.",
+        "Output keeps concrete md2wechat product actions, surfaces, states, or proof as the narrative spine.",
+        "Output explicitly rejects turning the film into a demonstration of printing machinery or style mechanism.",
+        "Output updates the brief or asset manifest before generating more assets.",
+        "Output asks for confirmation before production."
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "视觉素材合集太少了，也太单一。现在都是几张差不多的功能纸片，真的能够组成高级动画和页面效果吗？不要只是再加几个同款卡片，请重新规划素材。",
+      "expected_output": "A source-driven asset-library revision that evaluates motion-role diversity rather than file count, covers narrative anchor, product proof, and transition carrier jobs, derives the inventory from the story, records at least two distinct component combination proofs, and rejects repeated silhouettes or independent fade-ins.",
+      "files": [],
+      "assertions": [
+        "Output explains that asset count alone does not prove visual or animation range.",
+        "Output identifies narrative anchor components that remain recognizable across beats.",
+        "Output identifies concrete product proof components.",
+        "Output identifies transition carrier components that tear, fold, route, wipe, stamp, fan, scan, assemble, or hand off material.",
+        "Output derives additions from source phrases, product actions, and scene transitions instead of choosing a cosmetic fixed count.",
+        "Output records at least two distinct component sets and explains their choreography.",
+        "Output gives each combination a scene or timestamp and deletion test.",
+        "Output rejects same-shaped cards with new labels and independent fade-in-only usage.",
+        "Output updates ASSET_MANIFEST.json or equivalent inventory evidence before animation."
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "最终视频这帧有两个问题：上面的透明纸圈压住品牌字，下面搜索框文字导出后溢出；另一个场景里命令窗口在白纸后面，但命令文字却穿到白纸前面。请按根因修复并升级检查规则。",
+      "expected_output": "A root-cause repair plan and rule upgrade that uses visible alpha bounds for transparent assets, export-font measurement for narrow containers, one owner group for composite shells and text, and entry/hold/exit evidence extracted from the final MP4 before closing the defect.",
+      "files": [],
+      "assertions": [
+        "Output identifies transparent canvas bounds versus visible alpha bounds as a likely cause of the paper-ring overlap.",
+        "Output requires alignment and clearance from visible alpha bounds, not only the PNG canvas rectangle.",
+        "Output requires measuring the font actually used by the renderer for the search field.",
+        "Output treats the terminal shell, command text, cursor, and related layers as one composite owner group.",
+        "Output requires shared transform, opacity, clipping, and external occlusion for composite children.",
+        "Output checks entry, readable hold, and exit rather than only one hero frame.",
+        "Output extracts evidence from the final rendered MP4, not only browser snapshots.",
+        "Output states that the MP4 wins when browser and export disagree.",
+        "Output updates the upstream layout, scene, asset, or review contract and rerenders the affected path."
+      ]
     }
   ]
 }

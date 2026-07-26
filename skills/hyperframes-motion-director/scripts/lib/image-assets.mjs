@@ -375,7 +375,7 @@ export function validateImageAssets(rootArg, options = {}) {
     };
   }
 
-  if (manifest.schema_version !== 1) errors.push("Asset manifest schema_version must be 1.");
+  if (manifest.schema_version !== 2) errors.push("Asset manifest schema_version must be 2.");
   const production = manifest.production || {};
   const requirements = manifest.requirements || {};
   const assetAnalysis = manifest.asset_analysis || {};
@@ -448,6 +448,8 @@ export function validateImageAssets(rootArg, options = {}) {
   const componentInventory = Array.isArray(assetAnalysis.component_inventory)
     ? assetAnalysis.component_inventory
     : [];
+  const styleReference = assetAnalysis.style_reference;
+  const motionRoleCoverage = assetAnalysis.motion_role_coverage;
   const requiredBackgrounds = Number.isInteger(requirements.approved_background_count)
     ? requirements.approved_background_count
     : 0;
@@ -458,7 +460,9 @@ export function validateImageAssets(rootArg, options = {}) {
   if (premiumRequired && requiredBackgrounds < 2) {
     errors.push("Premium multi-scene image generation must declare at least two independent visual worlds, or record an exception.");
   }
-  if (premiumRequired && requiredComponents < 1) {
+  if (premiumRequired && production.scene_count > 1 && requiredComponents < 3) {
+    errors.push("Premium multi-scene image generation must declare at least three movable foreground components so two distinct component combinations can exist, or record an exception.");
+  } else if (premiumRequired && requiredComponents < 1) {
     errors.push("Premium image generation must declare at least one source-driven movable foreground component, or record an exception.");
   }
   if (premiumRequired && componentSheets.length < 1) {
@@ -474,6 +478,101 @@ export function validateImageAssets(rootArg, options = {}) {
   requireText(assetAnalysis.component_count_reason, "asset_analysis.component_count_reason", errors);
   requireText(assetAnalysis.sheet_count_reason, "asset_analysis.sheet_count_reason", errors);
   requireText(assetAnalysis.hero_generation_reason, "asset_analysis.hero_generation_reason", errors);
+  if (!styleReference || typeof styleReference !== "object") {
+    errors.push("asset_analysis.style_reference must record the exact style source and narrative boundary.");
+  } else {
+    requireText(styleReference.source_type, "asset_analysis.style_reference.source_type", errors);
+    requireText(styleReference.exact_source, "asset_analysis.style_reference.exact_source", errors);
+    requireText(
+      styleReference.narrative_boundary,
+      "asset_analysis.style_reference.narrative_boundary",
+      errors,
+    );
+    if (styleReference.reviewed !== true) {
+      errors.push("asset_analysis.style_reference.reviewed must be true after inspecting the exact source.");
+    }
+    if (!Array.isArray(styleReference.visual_grammar) || styleReference.visual_grammar.length < 3) {
+      errors.push("asset_analysis.style_reference.visual_grammar must contain at least three source-observed style rules.");
+    } else {
+      for (const [index, rule] of styleReference.visual_grammar.entries()) {
+        requireText(rule, `asset_analysis.style_reference.visual_grammar[${index}]`, errors);
+      }
+    }
+    if (!Array.isArray(styleReference.forbidden_drift) || styleReference.forbidden_drift.length === 0) {
+      errors.push("asset_analysis.style_reference.forbidden_drift must name at least one forbidden substitution or narrative drift.");
+    } else {
+      for (const [index, rule] of styleReference.forbidden_drift.entries()) {
+        requireText(rule, `asset_analysis.style_reference.forbidden_drift[${index}]`, errors);
+      }
+    }
+  }
+
+  const requiredMotionRoleIds = ["narrative_anchor", "product_proof", "transition_carrier"];
+  const motionRoles = Array.isArray(motionRoleCoverage?.roles) ? motionRoleCoverage.roles : [];
+  const combinationTests = Array.isArray(motionRoleCoverage?.combination_tests)
+    ? motionRoleCoverage.combination_tests
+    : [];
+  const motionRoleIds = new Set();
+  const roleComponentIds = new Set();
+  const motionRoleCoverageRequired = premiumRequired || Boolean(motionRoleCoverage);
+  if (premiumRequired && (!motionRoleCoverage || typeof motionRoleCoverage !== "object")) {
+    errors.push("asset_analysis.motion_role_coverage must prove role diversity and component combinations.");
+  }
+  for (const [index, role] of motionRoles.entries()) {
+    const label = `asset_analysis.motion_role_coverage.roles[${index}]`;
+    requireText(role?.id, `${label}.id`, errors);
+    requireText(role?.reason, `${label}.reason`, errors);
+    if (role?.id && motionRoleIds.has(role.id)) {
+      errors.push(`Motion role id is duplicated: ${role.id}.`);
+    }
+    motionRoleIds.add(role?.id);
+    if (!Array.isArray(role?.component_ids) || role.component_ids.length === 0) {
+      errors.push(`${label}.component_ids must name at least one accepted component.`);
+    } else {
+      for (const componentId of role.component_ids) roleComponentIds.add(componentId);
+    }
+  }
+  if (premiumRequired) {
+    for (const roleId of requiredMotionRoleIds) {
+      if (!motionRoleIds.has(roleId)) {
+        errors.push(`Premium multi-scene asset libraries require motion role "${roleId}".`);
+      }
+    }
+  }
+  const combinationSignatures = new Set();
+  const minimumCombinationTests = premiumRequired && production.scene_count > 1
+    ? 2
+    : motionRoleCoverageRequired
+      ? 1
+      : 0;
+  if (combinationTests.length < minimumCombinationTests) {
+    errors.push(
+      `asset_analysis.motion_role_coverage.combination_tests must contain at least ${minimumCombinationTests} distinct assembly proofs.`,
+    );
+  }
+  for (const [index, combination] of combinationTests.entries()) {
+    const label = `asset_analysis.motion_role_coverage.combination_tests[${index}]`;
+    requireText(combination?.id, `${label}.id`, errors);
+    requireText(combination?.scene_id, `${label}.scene_id`, errors);
+    requireText(combination?.choreography, `${label}.choreography`, errors);
+    requireText(combination?.deletion_test, `${label}.deletion_test`, errors);
+    if (!Number.isFinite(combination?.snapshot_timestamp) || combination.snapshot_timestamp < 0) {
+      errors.push(`${label}.snapshot_timestamp must be a non-negative number.`);
+    }
+    if (!Array.isArray(combination?.component_ids) || combination.component_ids.length < 2) {
+      errors.push(`${label}.component_ids must name at least two components; otherwise it is not a combination.`);
+      continue;
+    }
+    const uniqueIds = new Set(combination.component_ids);
+    if (uniqueIds.size !== combination.component_ids.length) {
+      errors.push(`${label}.component_ids must not repeat a component.`);
+    }
+    const signature = [...uniqueIds].sort().join("|");
+    if (combinationSignatures.has(signature)) {
+      errors.push(`${label} duplicates an earlier component combination.`);
+    }
+    combinationSignatures.add(signature);
+  }
   if (!Array.isArray(manifest.revisions)) errors.push("revisions must be an array.");
   if (visualWorlds.length !== requiredBackgrounds) {
     errors.push(
@@ -767,6 +866,22 @@ export function validateImageAssets(rootArg, options = {}) {
   for (const componentId of componentIds) {
     if (!inventoryIds.has(componentId)) {
       errors.push(`Accepted component is missing from the approved component inventory: ${componentId}`);
+    }
+    if (motionRoleCoverageRequired && !roleComponentIds.has(componentId)) {
+      errors.push(`Accepted component is missing from motion-role coverage: ${componentId}`);
+    }
+  }
+  for (const componentId of roleComponentIds) {
+    if (!componentIds.has(componentId)) {
+      errors.push(`Motion-role coverage references unknown component: ${componentId}`);
+    }
+  }
+  for (const combination of combinationTests) {
+    if (!Array.isArray(combination?.component_ids)) continue;
+    for (const componentId of combination.component_ids) {
+      if (!componentIds.has(componentId)) {
+        errors.push(`Component combination ${combination.id || "missing-id"} references unknown component: ${componentId}`);
+      }
     }
   }
   const componentById = new Map(components.map((component) => [component?.id, component]));

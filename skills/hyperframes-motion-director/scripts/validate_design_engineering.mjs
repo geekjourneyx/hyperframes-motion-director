@@ -97,6 +97,70 @@ function validateScene(scene, index, templateIds, primitiveIds) {
     }
   }
 
+  const renderQa = scene.render_qa_contract;
+  if (!renderQa || typeof renderQa !== "object") {
+    errors.push(`${prefix} missing render_qa_contract.`);
+  } else {
+    if (!["required", "none"].includes(renderQa.composite_group_decision)) {
+      errors.push(`${prefix} render_qa_contract.composite_group_decision must be required or none.`);
+    }
+    if (
+      renderQa.composite_group_decision === "none"
+      && (typeof renderQa.composite_group_reason !== "string" || renderQa.composite_group_reason.trim() === "")
+    ) {
+      errors.push(`${prefix} must explain why no composite-group check is needed.`);
+    }
+    const groups = Array.isArray(renderQa.composite_groups) ? renderQa.composite_groups : [];
+    if (renderQa.composite_group_decision === "required" && groups.length === 0) {
+      errors.push(`${prefix} requires at least one composite group.`);
+    }
+    for (const [groupIndex, group] of groups.entries()) {
+      const label = `${prefix} composite group ${groupIndex + 1}`;
+      for (const field of ["id", "owner_selector", "occlusion_policy"]) {
+        if (typeof group?.[field] !== "string" || group[field].trim() === "") {
+          errors.push(`${label} missing ${field}.`);
+        }
+      }
+      if (!Array.isArray(group?.member_selectors) || group.member_selectors.length < 2) {
+        errors.push(`${label} must include at least two member_selectors.`);
+      }
+      for (const field of ["shared_transform", "shared_opacity", "shared_clip"]) {
+        if (group?.[field] !== true) errors.push(`${label} must set ${field} to true.`);
+      }
+    }
+
+    const alphaBounds = Array.isArray(renderQa.alpha_visible_bounds_assets)
+      ? renderQa.alpha_visible_bounds_assets
+      : [];
+    for (const [assetIndex, asset] of alphaBounds.entries()) {
+      const label = `${prefix} alpha-visible-bounds asset ${assetIndex + 1}`;
+      if (typeof asset?.path !== "string" || asset.path.trim() === "") errors.push(`${label} missing path.`);
+      if (typeof asset?.purpose !== "string" || asset.purpose.trim() === "") errors.push(`${label} missing purpose.`);
+      if (asset?.use_visible_alpha_bounds !== true) errors.push(`${label} must use visible alpha bounds.`);
+    }
+
+    const checkpoints = Array.isArray(renderQa.export_checkpoints) ? renderQa.export_checkpoints : [];
+    const requiredPhases = new Set(["entry", "hold", "exit"]);
+    for (const [checkpointIndex, checkpoint] of checkpoints.entries()) {
+      const label = `${prefix} export checkpoint ${checkpointIndex + 1}`;
+      if (!requiredPhases.has(checkpoint?.phase)) {
+        errors.push(`${label} phase must be entry, hold, or exit.`);
+      } else {
+        requiredPhases.delete(checkpoint.phase);
+      }
+      if (!Number.isFinite(checkpoint?.at)) errors.push(`${label} missing numeric at.`);
+      if (!Array.isArray(checkpoint?.assertions) || checkpoint.assertions.length === 0) {
+        errors.push(`${label} missing assertions.`);
+      }
+      if (checkpoint?.rendered_mp4_frame_required !== true) {
+        errors.push(`${label} must require a rendered MP4 frame.`);
+      }
+    }
+    if (requiredPhases.size > 0) {
+      errors.push(`${prefix} export checkpoints missing phases: ${[...requiredPhases].join(", ")}.`);
+    }
+  }
+
   return errors;
 }
 
@@ -193,6 +257,15 @@ if (sceneDoc && templateDoc && primitiveDoc) {
   }
   if (!sceneDoc.compiler_policy?.requires_snapshot_validation) {
     errors.push("SCENE_SCHEMA.json must require snapshot validation.");
+  }
+  if (!sceneDoc.compiler_policy?.requires_rendered_mp4_text_measurement) {
+    errors.push("SCENE_SCHEMA.json must require rendered MP4 text measurement.");
+  }
+  if (!sceneDoc.compiler_policy?.requires_alpha_visible_bounds_measurement) {
+    errors.push("SCENE_SCHEMA.json must require alpha-visible-bounds measurement.");
+  }
+  if (!sceneDoc.compiler_policy?.requires_occlusion_group_validation) {
+    errors.push("SCENE_SCHEMA.json must require occlusion-group validation.");
   }
   if (scenes.length === 0) errors.push("SCENE_SCHEMA.json must define at least one scene.");
   for (const [index, scene] of scenes.entries()) {

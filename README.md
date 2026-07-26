@@ -88,12 +88,15 @@ MOTION_MAP.json           GSAP choreography and transition map
 - Chinese vertical-video defaults, with documented overrides for other platforms.
 - Image Gen assets with a clear role, quiet text zone, crop-safe area, and local path.
 - Background and component counts derived from the actual story, product mechanism, and proof needs rather than a fixed quota.
+- Exact supplied style sources inspected directly, with a clear boundary between visual language and product narrative.
 - Independent vertical background plates plus source-driven component sheets, with separate hero generations added when needed.
+- Asset libraries checked for narrative-anchor, product-proof, and transition-carrier roles, plus distinct component combinations.
 - Named transparent cutouts, dark/light contact-sheet review, and a manifest that records accepted assets and revisions.
 - Text-over-background layout contracts before animation.
 - Scene schema, vector template, and motion primitive contracts before implementation.
 - GSAP choreography contracts: labels, position parameters, plugin registration, transform aliases, and performance rules.
 - Motion that guides attention instead of repeating static slide patterns.
+- Final-MP4 checks for composite-layer ownership, visible transparent-asset bounds, exported font fit, and entry/hold/exit frames.
 - Validation, snapshots, and review notes before final delivery.
 - Compact artifact writing: no self-talk, generic pitch language, or unrelated commentary.
 

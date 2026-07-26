@@ -30,6 +30,16 @@
 - Generic visual rejection list:
 - Source recognition test:
 
+## Reference Fidelity And Narrative Boundary
+- Reference source type:
+- Exact source inspected:
+- Exact source reviewed:
+- Observed visual grammar:
+- Style controls:
+- Product / source story remains primary:
+- Narrative boundary:
+- Forbidden drift:
+
 ## Colors
 - Background: `#050505` deep black.
 - Foreground: white / light gray.
@@ -140,6 +150,27 @@
 - Proof / stat moment:
 - Caption:
 - CTA / brand lockup:
+
+## Motion-Role Asset Coverage
+- Narrative anchor components:
+- Product proof components:
+- Transition carrier components:
+- Additional motion roles:
+- Combination test 1:
+- Combination test 2:
+- Duplicate component-set rejection:
+- Same-silhouette rejection:
+- Independent-entry-only rejection:
+
+## Rendered-Frame Integrity
+- Composite owner groups:
+- Shared transform / opacity / clip / occlusion rule:
+- Transparent assets requiring visible alpha bounds:
+- Narrow text containers requiring exported font measurement:
+- Entry checkpoint policy:
+- Readable-hold checkpoint policy:
+- Exit checkpoint policy:
+- Browser / final-MP4 conflict policy: final MP4 wins
 
 ## Product Proof And Asset Library
 - Product proof inventory:

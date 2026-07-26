@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "composition_id": "root",
   "format": {
     "language": "zh-CN",
@@ -20,7 +20,10 @@
     "llm_may_invent_svg_geometry": false,
     "llm_may_invent_motion_primitives": false,
     "requires_browser_text_measurement": true,
-    "requires_snapshot_validation": true
+    "requires_snapshot_validation": true,
+    "requires_rendered_mp4_text_measurement": true,
+    "requires_alpha_visible_bounds_measurement": true,
+    "requires_occlusion_group_validation": true
   },
   "approved_contracts": {
     "vector_templates_file": "VECTOR_TEMPLATES.json",
@@ -111,7 +114,43 @@
           "at": 2.8,
           "assertions": ["not_blank", "text_not_in_bottom_overlay"]
         }
-      ]
+      ],
+      "render_qa_contract": {
+        "composite_group_decision": "required",
+        "composite_group_reason": "The title, accent, and their visual container must occlude and move as one owned unit.",
+        "composite_groups": [
+          {
+            "id": "hook-title-unit",
+            "owner_selector": ".scene-hook .hook-group",
+            "member_selectors": [".scene-hook .title", ".scene-hook .accent-path"],
+            "shared_transform": true,
+            "shared_opacity": true,
+            "shared_clip": true,
+            "occlusion_policy": "The owner group sits wholly in front of or behind another object; child layers may not cross that boundary independently."
+          }
+        ],
+        "alpha_visible_bounds_assets": [],
+        "export_checkpoints": [
+          {
+            "phase": "entry",
+            "at": 0.6,
+            "rendered_mp4_frame_required": true,
+            "assertions": ["component_children_share_occlusion", "text_inside_visible_container"]
+          },
+          {
+            "phase": "hold",
+            "at": 1.4,
+            "rendered_mp4_frame_required": true,
+            "assertions": ["font_metrics_match_export", "text_inside_visible_container", "contrast_survives_export"]
+          },
+          {
+            "phase": "exit",
+            "at": 2.8,
+            "rendered_mp4_frame_required": true,
+            "assertions": ["component_children_share_transform", "no_edge_overflow_during_exit"]
+          }
+        ]
+      }
     }
   ],
   "batch_inputs": {
