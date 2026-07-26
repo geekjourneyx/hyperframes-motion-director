@@ -121,6 +121,12 @@ node skills/hyperframes-motion-director/scripts/validate_design_engineering.mjs 
 
 For implemented HyperFrames compositions, also run the strongest checks supported by the local HyperFrames CLI, such as validate, inspect, snapshot, and render.
 
+## Releases
+
+Stable tags publish GitHub Releases automatically after the tagged source passes the repository checks. A `main` push also repairs the newest stable tag when its Release is missing.
+
+See [RELEASING.md](RELEASING.md) for the complete release procedure and recovery rules.
+
 ## Repository Structure
 
 ```text

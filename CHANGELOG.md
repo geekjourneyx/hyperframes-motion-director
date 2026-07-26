@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+- Added a tag-triggered GitHub Release workflow with automatic reconciliation for missing Releases on `main`.
+- Added a deterministic release gate for version alignment, changelog extraction, tracked noise, personal local paths, environment files, and high-confidence credential material.
+- Added a browser-free release SOP with atomic branch-and-tag pushing and manual recovery guidance.
+
 ## [2.8.0] - 2026-07-26
 
 ### Added

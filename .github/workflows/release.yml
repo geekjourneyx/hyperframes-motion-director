@@ -1,0 +1,229 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing stable tag to publish or reconcile
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    name: Resolve release intent
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.release.outputs.tag }}
+      should_publish: ${{ steps.release.outputs.should_publish }}
+    steps:
+      - name: Check out repository history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve tag and existing release
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_REF_TYPE: ${{ github.ref_type }}
+          EVENT_REF_NAME: ${{ github.ref_name }}
+          MANUAL_TAG: ${{ inputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            tag="$MANUAL_TAG"
+          elif [[ "$EVENT_REF_TYPE" == "tag" ]]; then
+            tag="$EVENT_REF_NAME"
+          else
+            tag="$(
+              git tag --merged origin/main --list 'v*' --sort=-version:refname \
+                | grep -E -m1 '^v[0-9]+\.[0-9]+\.[0-9]+$' || true
+            )"
+          fi
+
+          if [[ -z "$tag" ]]; then
+            echo "tag=" >> "$GITHUB_OUTPUT"
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+            echo "No stable release tag is reachable from main."
+            exit 0
+          fi
+
+          if [[ ! "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Stable tag must match vX.Y.Z: $tag" >&2
+            exit 1
+          fi
+
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+            echo "Release $tag already exists; reconciliation is complete."
+          else
+            echo "should_publish=true" >> "$GITHUB_OUTPUT"
+            echo "Release $tag is missing and will be validated."
+          fi
+
+  validate:
+    name: Validate tagged source
+    needs: resolve
+    if: needs.resolve.outputs.should_publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out release automation
+        uses: actions/checkout@v4
+        with:
+          path: automation
+          fetch-depth: 0
+
+      - name: Check out tagged source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.resolve.outputs.tag }}
+          path: release-source
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verify immutable tag target
+        env:
+          TAG: ${{ needs.resolve.outputs.tag }}
+        working-directory: release-source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --tags
+          tag_commit="$(git rev-parse "${TAG}^{commit}")"
+          head_commit="$(git rev-parse HEAD)"
+          test "$tag_commit" = "$head_commit"
+          git merge-base --is-ancestor "$tag_commit" origin/main
+
+      - name: Audit release metadata and tracked content
+        env:
+          TAG: ${{ needs.resolve.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node automation/skills/hyperframes-motion-director/scripts/check_release.mjs \
+            "$TAG" \
+            --repo "$GITHUB_WORKSPACE/release-source" \
+            --notes-output "$RUNNER_TEMP/release-notes.md"
+
+      - name: Run release quality gates
+        working-directory: release-source
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check skills/hyperframes-motion-director/scripts/check-structure.mjs
+          node --check skills/hyperframes-motion-director/scripts/lib/image-assets.mjs
+          node --check skills/hyperframes-motion-director/scripts/validate_artifacts.mjs
+          node --check skills/hyperframes-motion-director/scripts/validate_design_engineering.mjs
+          jq empty skills/hyperframes-motion-director/evals/evals.json
+          jq empty skills/hyperframes-motion-director/templates/ASSET_MANIFEST.template.json
+          jq empty skills/hyperframes-motion-director/templates/SCENE_SCHEMA.template.json
+          node skills/hyperframes-motion-director/scripts/check-structure.mjs
+          node --test skills/hyperframes-motion-director/scripts/tests/validate_image_assets.test.mjs
+
+          scaffold_dir="$RUNNER_TEMP/release-scaffold"
+          node skills/hyperframes-motion-director/scripts/create_project.mjs \
+            "$scaffold_dir" \
+            --with-timing \
+            --with-motion
+          node skills/hyperframes-motion-director/scripts/check_assets.mjs "$scaffold_dir"
+          node skills/hyperframes-motion-director/scripts/validate_design_engineering.mjs "$scaffold_dir"
+          jq -e '
+            .schema_version == 2
+            and (.asset_analysis.style_reference | type == "object")
+            and (
+              .asset_analysis.motion_role_coverage.roles
+              | map(.id)
+              == ["narrative_anchor", "product_proof", "transition_carrier"]
+            )
+            and (.asset_analysis.motion_role_coverage.combination_tests | type == "array")
+          ' "$scaffold_dir/ASSET_MANIFEST.json"
+          jq -e '
+            .version == 2
+            and .compiler_policy.requires_rendered_mp4_text_measurement
+            and .compiler_policy.requires_alpha_visible_bounds_measurement
+            and .compiler_policy.requires_occlusion_group_validation
+            and (
+              .scenes[0].render_qa_contract.export_checkpoints
+              | map(.phase)
+              == ["entry", "hold", "exit"]
+            )
+          ' "$scaffold_dir/SCENE_SCHEMA.json"
+
+      - name: Upload validated release notes
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-notes-${{ needs.resolve.outputs.tag }}
+          path: ${{ runner.temp }}/release-notes.md
+          if-no-files-found: error
+          retention-days: 1
+
+  publish:
+    name: Publish GitHub Release
+    needs:
+      - resolve
+      - validate
+    if: needs.resolve.outputs.should_publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download validated release notes
+        uses: actions/download-artifact@v4
+        with:
+          name: release-notes-${{ needs.resolve.outputs.tag }}
+          path: ${{ runner.temp }}
+
+      - name: Create or reconcile Release
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.resolve.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if ! gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            if ! gh release create "$TAG" \
+              --repo "$GITHUB_REPOSITORY" \
+              --verify-tag \
+              --title "$TAG" \
+              --notes-file "$RUNNER_TEMP/release-notes.md"; then
+              gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null
+            fi
+          fi
+
+          release_json="$(
+            gh release view "$TAG" \
+              --repo "$GITHUB_REPOSITORY" \
+              --json tagName,isDraft,isPrerelease,url
+          )"
+          jq -e \
+            --arg tag "$TAG" \
+            '.tagName == $tag and (.isDraft | not) and (.isPrerelease | not) and (.url | length > 0)' \
+            <<< "$release_json"
+          release_url="$(jq -r '.url' <<< "$release_json")"
+          echo "url=$release_url" >> "$GITHUB_OUTPUT"
+          echo "Published [$TAG]($release_url)." >> "$GITHUB_STEP_SUMMARY"

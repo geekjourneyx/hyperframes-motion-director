@@ -46,6 +46,8 @@ Scripts use modern JavaScript modules (`import` syntax) and `.mjs` filenames. Ke
 
 There is no formal test framework yet. Treat `node skills/hyperframes-motion-director/scripts/check-structure.mjs` as the release gate for this skill. When changing project-scaffold behavior, run `create_project.mjs` into a temporary directory and then run asset, artifact, and design-engineering checks against that directory.
 
+For repository releases, also run `node skills/hyperframes-motion-director/scripts/check_release.mjs vX.Y.Z`. Push `main` and the annotated version tag atomically; `.github/workflows/release.yml` creates or reconciles the GitHub Release. Do not move or force-push a public version tag.
+
 ## Commit & Pull Request Guidelines
 
 The current history uses Conventional Commit style, for example `docs: initialize motion director skill`. Keep commits terse and scoped: `docs:`, `fix:`, `feat:`, or `chore:`. Pull requests should describe what changed, why it changed, which validation commands ran, and include screenshots only when README visuals or rendered review assets changed.
